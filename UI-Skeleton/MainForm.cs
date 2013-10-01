@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace UI_Skeleton
 {
-    public enum Screen { Main, ViewStock, EditStock, NewStock, ViewStaff, EditStaff, NewStaff, ViewAccounts, NewPayment, AddSales, PrintSalesSheet }
+    public enum Screen { Main, ViewStock, EditStock, NewStock, ViewStaff, EditStaff, NewStaff, ViewAccounts, NewPayment, NewSales, PrintSalesSheet }
     
     public partial class MainForm : Form
     {
@@ -57,16 +57,24 @@ namespace UI_Skeleton
                 case Screen.NewStock:
                     break;
                 case Screen.ViewStaff:
+                    contentBox.Text = "View/Edit Staff";
+                    ViewStaffScreen viewStaffScreen = new ViewStaffScreen();
+                    viewStaffScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(viewStaffScreen);
                     break;
                 case Screen.EditStaff:
                     break;
                 case Screen.NewStaff:
+                    contentBox.Text = "New Staff Member";
+                    NewStaffScreen newStaffScreen = new NewStaffScreen();
+                    newStaffScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(newStaffScreen);
                     break;
                 case Screen.ViewAccounts:
                     break;
                 case Screen.NewPayment:
                     break;
-                case Screen.AddSales:
+                case Screen.NewSales:
                     break;
                 case Screen.PrintSalesSheet:
                     break;
@@ -83,6 +91,11 @@ namespace UI_Skeleton
         private void stockViewMenuItem_Click(object sender, EventArgs e)
         {
             SwitchTo(Screen.ViewStock);
+        }
+
+        private void viewStaffMenuItem_Click(object sender, EventArgs e)
+        {
+            SwitchTo(Screen.ViewStaff);
         }
     }
 }

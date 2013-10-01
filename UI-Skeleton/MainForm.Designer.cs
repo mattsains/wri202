@@ -92,6 +92,7 @@
             this.viewStaffMenuItem.Name = "viewStaffMenuItem";
             this.viewStaffMenuItem.Size = new System.Drawing.Size(172, 22);
             this.viewStaffMenuItem.Text = "&View/Edit Staff";
+            this.viewStaffMenuItem.Click += new System.EventHandler(this.viewStaffMenuItem_Click);
             // 
             // accountsStaffMenuItem
             // 
