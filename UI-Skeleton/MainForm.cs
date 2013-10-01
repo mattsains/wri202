@@ -21,13 +21,14 @@ namespace UI_Skeleton
         /// <summary>
         /// Switches the screen displayed on the form
         /// This method drops the current screen, so make sure it's done whatever it was doing.
-        /// TODO: make sure the previous screen exits properly (there's gotta be an event in the UserControl we can trigger, eg., Unload())
         /// </summary>
         /// <param name="s">Enum corresponding to the screen to be shown</param>
-        public void SwitchTo(Screen s)
+        /// <param name="data">If you want to send data to the screen to be opened, this is where it goes. Different screens have different requirements for this field</param>
+        /// TODO: make sure the previous screen exits properly (there's gotta be an event in the UserControl we can trigger, eg., Unload())
+        public void SwitchTo(Screen s, params object[] data)
         {
             contentBox.Controls.Clear();
-            
+
             switch (s)
             {
                 case Screen.Main:
@@ -38,11 +39,20 @@ namespace UI_Skeleton
                     break;
                 case Screen.ViewStock:
                     contentBox.Text = "View/Edit Stock";
-                    ViewStockScreen viewStockScreen = new ViewStockScreen();
+                    ViewStockScreen viewStockScreen = new ViewStockScreen(data);
                     viewStockScreen.Dock = DockStyle.Fill;
                     contentBox.Controls.Add(viewStockScreen);
                     break;
                 case Screen.EditStock:
+                    int itemid;
+
+                    try { itemid = (int)data[0]; }
+                    catch (InvalidCastException e) { throw new ArgumentException("The Edit Stock screen requires an itemID", e); }
+
+                    contentBox.Text = string.Format("Edit Stock Item #{0}", itemid);
+                    EditStockScreen editStockScreen = new EditStockScreen(itemid);
+                    editStockScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(editStockScreen);
                     break;
                 case Screen.NewStock:
                     break;

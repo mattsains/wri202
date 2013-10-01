@@ -23,12 +23,14 @@ namespace UI_Skeleton
         /// <summary>
         /// Switches the screen displayed on the main form
         /// This method drops the current screen, so make sure it's done whatever it was doing.
-        /// TODO: make sure the previous screen exits properly (there's gotta be an event in the UserControl we can trigger, eg., Unload())
         /// </summary>
         /// <param name="s">Enum corresponding to the screen to be shown</param>
-        public static void SwitchTo(Screen s)
+        /// <param name="data">If you want to send data to the screen to be opened, this is where it goes</param>
+        /// <example>SwitchTo(Screen.Main,"Title Text!","Other Text maybe", 5, 22)</example>
+        /// TODO: make sure the previous screen exits properly (there's gotta be an event in the UserControl we can trigger, eg., Unload())
+        public static void SwitchTo(Screen s, params object[] data)
         {
-            mainForm.SwitchTo(s);
+            mainForm.SwitchTo(s, data);
         }
     }
 }

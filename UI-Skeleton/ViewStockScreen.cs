@@ -11,7 +11,7 @@ namespace UI_Skeleton
 {
     public partial class ViewStockScreen : UserControl
     {
-        public ViewStockScreen()
+        public ViewStockScreen(params object[] data)
         {
             InitializeComponent();
         }
@@ -56,7 +56,7 @@ namespace UI_Skeleton
         /// <param name="e"></param>
         private void dgItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Program.SwitchTo(Screen.EditStock);
+            Program.SwitchTo(Screen.EditStock, dgItems[0, e.RowIndex].Value);
         }
         /// <summary>
         /// Is triggered twice when the radio selection is changed.
