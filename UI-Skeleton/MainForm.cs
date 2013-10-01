@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace UI_Skeleton
 {
-    public enum Screen { Main, ViewStock, EditStock, NewStock, ViewStaff, EditStaff, ViewAccounts, AddPayment, AddSales, PrintSalesSheet }
+    public enum Screen { Main, ViewStock, EditStock, NewStock, ViewStaff, EditStaff, NewStaff, ViewAccounts, NewPayment, AddSales, PrintSalesSheet }
     
     public partial class MainForm : Form
     {
@@ -18,16 +18,29 @@ namespace UI_Skeleton
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Switches the screen displayed on the form
+        /// This method drops the current screen, so make sure it's done whatever it was doing.
+        /// TODO: make sure the previous screen exits properly (there's gotta be an event in the UserControl we can trigger, eg., Unload())
+        /// </summary>
+        /// <param name="s">Enum corresponding to the screen to be shown</param>
         public void SwitchTo(Screen s)
         {
             contentBox.Controls.Clear();
+            
             switch (s)
             {
                 case Screen.Main:
                     contentBox.Text = "Tuckshop Management System";
-                    MainScreen screen = new MainScreen();
-                    screen.Dock = DockStyle.Fill;
-                    contentBox.Controls.Add(screen);
+                    MainScreen mainScreen = new MainScreen();
+                    mainScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(mainScreen);
+                    break;
+                case Screen.ViewStock:
+                    contentBox.Text = "View/Edit Stock";
+                    ViewStockScreen viewStockScreen = new ViewStockScreen();
+                    viewStockScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(viewStockScreen);
                     break;
                 case Screen.EditStock:
                     break;
@@ -37,9 +50,11 @@ namespace UI_Skeleton
                     break;
                 case Screen.EditStaff:
                     break;
+                case Screen.NewStaff:
+                    break;
                 case Screen.ViewAccounts:
                     break;
-                case Screen.AddPayment:
+                case Screen.NewPayment:
                     break;
                 case Screen.AddSales:
                     break;

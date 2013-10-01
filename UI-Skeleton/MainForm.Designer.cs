@@ -30,13 +30,13 @@
         {
             this.navMenu = new System.Windows.Forms.MenuStrip();
             this.stockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.staffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockViewMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newStockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.staffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewStaffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountsStaffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paymentsStaffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.captureSalesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printSalesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentBox = new System.Windows.Forms.GroupBox();
@@ -64,25 +64,6 @@
             this.stockMenuItem.Size = new System.Drawing.Size(45, 20);
             this.stockMenuItem.Text = "Stock";
             // 
-            // staffMenuItem
-            // 
-            this.staffMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewStaffMenuItem,
-            this.accountsStaffMenuItem,
-            this.paymentsStaffMenuItem});
-            this.staffMenuItem.Name = "staffMenuItem";
-            this.staffMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.staffMenuItem.Text = "Staff";
-            // 
-            // salesMenuItem
-            // 
-            this.salesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.captureSalesMenuItem,
-            this.printSalesMenuItem});
-            this.salesMenuItem.Name = "salesMenuItem";
-            this.salesMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.salesMenuItem.Text = "Sales";
-            // 
             // stockViewMenuItem
             // 
             this.stockViewMenuItem.Name = "stockViewMenuItem";
@@ -95,6 +76,16 @@
             this.newStockMenuItem.Name = "newStockMenuItem";
             this.newStockMenuItem.Size = new System.Drawing.Size(175, 22);
             this.newStockMenuItem.Text = "Process &New Stock";
+            // 
+            // staffMenuItem
+            // 
+            this.staffMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewStaffMenuItem,
+            this.accountsStaffMenuItem,
+            this.paymentsStaffMenuItem});
+            this.staffMenuItem.Name = "staffMenuItem";
+            this.staffMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.staffMenuItem.Text = "Staff";
             // 
             // viewStaffMenuItem
             // 
@@ -114,6 +105,15 @@
             this.paymentsStaffMenuItem.Size = new System.Drawing.Size(172, 22);
             this.paymentsStaffMenuItem.Text = "Process &Payments";
             // 
+            // salesMenuItem
+            // 
+            this.salesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.captureSalesMenuItem,
+            this.printSalesMenuItem});
+            this.salesMenuItem.Name = "salesMenuItem";
+            this.salesMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.salesMenuItem.Text = "Sales";
+            // 
             // captureSalesMenuItem
             // 
             this.captureSalesMenuItem.Name = "captureSalesMenuItem";
@@ -131,7 +131,6 @@
             this.contentBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.contentBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contentBox.Location = new System.Drawing.Point(12, 27);
             this.contentBox.Name = "contentBox";
             this.contentBox.Size = new System.Drawing.Size(712, 524);
