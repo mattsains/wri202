@@ -15,5 +15,10 @@ namespace UI_Skeleton
         {
             InitializeComponent();
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Program.SwitchTo(Screen.ViewStaff);
+        }
     }
 }
