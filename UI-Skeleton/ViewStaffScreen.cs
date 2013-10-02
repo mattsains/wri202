@@ -19,7 +19,7 @@ namespace UI_Skeleton
             //Some example data
             dgStaff.Rows.Add(1, "Matthew", "Sainsbury", "matthew@sainsbury.za.net", "R 123.00");
             dgStaff.Rows.Add(2, "Dean", "Gifford", "dean@gifford.com", "R 500.25");
-            dgStaff.Rows.Add(1, "Douglas", "Bentley", "doug@bent.ley", "R 5.00");
+            dgStaff.Rows.Add(3, "Douglas", "Bentley", "doug@bent.ley", "R 5.00");
         }
         private void txtSearch_Enter(object sender, EventArgs e)
         {
@@ -50,7 +50,7 @@ namespace UI_Skeleton
         /// <param name="e"></param>
         private void dgStaff_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Program.SwitchTo(Screen.EditStock, dgStaff[0, e.RowIndex].Value);
+            Program.SwitchTo(Screen.EditStaff, dgStaff[0, e.RowIndex].Value);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
