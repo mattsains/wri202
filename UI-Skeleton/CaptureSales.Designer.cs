@@ -34,14 +34,16 @@
             this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemdesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCapSales = new System.Windows.Forms.Button();
+            this.txtDate = new System.Windows.Forms.DateTimePicker();
+            this.lblDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgCapSales)).BeginInit();
             this.SuspendLayout();
             // 
             // dgCapSales
             // 
-            this.dgCapSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgCapSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgCapSales.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             this.dgCapSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCapSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -85,16 +87,35 @@
             this.btnCapSales.Text = "Capture";
             this.btnCapSales.UseVisualStyleBackColor = true;
             // 
+            // txtDate
+            // 
+            this.txtDate.Location = new System.Drawing.Point(42, 0);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(200, 20);
+            this.txtDate.TabIndex = 2;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(3, 4);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(33, 13);
+            this.lblDate.TabIndex = 3;
+            this.lblDate.Text = "Date:";
+            // 
             // CaptureSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.txtDate);
             this.Controls.Add(this.btnCapSales);
             this.Controls.Add(this.dgCapSales);
             this.Name = "CaptureSales";
             this.Size = new System.Drawing.Size(636, 518);
             ((System.ComponentModel.ISupportInitialize)(this.dgCapSales)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -106,5 +127,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemdesc;
         private System.Windows.Forms.Button btnCapSales;
+        private System.Windows.Forms.DateTimePicker txtDate;
+        private System.Windows.Forms.Label lblDate;
     }
 }
