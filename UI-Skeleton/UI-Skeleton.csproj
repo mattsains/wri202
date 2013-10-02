@@ -84,6 +84,12 @@
     <Compile Include="MainScreen.Designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewAccountsScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewAccountsScreen.Designer.cs">
+      <DependentUpon>ViewAccountsScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewStaffScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </Compile>
     <EmbeddedResource Include="MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewAccountsScreen.resx">
+      <DependentUpon>ViewAccountsScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewStaffScreen.resx">
       <DependentUpon>ViewStaffScreen.cs</DependentUpon>

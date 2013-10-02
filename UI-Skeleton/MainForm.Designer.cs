@@ -105,6 +105,7 @@
             this.accountsStaffMenuItem.Name = "accountsStaffMenuItem";
             this.accountsStaffMenuItem.Size = new System.Drawing.Size(172, 22);
             this.accountsStaffMenuItem.Text = "View &Accounts";
+            this.accountsStaffMenuItem.Click += new System.EventHandler(this.accountsStaffMenuItem_Click);
             // 
             // paymentsStaffMenuItem
             // 

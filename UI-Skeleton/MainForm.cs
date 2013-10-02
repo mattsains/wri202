@@ -75,6 +75,10 @@ namespace UI_Skeleton
                     contentBox.Controls.Add(newStaffScreen);
                     break;
                 case Screen.ViewAccounts:
+                    lblHeader.Text = "View/Email Accounts";
+                    ViewAccountsScreen viewAccountsScreen = new ViewAccountsScreen();
+                    viewAccountsScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(viewAccountsScreen);
                     break;
                 case Screen.NewPayment:
                     break;
@@ -114,6 +118,11 @@ namespace UI_Skeleton
         private void newStockMenuItem_Click(object sender, EventArgs e)
         {
             SwitchTo(Screen.NewStock);
+        }
+
+        private void accountsStaffMenuItem_Click(object sender, EventArgs e)
+        {
+            SwitchTo(Screen.ViewAccounts);
         }
     }
 }
