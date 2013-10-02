@@ -40,9 +40,9 @@
             this.salesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.captureSalesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printSalesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contentBox = new System.Windows.Forms.GroupBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblHeader = new System.Windows.Forms.Label();
+            this.contentBox = new System.Windows.Forms.Panel();
             this.navMenu.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -133,17 +133,6 @@
             this.printSalesMenuItem.Size = new System.Drawing.Size(160, 22);
             this.printSalesMenuItem.Text = "&Print Sales Sheet";
             // 
-            // contentBox
-            // 
-            this.contentBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.contentBox.Location = new System.Drawing.Point(5, 49);
-            this.contentBox.Name = "contentBox";
-            this.contentBox.Size = new System.Drawing.Size(726, 499);
-            this.contentBox.TabIndex = 1;
-            this.contentBox.TabStop = false;
-            // 
             // pnlHeader
             // 
             this.pnlHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -169,13 +158,23 @@
             this.lblHeader.TabIndex = 0;
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // contentBox
+            // 
+            this.contentBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contentBox.Location = new System.Drawing.Point(0, 49);
+            this.contentBox.Name = "contentBox";
+            this.contentBox.Size = new System.Drawing.Size(736, 503);
+            this.contentBox.TabIndex = 3;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 552);
-            this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.contentBox);
+            this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.navMenu);
             this.MainMenuStrip = this.navMenu;
             this.Name = "MainForm";
@@ -202,9 +201,9 @@
         private System.Windows.Forms.ToolStripMenuItem salesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem captureSalesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printSalesMenuItem;
-        private System.Windows.Forms.GroupBox contentBox;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblHeader;
+        private System.Windows.Forms.Panel contentBox;
     }
 }
 
