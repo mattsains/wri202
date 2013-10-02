@@ -55,6 +55,10 @@ namespace UI_Skeleton
                     contentBox.Controls.Add(editStockScreen);
                     break;
                 case Screen.NewStock:
+                    lblHeader.Text = "Capture New Stock";
+                    NewStockScreen newStockScreen = new NewStockScreen();
+                    newStockScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(newStockScreen);
                     break;
                 case Screen.ViewStaff:
                     lblHeader.Text = "View/Edit Staff";
@@ -105,6 +109,11 @@ namespace UI_Skeleton
         private void captureSalesMenuItem_Click(object sender, EventArgs e)
         {
             SwitchTo(Screen.NewSales);
+        }
+
+        private void newStockMenuItem_Click(object sender, EventArgs e)
+        {
+            SwitchTo(Screen.NewStock);
         }
     }
 }
