@@ -52,6 +52,12 @@
     <Compile Include="CaptureSales.Designer.cs">
       <DependentUpon>CaptureSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditStaffScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditStaffScreen.Designer.cs">
+      <DependentUpon>EditStaffScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditStockScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </Compile>
     <EmbeddedResource Include="CaptureSales.resx">
       <DependentUpon>CaptureSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStaffScreen.resx">
+      <DependentUpon>EditStaffScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditStockScreen.resx">
       <DependentUpon>EditStockScreen.cs</DependentUpon>

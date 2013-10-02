@@ -67,6 +67,15 @@ namespace UI_Skeleton
                     contentBox.Controls.Add(viewStaffScreen);
                     break;
                 case Screen.EditStaff:
+                    int staffid;
+
+                    try { staffid = (int)data[0]; }
+                    catch (InvalidCastException e) { throw new ArgumentException("The Edit Staff screen requires a staffID", e); }
+
+                    lblHeader.Text = string.Format("Edit Staff member #{0}", staffid);
+                    EditStaffScreen editStaffScreen = new EditStaffScreen(staffid);
+                    editStaffScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(editStaffScreen);
                     break;
                 case Screen.NewStaff:
                     lblHeader.Text = "New Staff Member";
