@@ -46,7 +46,8 @@
             // rdAllStock
             // 
             this.rdAllStock.AutoSize = true;
-            this.rdAllStock.Location = new System.Drawing.Point(3, 3);
+            this.rdAllStock.Location = new System.Drawing.Point(4, 5);
+            this.rdAllStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdAllStock.Name = "rdAllStock";
             this.rdAllStock.Size = new System.Drawing.Size(97, 17);
             this.rdAllStock.TabIndex = 0;
@@ -58,7 +59,8 @@
             // rdInStockOnly
             // 
             this.rdInStockOnly.AutoSize = true;
-            this.rdInStockOnly.Location = new System.Drawing.Point(3, 26);
+            this.rdInStockOnly.Location = new System.Drawing.Point(107, 5);
+            this.rdInStockOnly.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdInStockOnly.Name = "rdInStockOnly";
             this.rdInStockOnly.Size = new System.Drawing.Size(143, 17);
             this.rdInStockOnly.TabIndex = 1;
@@ -73,9 +75,10 @@
             this.dgItems.AllowUserToDeleteRows = false;
             this.dgItems.AllowUserToOrderColumns = true;
             this.dgItems.AllowUserToResizeRows = false;
-            this.dgItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -100,11 +103,11 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgItems.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgItems.Location = new System.Drawing.Point(3, 49);
+            this.dgItems.Location = new System.Drawing.Point(3, 32);
             this.dgItems.MultiSelect = false;
             this.dgItems.Name = "dgItems";
             this.dgItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItems.Size = new System.Drawing.Size(595, 378);
+            this.dgItems.Size = new System.Drawing.Size(595, 394);
             this.dgItems.TabIndex = 3;
             this.dgItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgItems_CellDoubleClick);
             // 
@@ -139,7 +142,8 @@
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.ForeColor = System.Drawing.Color.Gray;
-            this.txtSearch.Location = new System.Drawing.Point(466, 25);
+            this.txtSearch.Location = new System.Drawing.Point(466, 2);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(132, 20);
             this.txtSearch.TabIndex = 2;
@@ -150,7 +154,8 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnPrint.Location = new System.Drawing.Point(3, 433);
+            this.btnPrint.Location = new System.Drawing.Point(256, 431);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.TabIndex = 4;

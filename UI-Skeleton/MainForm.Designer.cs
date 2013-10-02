@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.navMenu = new System.Windows.Forms.MenuStrip();
             this.stockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockViewMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,11 +41,15 @@
             this.captureSalesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printSalesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentBox = new System.Windows.Forms.GroupBox();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblHeader = new System.Windows.Forms.Label();
             this.navMenu.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // navMenu
             // 
+            this.navMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             this.navMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stockMenuItem,
             this.staffMenuItem,
@@ -61,20 +66,20 @@
             this.stockViewMenuItem,
             this.newStockMenuItem});
             this.stockMenuItem.Name = "stockMenuItem";
-            this.stockMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.stockMenuItem.Size = new System.Drawing.Size(48, 20);
             this.stockMenuItem.Text = "Stock";
             // 
             // stockViewMenuItem
             // 
             this.stockViewMenuItem.Name = "stockViewMenuItem";
-            this.stockViewMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.stockViewMenuItem.Size = new System.Drawing.Size(173, 22);
             this.stockViewMenuItem.Text = "&View/Edit Stock";
             this.stockViewMenuItem.Click += new System.EventHandler(this.stockViewMenuItem_Click);
             // 
             // newStockMenuItem
             // 
             this.newStockMenuItem.Name = "newStockMenuItem";
-            this.newStockMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.newStockMenuItem.Size = new System.Drawing.Size(173, 22);
             this.newStockMenuItem.Text = "Process &New Stock";
             // 
             // staffMenuItem
@@ -90,20 +95,20 @@
             // viewStaffMenuItem
             // 
             this.viewStaffMenuItem.Name = "viewStaffMenuItem";
-            this.viewStaffMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.viewStaffMenuItem.Size = new System.Drawing.Size(169, 22);
             this.viewStaffMenuItem.Text = "&View/Edit Staff";
             this.viewStaffMenuItem.Click += new System.EventHandler(this.viewStaffMenuItem_Click);
             // 
             // accountsStaffMenuItem
             // 
             this.accountsStaffMenuItem.Name = "accountsStaffMenuItem";
-            this.accountsStaffMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.accountsStaffMenuItem.Size = new System.Drawing.Size(169, 22);
             this.accountsStaffMenuItem.Text = "View &Accounts";
             // 
             // paymentsStaffMenuItem
             // 
             this.paymentsStaffMenuItem.Name = "paymentsStaffMenuItem";
-            this.paymentsStaffMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.paymentsStaffMenuItem.Size = new System.Drawing.Size(169, 22);
             this.paymentsStaffMenuItem.Text = "Process &Payments";
             // 
             // salesMenuItem
@@ -112,38 +117,64 @@
             this.captureSalesMenuItem,
             this.printSalesMenuItem});
             this.salesMenuItem.Name = "salesMenuItem";
-            this.salesMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.salesMenuItem.Size = new System.Drawing.Size(45, 20);
             this.salesMenuItem.Text = "Sales";
             // 
             // captureSalesMenuItem
             // 
             this.captureSalesMenuItem.Name = "captureSalesMenuItem";
-            this.captureSalesMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.captureSalesMenuItem.Size = new System.Drawing.Size(160, 22);
             this.captureSalesMenuItem.Text = "Capture &Sales";
+            this.captureSalesMenuItem.Click += new System.EventHandler(this.captureSalesMenuItem_Click);
             // 
             // printSalesMenuItem
             // 
             this.printSalesMenuItem.Name = "printSalesMenuItem";
-            this.printSalesMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.printSalesMenuItem.Size = new System.Drawing.Size(160, 22);
             this.printSalesMenuItem.Text = "&Print Sales Sheet";
             // 
             // contentBox
             // 
-            this.contentBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.contentBox.Location = new System.Drawing.Point(12, 27);
+            this.contentBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contentBox.Location = new System.Drawing.Point(5, 49);
             this.contentBox.Name = "contentBox";
-            this.contentBox.Size = new System.Drawing.Size(712, 524);
+            this.contentBox.Size = new System.Drawing.Size(726, 499);
             this.contentBox.TabIndex = 1;
             this.contentBox.TabStop = false;
-            this.contentBox.Text = "Tuckshop Management System";
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlHeader.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlHeader.BackgroundImage")));
+            this.pnlHeader.Controls.Add(this.lblHeader);
+            this.pnlHeader.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pnlHeader.Location = new System.Drawing.Point(-14, 24);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(763, 28);
+            this.pnlHeader.TabIndex = 2;
+            // 
+            // lblHeader
+            // 
+            this.lblHeader.BackColor = System.Drawing.Color.Transparent;
+            this.lblHeader.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader.ForeColor = System.Drawing.Color.White;
+            this.lblHeader.Location = new System.Drawing.Point(0, 0);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(763, 28);
+            this.lblHeader.TabIndex = 0;
+            this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 563);
+            this.ClientSize = new System.Drawing.Size(736, 552);
+            this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.contentBox);
             this.Controls.Add(this.navMenu);
             this.MainMenuStrip = this.navMenu;
@@ -152,6 +183,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.navMenu.ResumeLayout(false);
             this.navMenu.PerformLayout();
+            this.pnlHeader.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,6 +203,8 @@
         private System.Windows.Forms.ToolStripMenuItem captureSalesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printSalesMenuItem;
         private System.Windows.Forms.GroupBox contentBox;
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.Label lblHeader;
     }
 }
 

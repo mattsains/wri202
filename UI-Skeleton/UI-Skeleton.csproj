@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaptureSales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CaptureSales.Designer.cs">
+      <DependentUpon>CaptureSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditStockScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="ViewStockScreen.Designer.cs">
       <DependentUpon>ViewStockScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CaptureSales.resx">
+      <DependentUpon>CaptureSales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditStockScreen.resx">
       <DependentUpon>EditStockScreen.cs</DependentUpon>
     </EmbeddedResource>

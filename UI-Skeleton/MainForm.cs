@@ -32,13 +32,13 @@ namespace UI_Skeleton
             switch (s)
             {
                 case Screen.Main:
-                    contentBox.Text = "Tuckshop Management System";
+                    lblHeader.Text = "Tuckshop Management System";
                     MainScreen mainScreen = new MainScreen();
                     mainScreen.Dock = DockStyle.Fill;
                     contentBox.Controls.Add(mainScreen);
                     break;
                 case Screen.ViewStock:
-                    contentBox.Text = "View/Edit Stock";
+                    lblHeader.Text = "View/Edit Stock";
                     ViewStockScreen viewStockScreen = new ViewStockScreen(data);
                     viewStockScreen.Dock = DockStyle.Fill;
                     contentBox.Controls.Add(viewStockScreen);
@@ -49,7 +49,7 @@ namespace UI_Skeleton
                     try { itemid = (int)data[0]; }
                     catch (InvalidCastException e) { throw new ArgumentException("The Edit Stock screen requires an itemID", e); }
 
-                    contentBox.Text = string.Format("Edit Stock Item #{0}", itemid);
+                    lblHeader.Text = string.Format("Edit Stock Item #{0}", itemid);
                     EditStockScreen editStockScreen = new EditStockScreen(itemid);
                     editStockScreen.Dock = DockStyle.Fill;
                     contentBox.Controls.Add(editStockScreen);
@@ -57,7 +57,7 @@ namespace UI_Skeleton
                 case Screen.NewStock:
                     break;
                 case Screen.ViewStaff:
-                    contentBox.Text = "View/Edit Staff";
+                    lblHeader.Text = "View/Edit Staff";
                     ViewStaffScreen viewStaffScreen = new ViewStaffScreen();
                     viewStaffScreen.Dock = DockStyle.Fill;
                     contentBox.Controls.Add(viewStaffScreen);
@@ -65,7 +65,7 @@ namespace UI_Skeleton
                 case Screen.EditStaff:
                     break;
                 case Screen.NewStaff:
-                    contentBox.Text = "New Staff Member";
+                    lblHeader.Text = "New Staff Member";
                     NewStaffScreen newStaffScreen = new NewStaffScreen();
                     newStaffScreen.Dock = DockStyle.Fill;
                     contentBox.Controls.Add(newStaffScreen);
@@ -75,6 +75,10 @@ namespace UI_Skeleton
                 case Screen.NewPayment:
                     break;
                 case Screen.NewSales:
+                    lblHeader.Text = "Capture Sales";
+                    CaptureSales capSalesScreen = new CaptureSales();
+                    capSalesScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(capSalesScreen);
                     break;
                 case Screen.PrintSalesSheet:
                     break;
@@ -96,6 +100,11 @@ namespace UI_Skeleton
         private void viewStaffMenuItem_Click(object sender, EventArgs e)
         {
             SwitchTo(Screen.ViewStaff);
+        }
+
+        private void captureSalesMenuItem_Click(object sender, EventArgs e)
+        {
+            SwitchTo(Screen.NewSales);
         }
     }
 }
