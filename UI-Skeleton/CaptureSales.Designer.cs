@@ -51,9 +51,9 @@
             this.itemnum,
             this.qty,
             this.itemdesc});
-            this.dgCapSales.Location = new System.Drawing.Point(3, 23);
+            this.dgCapSales.Location = new System.Drawing.Point(3, 29);
             this.dgCapSales.Name = "dgCapSales";
-            this.dgCapSales.Size = new System.Drawing.Size(630, 447);
+            this.dgCapSales.Size = new System.Drawing.Size(630, 441);
             this.dgCapSales.TabIndex = 0;
             this.dgCapSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -89,7 +89,7 @@
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(42, 0);
+            this.txtDate.Location = new System.Drawing.Point(42, 3);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(200, 20);
             this.txtDate.TabIndex = 2;
@@ -97,7 +97,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(3, 4);
+            this.lblDate.Location = new System.Drawing.Point(3, 7);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(33, 13);
             this.lblDate.TabIndex = 3;
