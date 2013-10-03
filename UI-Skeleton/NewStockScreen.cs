@@ -14,6 +14,8 @@ namespace UI_Skeleton
         public NewStockScreen()
         {
             InitializeComponent();
+
+            btnCapStock.Left = (this.Width - btnCapStock.Width) / 2;
         }
     }
 }
