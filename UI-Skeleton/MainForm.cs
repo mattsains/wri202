@@ -90,6 +90,10 @@ namespace UI_Skeleton
                     contentBox.Controls.Add(viewAccountsScreen);
                     break;
                 case Screen.NewPayment:
+                    lblHeader.Text = "Process Payment";
+                    NewPaymentScreen newPaymentScreen = new NewPaymentScreen();
+                    newPaymentScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(newPaymentScreen);
                     break;
                 case Screen.NewSales:
                     lblHeader.Text = "Capture Sales";
@@ -132,6 +136,11 @@ namespace UI_Skeleton
         private void accountsStaffMenuItem_Click(object sender, EventArgs e)
         {
             SwitchTo(Screen.ViewAccounts);
+        }
+
+        private void paymentsStaffMenuItem_Click(object sender, EventArgs e)
+        {
+            SwitchTo(Screen.NewPayment);
         }
     }
 }
