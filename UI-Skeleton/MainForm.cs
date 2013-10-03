@@ -142,5 +142,10 @@ namespace UI_Skeleton
         {
             SwitchTo(Screen.NewPayment);
         }
+
+        private void navMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

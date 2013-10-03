@@ -121,6 +121,17 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="homeMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAASJJREFUOE+1
+        kqFyxCAQhvMIkZXIk5F1RdYFGXc8ArIyshJ5EolEViIrkZXISuS57e4CN532Sm+m039mJzMh38eyZPq3
+        HI+r1FqBUhLW9UHTu/1+ASr+YJQO57BA9qJLJMH6IMaCDpcwg8Gn2VDkZ5aYBWViIPgKx5cIzgfQCGdX
+        JfJuvi74BscIPSRSjxLSabocp2E1I7iHJXKBZK9IfoPhDFCwAkokDrJLGl47oIURnEuB/F54JgIH2a/2
+        EqVNI2qCtxCcBXfawdmd4fRWuAtx+LR7j9p0Q2sIpmP1oxEcE3YQbhFgy7QzwfQP6E0yHF/zzwKpmqCd
+        mdvGu7dP+DvjFRIcIgr8SIBgjInLPhu+d5o4DZh2JtiOBLRwazXsr5mmD8CdnRdiNrV7AAAAAElFTkSu
+        QmCC
+</value>
+  </data>
   <data name="pnlHeader.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAXwBfAAD/4QCsRXhpZgAATU0AKgAAAAgACQEaAAUAAAABAAAAegEbAAUAAAAB

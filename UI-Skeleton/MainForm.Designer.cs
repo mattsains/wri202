@@ -43,6 +43,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblHeader = new System.Windows.Forms.Label();
             this.contentBox = new System.Windows.Forms.Panel();
+            this.homeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.navMenu.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -51,14 +52,17 @@
             // 
             this.navMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             this.navMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.homeMenuItem,
             this.stockMenuItem,
             this.staffMenuItem,
             this.salesMenuItem});
+            this.navMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.navMenu.Location = new System.Drawing.Point(0, 0);
             this.navMenu.Name = "navMenu";
             this.navMenu.Size = new System.Drawing.Size(736, 24);
             this.navMenu.TabIndex = 0;
             this.navMenu.Text = "navMenu";
+            this.navMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.navMenu_ItemClicked);
             // 
             // stockMenuItem
             // 
@@ -66,7 +70,7 @@
             this.stockViewMenuItem,
             this.newStockMenuItem});
             this.stockMenuItem.Name = "stockMenuItem";
-            this.stockMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.stockMenuItem.Size = new System.Drawing.Size(48, 19);
             this.stockMenuItem.Text = "Stock";
             // 
             // stockViewMenuItem
@@ -90,7 +94,7 @@
             this.accountsStaffMenuItem,
             this.paymentsStaffMenuItem});
             this.staffMenuItem.Name = "staffMenuItem";
-            this.staffMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.staffMenuItem.Size = new System.Drawing.Size(43, 19);
             this.staffMenuItem.Text = "Staff";
             // 
             // viewStaffMenuItem
@@ -120,7 +124,7 @@
             this.captureSalesMenuItem,
             this.printSalesMenuItem});
             this.salesMenuItem.Name = "salesMenuItem";
-            this.salesMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.salesMenuItem.Size = new System.Drawing.Size(45, 19);
             this.salesMenuItem.Text = "Sales";
             // 
             // captureSalesMenuItem
@@ -171,6 +175,12 @@
             this.contentBox.Size = new System.Drawing.Size(736, 503);
             this.contentBox.TabIndex = 3;
             // 
+            // homeMenuItem
+            // 
+            this.homeMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("homeMenuItem.Image")));
+            this.homeMenuItem.Name = "homeMenuItem";
+            this.homeMenuItem.Size = new System.Drawing.Size(28, 20);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,6 +217,7 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Panel contentBox;
+        private System.Windows.Forms.ToolStripMenuItem homeMenuItem;
     }
 }
 
