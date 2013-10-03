@@ -11,9 +11,10 @@ namespace UI_Skeleton
 {
     public partial class PrintPreviewScreen : UserControl
     {
-        public PrintPreviewScreen()
+        public PrintPreviewScreen(string url)
         {
             InitializeComponent();
+            webPrintSales.Navigate(url);
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)

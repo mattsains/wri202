@@ -75,8 +75,7 @@ namespace UI_Skeleton
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            PrintDialog pd = new PrintDialog();
-            pd.ShowDialog();
+            Program.SwitchTo(Screen.PrintPreview, "Print Stock List", "file:///C:/Documents%20and%20Settings/Matt/Desktop/varsity%20working%20folder/wri202/UI-Skeleton/StockItemList.html");
         }
 
     }

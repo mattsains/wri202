@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace UI_Skeleton
 {
-    public enum Screen { Main, ViewStock, EditStock, NewStock, ViewStaff, EditStaff, NewStaff, ViewAccounts, NewPayment, NewSales, PrintSalesSheet }
+    public enum Screen { Main, ViewStock, EditStock, NewStock, ViewStaff, EditStaff, NewStaff, ViewAccounts, NewPayment, NewSales, PrintPreview }
     
     public partial class MainForm : Form
     {
@@ -101,9 +101,17 @@ namespace UI_Skeleton
                     capSalesScreen.Dock = DockStyle.Fill;
                     contentBox.Controls.Add(capSalesScreen);
                     break;
-                case Screen.PrintSalesSheet:
-                    lblHeader.Text = "Print Sales";
-                    PrintPreviewScreen printSalesScreen = new PrintPreviewScreen();
+                case Screen.PrintPreview:
+                    string title,url;
+
+                    try { title = (string)data[0]; }
+                    catch (InvalidCastException e) { throw new ArgumentException("Print Preview needs a title", e); }
+                    try { url = (string)data[1]; }
+                    catch (InvalidCastException e) { throw new ArgumentException("Print Preview needs a URL", e); }
+                    
+
+                    lblHeader.Text = title;
+                    PrintPreviewScreen printSalesScreen = new PrintPreviewScreen(url);
                     printSalesScreen.Dock = DockStyle.Fill;
                     contentBox.Controls.Add(printSalesScreen);
                     break;
@@ -160,12 +168,7 @@ namespace UI_Skeleton
 
         private void printSalesMenuItem_Click_1(object sender, EventArgs e)
         {
-            SwitchTo(Screen.PrintSalesSheet);
-        }
-
-        private void homeMenuItem_Click(object sender, EventArgs e)
-        {
-            SwitchTo(Screen.Main);
+            SwitchTo(Screen.PrintPreview,"Print Sales Sheet","file:///C:/Documents%20and%20Settings/Matt/Desktop/varsity%20working%20folder/wri202/UI-Skeleton/SalesPrint.htm");
         }
     }
 }
