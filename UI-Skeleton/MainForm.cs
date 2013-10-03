@@ -102,6 +102,10 @@ namespace UI_Skeleton
                     contentBox.Controls.Add(capSalesScreen);
                     break;
                 case Screen.PrintSalesSheet:
+                    lblHeader.Text = "Print Sales";
+                    PrintPreviewScreen printSalesScreen = new PrintPreviewScreen();
+                    printSalesScreen.Dock = DockStyle.Fill;
+                    contentBox.Controls.Add(printSalesScreen);
                     break;
                 default:
                     break;
@@ -147,6 +151,16 @@ namespace UI_Skeleton
         {
             PrintDialog pd = new PrintDialog();
             pd.ShowDialog();
+        }
+
+        private void homeMenuItem_Click(object sender, EventArgs e)
+        {
+            SwitchTo(Screen.Main);
+        }
+
+        private void printSalesMenuItem_Click_1(object sender, EventArgs e)
+        {
+            SwitchTo(Screen.PrintSalesSheet);
         }
     }
 }

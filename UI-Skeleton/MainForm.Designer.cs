@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.navMenu = new System.Windows.Forms.MenuStrip();
+            this.homeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockViewMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newStockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +44,6 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblHeader = new System.Windows.Forms.Label();
             this.contentBox = new System.Windows.Forms.Panel();
-            this.homeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.navMenu.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +62,13 @@
             this.navMenu.Size = new System.Drawing.Size(736, 24);
             this.navMenu.TabIndex = 0;
             this.navMenu.Text = "navMenu";
+            // 
+            // homeMenuItem
+            // 
+            this.homeMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("homeMenuItem.Image")));
+            this.homeMenuItem.Name = "homeMenuItem";
+            this.homeMenuItem.Size = new System.Drawing.Size(28, 20);
+            this.homeMenuItem.Click += new System.EventHandler(this.homeMenuItem_Click);
             // 
             // stockMenuItem
             // 
@@ -138,6 +145,7 @@
             this.printSalesMenuItem.Name = "printSalesMenuItem";
             this.printSalesMenuItem.Size = new System.Drawing.Size(160, 22);
             this.printSalesMenuItem.Text = "&Print Sales Sheet";
+            this.printSalesMenuItem.Click += new System.EventHandler(this.printSalesMenuItem_Click_1);
             // 
             // pnlHeader
             // 
@@ -173,12 +181,6 @@
             this.contentBox.Name = "contentBox";
             this.contentBox.Size = new System.Drawing.Size(736, 503);
             this.contentBox.TabIndex = 3;
-            // 
-            // homeMenuItem
-            // 
-            this.homeMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("homeMenuItem.Image")));
-            this.homeMenuItem.Name = "homeMenuItem";
-            this.homeMenuItem.Size = new System.Drawing.Size(28, 20);
             // 
             // MainForm
             // 

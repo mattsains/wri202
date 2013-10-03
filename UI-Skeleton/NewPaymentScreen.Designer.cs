@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.lblAmount = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.txtAmount = new System.Windows.Forms.TextBox();
-            this.lblAmount = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +55,28 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // txtAmount
+            // 
+            this.txtAmount.AutoCompleteCustomSource.AddRange(new string[] {
+            "Matthew Sainsbury",
+            "Dean Gifford",
+            "Douglas Bentley"});
+            this.txtAmount.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtAmount.Location = new System.Drawing.Point(54, 230);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(182, 20);
+            this.txtAmount.TabIndex = 5;
+            this.txtAmount.Text = "R ";
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Location = new System.Drawing.Point(13, 233);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(43, 13);
+            this.lblAmount.TabIndex = 4;
+            this.lblAmount.Text = "Amount";
+            // 
             // txtName
             // 
             this.txtName.AutoCompleteCustomSource.AddRange(new string[] {
@@ -62,6 +84,7 @@
             "Dean Gifford",
             "Douglas Bentley"});
             this.txtName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtName.Location = new System.Drawing.Point(54, 204);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(182, 20);
@@ -90,28 +113,6 @@
             this.monthCalendar1.Location = new System.Drawing.Point(9, 33);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
-            // 
-            // txtAmount
-            // 
-            this.txtAmount.AutoCompleteCustomSource.AddRange(new string[] {
-            "Matthew Sainsbury",
-            "Dean Gifford",
-            "Douglas Bentley"});
-            this.txtAmount.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtAmount.Location = new System.Drawing.Point(54, 230);
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(182, 20);
-            this.txtAmount.TabIndex = 5;
-            this.txtAmount.Text = "R ";
-            // 
-            // lblAmount
-            // 
-            this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(13, 233);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(43, 13);
-            this.lblAmount.TabIndex = 4;
-            this.lblAmount.Text = "Amount";
             // 
             // btnSave
             // 
