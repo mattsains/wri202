@@ -37,6 +37,8 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblStaffNum = new System.Windows.Forms.Label();
+            this.txtStaffNum = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.BackColor = System.Drawing.Color.IndianRed;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnCancel.Location = new System.Drawing.Point(125, 109);
+            this.btnCancel.Location = new System.Drawing.Point(125, 127);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 25;
@@ -56,7 +58,7 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAdd.Location = new System.Drawing.Point(44, 109);
+            this.btnAdd.Location = new System.Drawing.Point(44, 127);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 23;
@@ -66,7 +68,7 @@
             // txtSurname
             // 
             this.txtSurname.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSurname.Location = new System.Drawing.Point(91, 40);
+            this.txtSurname.Location = new System.Drawing.Point(91, 63);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(124, 20);
             this.txtSurname.TabIndex = 20;
@@ -75,7 +77,7 @@
             // 
             this.lblSurname.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSurname.AutoSize = true;
-            this.lblSurname.Location = new System.Drawing.Point(18, 43);
+            this.lblSurname.Location = new System.Drawing.Point(18, 66);
             this.lblSurname.Name = "lblSurname";
             this.lblSurname.Size = new System.Drawing.Size(49, 13);
             this.lblSurname.TabIndex = 19;
@@ -84,7 +86,7 @@
             // txtfirstName
             // 
             this.txtfirstName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtfirstName.Location = new System.Drawing.Point(91, 14);
+            this.txtfirstName.Location = new System.Drawing.Point(91, 37);
             this.txtfirstName.Name = "txtfirstName";
             this.txtfirstName.Size = new System.Drawing.Size(124, 20);
             this.txtfirstName.TabIndex = 18;
@@ -93,7 +95,7 @@
             // 
             this.lblFirstName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(18, 17);
+            this.lblFirstName.Location = new System.Drawing.Point(18, 40);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(57, 13);
             this.lblFirstName.TabIndex = 17;
@@ -102,7 +104,7 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmail.Location = new System.Drawing.Point(91, 66);
+            this.txtEmail.Location = new System.Drawing.Point(91, 89);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(124, 20);
             this.txtEmail.TabIndex = 27;
@@ -111,7 +113,7 @@
             // 
             this.lblEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(18, 69);
+            this.lblEmail.Location = new System.Drawing.Point(18, 92);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(32, 13);
             this.lblEmail.TabIndex = 26;
@@ -122,6 +124,8 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblStaffNum);
+            this.panel1.Controls.Add(this.txtStaffNum);
             this.panel1.Controls.Add(this.txtSurname);
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.lblFirstName);
@@ -130,8 +134,26 @@
             this.panel1.Controls.Add(this.lblSurname);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(239, 100);
+            this.panel1.Size = new System.Drawing.Size(239, 118);
             this.panel1.TabIndex = 28;
+            // 
+            // lblStaffNum
+            // 
+            this.lblStaffNum.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblStaffNum.AutoSize = true;
+            this.lblStaffNum.Location = new System.Drawing.Point(18, 14);
+            this.lblStaffNum.Name = "lblStaffNum";
+            this.lblStaffNum.Size = new System.Drawing.Size(69, 13);
+            this.lblStaffNum.TabIndex = 28;
+            this.lblStaffNum.Text = "Staff Number";
+            // 
+            // txtStaffNum
+            // 
+            this.txtStaffNum.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtStaffNum.Location = new System.Drawing.Point(91, 11);
+            this.txtStaffNum.Name = "txtStaffNum";
+            this.txtStaffNum.Size = new System.Drawing.Size(124, 20);
+            this.txtStaffNum.TabIndex = 29;
             // 
             // NewStaffScreen
             // 
@@ -142,7 +164,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Name = "NewStaffScreen";
-            this.Size = new System.Drawing.Size(245, 142);
+            this.Size = new System.Drawing.Size(245, 160);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -160,5 +182,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblStaffNum;
+        private System.Windows.Forms.TextBox txtStaffNum;
     }
 }
