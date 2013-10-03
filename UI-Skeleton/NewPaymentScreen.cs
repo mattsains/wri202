@@ -23,7 +23,9 @@ namespace UI_Skeleton
 
         private void NewPaymentScreen_Resize(object sender, EventArgs e)
         {
-            btnSave.Left = (this.Width - btnSave.Width) / 2;
+            btnProcess.Left = (this.Width - btnProcess.Width) / 2;
+            panel1.Width = calDate.Width + 18;
+            panel1.Left = (this.Width - panel1.Width) / 2;
         }
     }
 }

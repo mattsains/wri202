@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.navMenu = new System.Windows.Forms.MenuStrip();
+            this.homeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockViewMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newStockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +44,6 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblHeader = new System.Windows.Forms.Label();
             this.contentBox = new System.Windows.Forms.Panel();
-            this.homeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.navMenu.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -63,26 +63,33 @@
             this.navMenu.TabIndex = 0;
             this.navMenu.Text = "navMenu";
             // 
+            // homeMenuItem
+            // 
+            this.homeMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("homeMenuItem.Image")));
+            this.homeMenuItem.Name = "homeMenuItem";
+            this.homeMenuItem.Size = new System.Drawing.Size(28, 20);
+            this.homeMenuItem.Click += new System.EventHandler(this.homeMenuItem_Click);
+            // 
             // stockMenuItem
             // 
             this.stockMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stockViewMenuItem,
             this.newStockMenuItem});
             this.stockMenuItem.Name = "stockMenuItem";
-            this.stockMenuItem.Size = new System.Drawing.Size(48, 19);
+            this.stockMenuItem.Size = new System.Drawing.Size(45, 17);
             this.stockMenuItem.Text = "Stock";
             // 
             // stockViewMenuItem
             // 
             this.stockViewMenuItem.Name = "stockViewMenuItem";
-            this.stockViewMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.stockViewMenuItem.Size = new System.Drawing.Size(175, 22);
             this.stockViewMenuItem.Text = "&View/Edit Stock";
             this.stockViewMenuItem.Click += new System.EventHandler(this.stockViewMenuItem_Click);
             // 
             // newStockMenuItem
             // 
             this.newStockMenuItem.Name = "newStockMenuItem";
-            this.newStockMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.newStockMenuItem.Size = new System.Drawing.Size(175, 22);
             this.newStockMenuItem.Text = "Process &New Stock";
             this.newStockMenuItem.Click += new System.EventHandler(this.newStockMenuItem_Click);
             // 
@@ -93,27 +100,27 @@
             this.accountsStaffMenuItem,
             this.paymentsStaffMenuItem});
             this.staffMenuItem.Name = "staffMenuItem";
-            this.staffMenuItem.Size = new System.Drawing.Size(43, 19);
+            this.staffMenuItem.Size = new System.Drawing.Size(43, 17);
             this.staffMenuItem.Text = "Staff";
             // 
             // viewStaffMenuItem
             // 
             this.viewStaffMenuItem.Name = "viewStaffMenuItem";
-            this.viewStaffMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.viewStaffMenuItem.Size = new System.Drawing.Size(172, 22);
             this.viewStaffMenuItem.Text = "&View/Edit Staff";
             this.viewStaffMenuItem.Click += new System.EventHandler(this.viewStaffMenuItem_Click);
             // 
             // accountsStaffMenuItem
             // 
             this.accountsStaffMenuItem.Name = "accountsStaffMenuItem";
-            this.accountsStaffMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.accountsStaffMenuItem.Size = new System.Drawing.Size(172, 22);
             this.accountsStaffMenuItem.Text = "View &Accounts";
             this.accountsStaffMenuItem.Click += new System.EventHandler(this.accountsStaffMenuItem_Click);
             // 
             // paymentsStaffMenuItem
             // 
             this.paymentsStaffMenuItem.Name = "paymentsStaffMenuItem";
-            this.paymentsStaffMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.paymentsStaffMenuItem.Size = new System.Drawing.Size(172, 22);
             this.paymentsStaffMenuItem.Text = "Process &Payments";
             this.paymentsStaffMenuItem.Click += new System.EventHandler(this.paymentsStaffMenuItem_Click);
             // 
@@ -123,26 +130,26 @@
             this.captureSalesMenuItem,
             this.printSalesMenuItem});
             this.salesMenuItem.Name = "salesMenuItem";
-            this.salesMenuItem.Size = new System.Drawing.Size(45, 19);
+            this.salesMenuItem.Size = new System.Drawing.Size(44, 17);
             this.salesMenuItem.Text = "Sales";
             // 
             // captureSalesMenuItem
             // 
             this.captureSalesMenuItem.Name = "captureSalesMenuItem";
-            this.captureSalesMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.captureSalesMenuItem.Size = new System.Drawing.Size(166, 22);
             this.captureSalesMenuItem.Text = "Capture &Sales";
             this.captureSalesMenuItem.Click += new System.EventHandler(this.captureSalesMenuItem_Click);
             // 
             // printSalesMenuItem
             // 
             this.printSalesMenuItem.Name = "printSalesMenuItem";
-            this.printSalesMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.printSalesMenuItem.Size = new System.Drawing.Size(166, 22);
             this.printSalesMenuItem.Text = "&Print Sales Sheet";
             // 
             // pnlHeader
             // 
-            this.pnlHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeader.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlHeader.BackgroundImage")));
             this.pnlHeader.Controls.Add(this.lblHeader);
             this.pnlHeader.Cursor = System.Windows.Forms.Cursors.Default;
@@ -166,19 +173,13 @@
             // 
             // contentBox
             // 
-            this.contentBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contentBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.contentBox.Location = new System.Drawing.Point(0, 49);
             this.contentBox.Name = "contentBox";
             this.contentBox.Size = new System.Drawing.Size(736, 503);
             this.contentBox.TabIndex = 3;
-            // 
-            // homeMenuItem
-            // 
-            this.homeMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("homeMenuItem.Image")));
-            this.homeMenuItem.Name = "homeMenuItem";
-            this.homeMenuItem.Size = new System.Drawing.Size(28, 20);
             // 
             // MainForm
             // 

@@ -148,5 +148,10 @@ namespace UI_Skeleton
             PrintDialog pd = new PrintDialog();
             pd.ShowDialog();
         }
+
+        private void homeMenuItem_Click(object sender, EventArgs e)
+        {
+            SwitchTo(Screen.Main);
+        }
     }
 }
