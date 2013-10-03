@@ -145,6 +145,7 @@
             this.printSalesMenuItem.Name = "printSalesMenuItem";
             this.printSalesMenuItem.Size = new System.Drawing.Size(166, 22);
             this.printSalesMenuItem.Text = "&Print Sales Sheet";
+            this.printSalesMenuItem.Click += new System.EventHandler(this.printSalesMenuItem_Click_1);
             // 
             // pnlHeader
             // 

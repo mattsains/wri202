@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -88,6 +89,12 @@
     <Compile Include="NewStockScreen.Designer.cs">
       <DependentUpon>NewStockScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintPreviewScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintPreviewScreen.Designer.cs">
+      <DependentUpon>PrintPreviewScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MainScreen.cs">
@@ -135,6 +142,9 @@
     <EmbeddedResource Include="NewStockScreen.resx">
       <DependentUpon>NewStockScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintPreviewScreen.resx">
+      <DependentUpon>PrintPreviewScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -168,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccountReminder.html" />
+    <Content Include="SalesPrint.htm" />
     <Content Include="StockItemList.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

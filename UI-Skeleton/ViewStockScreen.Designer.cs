@@ -40,6 +40,7 @@
             this.cSellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,7 +155,7 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnPrint.Location = new System.Drawing.Point(256, 431);
+            this.btnPrint.Location = new System.Drawing.Point(172, 429);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
@@ -163,10 +164,19 @@
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(252, 432);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 5;
+            // 
             // ViewStockScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dgItems);
@@ -194,5 +204,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cSellPrice;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

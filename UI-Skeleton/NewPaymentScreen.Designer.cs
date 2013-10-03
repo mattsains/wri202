@@ -36,6 +36,8 @@
             this.lblDate = new System.Windows.Forms.Label();
             this.calDate = new System.Windows.Forms.MonthCalendar();
             this.btnProcess = new System.Windows.Forms.Button();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.lblAmount = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,7 +120,27 @@
             this.calDate.Name = "calDate";
             this.calDate.TabIndex = 0;
             // 
-            // btnProcess
+            // 
+            this.txtAmount.AutoCompleteCustomSource.AddRange(new string[] {
+            "Matthew Sainsbury",
+            "Dean Gifford",
+            "Douglas Bentley"});
+            this.txtAmount.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtAmount.Location = new System.Drawing.Point(54, 230);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(182, 20);
+            this.txtAmount.TabIndex = 5;
+            this.txtAmount.Text = "R ";
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Location = new System.Drawing.Point(13, 233);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(43, 13);
+            this.lblAmount.TabIndex = 4;
+            this.lblAmount.Text = "Amount";
+            // 
             // 
             this.btnProcess.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnProcess.Location = new System.Drawing.Point(3, 269);

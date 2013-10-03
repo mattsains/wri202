@@ -19,7 +19,7 @@ namespace UI_Skeleton
         private void ViewStockScreen_Load(object sender, EventArgs e)
         {
             //centre the print button
-            btnPrint.Left = (this.Width - btnPrint.Width) / 2;
+            //btnPrint.Left = (this.Width - btnPrint.Width) / 2;
             //Some example data
             dgItems.Rows.Add(1, 10, "2 Minute Noodles", "R 3.50", "R 4.50");
             dgItems.Rows.Add(2, 4, "Big Corn Bites", "R 1.50", "R 2.50");
