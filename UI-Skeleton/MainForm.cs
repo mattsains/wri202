@@ -142,5 +142,11 @@ namespace UI_Skeleton
         {
             SwitchTo(Screen.NewPayment);
         }
+
+        private void printSalesMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintDialog pd = new PrintDialog();
+            pd.ShowDialog();
+        }
     }
 }
