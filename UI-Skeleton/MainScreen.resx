@@ -137,4 +137,19 @@
         XLZeiP/Z
 </value>
   </data>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAIAAADZ8fBYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAFsSURBVEhL3dE/S8NAGAZwEd0EBwd3J6EUQdwEqX8WcdJN
+        EL+AX8uC4mAXN4VaQSgORQLlahQhaJAOgQyBQAjxgbse6d2bu4vgoA8lJC/3/rjyzBS/k3/pzs4vt3YO
+        b+/uxbdDXN3P8KsW7eriWYuu4SLudD0XcaRVl6yo7CIuNOHqa4qb53kQfJhpwsVTocsu0CzL0jR9fXs3
+        0LSLlGk5lGiSJHEcD4esiq50EUnzoYJGUTQejweDZ5I2uQinMSTRMAyDIOj3n3BGLExiccsVcXQ08jmK
+        YfknFiYxuXpFQBcWV87bV7jp9u7RxeW1OKql0iUrAgq90dzifx8v/LAe2jVXtH9w3Onc+L6Pl6orE661
+        ItCrjU3GWLfba661xOZ0CFeihopwU6Ce561v7PFFJYQrUUNFjL3gyienZ72HRzGaDuFK1LEiMoQrUXy6
+        VERGc+eWJIq4VERGdfVYKyJjd60VkbG7P8vfcoviG9FIxqd2Dl58AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="fontDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
