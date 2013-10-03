@@ -17,8 +17,11 @@ namespace UI_Skeleton
             //some example data
             dgAccounts.Rows.Add("Dean Gifford", "R 12.52");
             dgAccounts.Rows.Add("Douglas Bentley", "R 0.00");
-            dgAccounts.Rows.Add("Dean Gifford", "R 1.23");
+            dgAccounts.Rows.Add("Matthew Sainsbury", "R 1.23");
 
+            btnMarkAll.Left = (this.Width - (3 * btnMarkAll.Width + 2 * 6)) / 2;
+            btnUnmarkAll.Left = btnMarkAll.Right + 6;
+            btnEmail.Left = btnUnmarkAll.Right + 6;
         }
 
         private void btnMarkAll_Click(object sender, EventArgs e)

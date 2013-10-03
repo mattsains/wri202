@@ -23,5 +23,10 @@ namespace UI_Skeleton
         {
             Program.SwitchTo(Screen.ViewStaff);
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(string.Format("Are you sure you want to delete Staff member {0}?", "Matthew Sainsbury"), "Deleting Staff Member", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        }
     }
 }

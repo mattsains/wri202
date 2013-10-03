@@ -73,5 +73,11 @@ namespace UI_Skeleton
             }
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            PrintDialog pd = new PrintDialog();
+            pd.ShowDialog();
+        }
+
     }
 }
