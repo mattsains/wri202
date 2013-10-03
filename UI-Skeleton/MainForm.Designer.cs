@@ -62,7 +62,6 @@
             this.navMenu.Size = new System.Drawing.Size(736, 24);
             this.navMenu.TabIndex = 0;
             this.navMenu.Text = "navMenu";
-            this.navMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.navMenu_ItemClicked);
             // 
             // stockMenuItem
             // 
