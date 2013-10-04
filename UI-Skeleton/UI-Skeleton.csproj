@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E7E3EAE2-F8E5-4162-8E20-90706D074C27}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UI_Skeleton</RootNamespace>
+    <AssemblyName>UI-Skeleton</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CaptureSales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CaptureSales.Designer.cs">
+      <DependentUpon>CaptureSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditStaffScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditStaffScreen.Designer.cs">
+      <DependentUpon>EditStaffScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditStockScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditStockScreen.Designer.cs">
+      <DependentUpon>EditStockScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewPaymentScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewPaymentScreen.Designer.cs">
+      <DependentUpon>NewPaymentScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewStaffScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewStaffScreen.Designer.cs">
+      <DependentUpon>NewStaffScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewStockScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewStockScreen.Designer.cs">
+      <DependentUpon>NewStockScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintPreviewScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintPreviewScreen.Designer.cs">
+      <DependentUpon>PrintPreviewScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MainScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainScreen.Designer.cs">
+      <DependentUpon>MainScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAccountsScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewAccountsScreen.Designer.cs">
+      <DependentUpon>ViewAccountsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStaffScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewStaffScreen.Designer.cs">
+      <DependentUpon>ViewStaffScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStockScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewStockScreen.Designer.cs">
+      <DependentUpon>ViewStockScreen.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CaptureSales.resx">
+      <DependentUpon>CaptureSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStaffScreen.resx">
+      <DependentUpon>EditStaffScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStockScreen.resx">
+      <DependentUpon>EditStockScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewPaymentScreen.resx">
+      <DependentUpon>NewPaymentScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewStaffScreen.resx">
+      <DependentUpon>NewStaffScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewStockScreen.resx">
+      <DependentUpon>NewStockScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintPreviewScreen.resx">
+      <DependentUpon>PrintPreviewScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainScreen.resx">
+      <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewAccountsScreen.resx">
+      <DependentUpon>ViewAccountsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewStaffScreen.resx">
+      <DependentUpon>ViewStaffScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewStockScreen.resx">
+      <DependentUpon>ViewStockScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AccountReminder.html" />
+    <Content Include="SalesPrint.htm" />
+    <Content Include="StockItemList.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
