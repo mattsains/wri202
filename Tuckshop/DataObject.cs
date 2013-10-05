@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlClient;
+using System.Data;
+using System.Data.OleDb;
 
 namespace Tuckshop
 {
     static class DataProvider
     {
-        public static SqlConnection _connection;
-        public static SqlConnection connection
+        private static OleDbConnection _connection;
+        public static OleDbConnection Connection
         {
             set
             {
@@ -23,96 +24,105 @@ namespace Tuckshop
     class DataObject
     {
         protected string tableName;
-        protected string primaryKeyName;
-        protected string primaryKeyValue;
+        protected string primaryKey;
+        protected int primaryKeyValue;
 
-        protected DataObject(string tableName, string primaryKeyName,string primaryKeyValue=null)
+        protected DataObject(string tableName, string primaryKeyName, int? primaryKeyValue = null)
         {
-            using (SqlCommand columncheck = new SqlCommand("SELECT count(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE Table_Name=@table AND Column_Name=@keyname"))
+            DataTable schema = DataProvider.Connection.GetSchema("COLUMNS");
+            var rows = schema.Select("TABLE_NAME='" + tableName + "' AND COLUMN_NAME='" + primaryKeyName+"'");
+            
+            if (rows.Length==0)
+                throw new ArgumentException(string.Format("The table-key combination {0}-{1} does not exist", tableName, primaryKeyName));
+            else
             {
-                columncheck.Parameters.Add(new SqlParameter("table",tableName));
-                columncheck.Parameters.Add(new SqlParameter("keyname",primaryKeyName));
-                SqlDataReader reader = columncheck.ExecuteReader();
-                reader.Read();
-                if ((int)reader[0] == 0)
-                    throw new ArgumentException(string.Format("The table-key combination {0}-{1} does not exist", tableName, primaryKeyName));
-                else
+                this.tableName = tableName;
+                this.primaryKey = primaryKeyName;
+
+                if (primaryKeyValue != null)
                 {
-                    this.tableName = tableName;
-                    this.primaryKeyName = primaryKeyName;
-                    if (primaryKeyValue!=null)
+                    using (OleDbCommand keycheck = new OleDbCommand("SELECT count(*) FROM "+tableName+" WHERE "+primaryKeyName+"=@keyvalue", DataProvider.Connection))
                     {
-                        using (SqlCommand keycheck=new SqlCommand("SELECT count(*) FROM @table WHERE @keyname=@keyvalue"))
-                        {
-                            keycheck.Parameters.Add(new SqlParameter("table",tableName));
-                            keycheck.Parameters.Add(new SqlParameter("keyname",primaryKeyName));
-                            keycheck.Parameters.Add(new SqlParameter("keyvalue",primaryKeyValue));
-                            reader=keycheck.ExecuteReader();
-                            if ((int)reader[0]!=1)
-                                throw new ArgumentException("Primary key set to an invalid value");
-                            else
-                                this.primaryKeyValue=primaryKeyValue;
-                        }
+                        keycheck.Parameters.Add(new OleDbParameter("@keyvalue", primaryKeyValue.Value));
+                        int rowCount = (int)keycheck.ExecuteScalar();
+                        if (rowCount != 1)
+                            throw new ArgumentException("Primary key "+primaryKeyValue.Value+" does not exist");
+                        else
+                            this.primaryKeyValue = primaryKeyValue.Value;
                     }
                 }
             }
         }
+        /// <summary>
+        /// This is different from all the other implementations of All() because it returns primary keys and not instances of DataObject.
+        /// It is intended to be called from wrapper classes which will perform lookups based on these primary keys
+        /// </summary>
+        /// <returns></returns>
+        protected static List<int> All(string tableName, string primaryKeyName)
+        {
+            List<int> output=new List<int>();
+            using (OleDbCommand lookup = new OleDbCommand("SELECT " + primaryKeyName + " FROM " + tableName, DataProvider.Connection))
+            {
+                OleDbDataReader reader = lookup.ExecuteReader();
+                while (reader.Read())
+                {
+                    output.Add((int)reader[primaryKeyName]);
+                }
+            }
+            return output;
+        }
+        /// <summary>
+        /// Returns the value of this row's fieldName field.
+        /// </summary>
+        /// <typeparam name="T">the type to explicitly convert the value to</typeparam>
+        /// <param name="fieldName">Which field to get</param>
+        /// <returns>The value of the field</returns>
         protected T GetAttr<T>(string fieldName)
         {
-            using (SqlCommand lookup = new SqlCommand("SELECT @fieldname FROM @tablename WHERE @keyname=@keyvalue"))
+            using (OleDbCommand lookup = new OleDbCommand("SELECT "+fieldName+" FROM "+tableName+" WHERE "+primaryKey+"=@keyvalue",DataProvider.Connection))
             {
-                lookup.Parameters.Add(new SqlParameter("fieldname", fieldName));
-                lookup.Parameters.Add(new SqlParameter("tablename", tableName));
-                lookup.Parameters.Add(new SqlParameter("keyname", primaryKeyName));
-                lookup.Parameters.Add(new SqlParameter("keyvalue", primaryKeyValue));
+                lookup.Parameters.Add(new OleDbParameter("keyvalue", primaryKeyValue));
 
-                SqlDataReader reader = lookup.ExecuteReader();
-                return (T)(reader[0]);
+                return (T)lookup.ExecuteScalar();
             }
         }
+        /// <summary>
+        /// Returns the values of the fields specified
+        /// </summary>
+        /// <param name="fieldNames">The names of field names to return</param>
+        /// <returns>An object array of values</returns>
         protected object[] GetAttr(params string[] fieldNames)
         {
             string fields = "";
-            for (int i = 0; i < fieldNames.Length; i++)
-            {
-                fields += string.Format("@field{0}, ", i);
-            }
+            for (int i = 0; i < fieldNames.Length; i++) { fields += fieldNames[i] + ", "; }
             fields=fields.Substring(0,fields.LastIndexOf(','));
-            using (SqlCommand lookup = new SqlCommand("SELECT " + fields + " FROM @tablename WHRE @keyname=@keyvalue"))
+
+            using (OleDbCommand lookup = new OleDbCommand("SELECT " + fields + " FROM "+tableName+" WHERE @keyname=@keyvalue",DataProvider.Connection))
             {
                 for (int i = 0; i < fieldNames.Length; i++)
                 {
-                    lookup.Parameters.Add(new SqlParameter("field" + i, fieldNames));
+                    lookup.Parameters.Add(new OleDbParameter("field" + i, fieldNames));
                 }
-                SqlDataReader reader = lookup.ExecuteReader();
+                OleDbDataReader reader = lookup.ExecuteReader();
                 object[] output = new object[fieldNames.Length];
                 reader.GetValues(output);
                 return output;
             }
         }
+        /// <summary>
+        /// Sets a field for the this row
+        /// </summary>
+        /// <param name="fieldName">The field to set</param>
+        /// <param name="value">The value to set the field to</param>
         protected void SetAttr(string fieldName, object value)
         {
-            using (SqlCommand update = new SqlCommand("UPDATE @tablename SET @fieldname=@value WHERE @keyname=@keyvalue"))
+            using (OleDbCommand update = new OleDbCommand("UPDATE "+tableName+" SET "+fieldName+"=@value WHERE "+primaryKey+"=@keyvalue",DataProvider.Connection))
             {
-                update.Parameters.Add(new SqlParameter("tablename", tableName));
-                update.Parameters.Add(new SqlParameter("fieldname", fieldName));
-                update.Parameters.Add(new SqlParameter("value", value));
-                update.Parameters.Add(new SqlParameter("keyname", primaryKeyName));
-                update.Parameters.Add(new SqlParameter("keyvalue", primaryKeyValue));
+                update.Parameters.Add(new OleDbParameter("value", value));
+                update.Parameters.Add(new OleDbParameter("keyvalue", primaryKeyValue));
 
                 update.ExecuteNonQuery();
             }
         }
-    }
-    class DataObjects<T> : IEnumerable<T>
-    {
-        protected SqlDataReader dataReader;
-        private string TableName;
-
-        protected DataObjects(string tableName)
-        {
-            this.TableName = tableName;
-        }
-
     }
 }

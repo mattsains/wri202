@@ -11,12 +11,16 @@ namespace Tuckshop
 {
     public partial class EditStaffScreen : UserControl
     {
-        private int staffID;
+        private Staff staff;
         public EditStaffScreen(int staffID)
         {
             InitializeComponent();
-            this.staffID=staffID;
-            this.txtStaffNum.Text = staffID.ToString();
+            this.staff = new Staff(staffID);
+
+            this.txtStaffNum.Text = staff.StaffNum.ToString();
+            this.txtfirstName.Text = staff.FirstName;
+            this.txtSurname.Text = staff.Surname;
+            this.txtEmail.Text = staff.Email;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

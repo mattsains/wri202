@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Data.OleDb;
 
 namespace Tuckshop
 {
@@ -16,6 +18,7 @@ namespace Tuckshop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DataProvider.Connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=TSM.accdb");
             mainForm = new MainForm();
             Application.Run(mainForm);
         }
