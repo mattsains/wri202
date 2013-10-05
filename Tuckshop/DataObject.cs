@@ -19,6 +19,10 @@ namespace Tuckshop
             }
             get { return _connection; }
         }
+        ~DataProvider()
+        {
+            _connection.Close();
+        }
         
     }
     class DataObject
