@@ -62,14 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataClasses\Staff.cs" />
     <Compile Include="Screens\CaptureSales.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Screens\CaptureSales.Designer.cs">
       <DependentUpon>CaptureSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataObject.cs" />
     <Compile Include="Screens\EditStaffScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
