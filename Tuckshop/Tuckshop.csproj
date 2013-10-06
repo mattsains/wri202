@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataClasses\Staff.cs" />
+    <Compile Include="DataClasses\StockItem.cs" />
     <Compile Include="Screens\CaptureSales.cs">
       <SubType>UserControl</SubType>
     </Compile>

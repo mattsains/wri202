@@ -19,11 +19,6 @@ namespace Tuckshop
             }
             get { return _connection; }
         }
-        ~DataProvider()
-        {
-            _connection.Close();
-        }
-        
     }
     class DataObject
     {
@@ -101,8 +96,10 @@ namespace Tuckshop
             for (int i = 0; i < fieldNames.Length; i++) { fields += fieldNames[i] + ", "; }
             fields=fields.Substring(0,fields.LastIndexOf(','));
 
-            using (OleDbCommand lookup = new OleDbCommand("SELECT " + fields + " FROM "+tableName+" WHERE @keyname=@keyvalue",DataProvider.Connection))
+            using (OleDbCommand lookup = new OleDbCommand("SELECT " + fields + " FROM "+tableName+" WHERE "+primaryKey+"=@keyvalue",DataProvider.Connection))
             {
+                lookup.Parameters.Add(new OleDbParameter("keyvalue",primaryKeyValue));
+
                 for (int i = 0; i < fieldNames.Length; i++)
                 {
                     lookup.Parameters.Add(new OleDbParameter("field" + i, fieldNames));
@@ -127,6 +124,16 @@ namespace Tuckshop
 
                 update.ExecuteNonQuery();
             }
+        }
+        /// <summary>
+        /// This doesn't do anything to foreign key constraints
+        /// </summary>
+        /// <param name="?"></param>
+        protected void Delete()
+        {
+            OleDbCommand delete = new OleDbCommand("DELETE FROM " + tableName + " WHERE "+primaryKey+"=@keyvalue", DataProvider.Connection);
+            delete.Parameters.Add(new OleDbParameter("keyvalue", primaryKeyValue));
+            delete.ExecuteNonQuery();
         }
     }
 }

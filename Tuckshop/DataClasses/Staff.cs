@@ -50,7 +50,7 @@ namespace Tuckshop
             return output;
         }
         /// <summary>
-        /// Instantiates a 
+        /// Instantiates a staff member by StaffNum
         /// </summary>
         /// <param name="StaffNum"></param>
         public Staff(int? StaffNum = null)
@@ -63,6 +63,21 @@ namespace Tuckshop
             foreach (int key in keys)
                 output.Add(new Staff(key));
             return output;
+        }
+        /// <summary>
+        /// Filters staff members based on a criteria
+        /// </summary>
+        /// <param name="filter">A function/lambda/delegate that returns true for elements that you want</param>
+        /// <returns>A list of staff members</returns>
+        public static List<Staff> All(Func<Staff, bool> filter)
+        {
+            List<Staff> staff = All();
+            for (int i = 0; i < staff.Count; i++)
+            {
+                if (!filter(staff[i]))
+                    staff.RemoveAt(i--);
+            }
+            return staff;
         }
     }
 }
