@@ -92,14 +92,14 @@ namespace Tuckshop
         /// <returns>The primary key of the new record</returns>
         /// <exception cref="WARNING: Return value is only valid for auto-incrementing primary keys."></exception>
         /// <exception cref="IT WILL RETURN 0 IF YOU SET THE PRIMARY KEY YOURSELF"></exception>
-        public static int Insert(int staffNum,string firstName, string lastName, string email, decimal balance=0M)
+        public static int Insert(int staffNum, string firstName, string lastName, string email, decimal balance = 0M)
         {
-            Dictionary<string,object> values=new Dictionary<string,object>();
+            Dictionary<string, object> values = new Dictionary<string, object>();
 
-            values["staffnum"]=staffNum;
-            values["firstname"]=firstName;
-            values["lastname"]=lastName;
-            values["email"]=email.ToCharArray();//for some reason email is stored as a WCHAR[] type in Access, which cannot be marshalled as string
+            values["staffnr"] = staffNum;
+            values["firstname"] = firstName;
+            values["surname"] = lastName;
+            values["email"] = email;
             values["balance"] = balance;
 
             DataObject.Insert("Staff", values);
