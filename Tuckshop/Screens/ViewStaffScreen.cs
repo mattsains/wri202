@@ -11,14 +11,21 @@ namespace Tuckshop
 {
     public partial class ViewStaffScreen : UserControl
     {
-        public ViewStaffScreen()
+        public ViewStaffScreen(int highlightstaffnum=-1)
         {
             InitializeComponent();
             //centre the add button
             btnAdd.Left = (this.Width - btnAdd.Width) / 2;
             //fill the data grid with... data?
             foreach (Staff s in Staff.All())
+            {
                 dgStaff.Rows.Add(s.Select("StaffNum", "FirstName", "Surname", "Email", "Balance"));
+            }
+            foreach (DataGridViewRow row in dgStaff.Rows)
+            {
+                if ((int)row.Cells[0].Value == highlightstaffnum)
+                    row.Selected = true;
+            }
         }
         private void txtSearch_Enter(object sender, EventArgs e)
         {

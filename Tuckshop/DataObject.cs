@@ -29,9 +29,9 @@ namespace Tuckshop
         protected DataObject(string tableName, string primaryKeyName, int? primaryKeyValue = null)
         {
             DataTable schema = DataProvider.Connection.GetSchema("COLUMNS");
-            var rows = schema.Select("TABLE_NAME='" + tableName + "' AND COLUMN_NAME='" + primaryKeyName+"'");
-            
-            if (rows.Length==0)
+            var rows = schema.Select("TABLE_NAME='" + tableName + "' AND COLUMN_NAME='" + primaryKeyName + "'");
+
+            if (rows.Length == 0)
                 throw new ArgumentException(string.Format("The table-key combination {0}-{1} does not exist", tableName, primaryKeyName));
             else
             {
@@ -40,12 +40,12 @@ namespace Tuckshop
 
                 if (primaryKeyValue != null)
                 {
-                    using (OleDbCommand keycheck = new OleDbCommand("SELECT count(*) FROM "+tableName+" WHERE "+primaryKeyName+"=@keyvalue", DataProvider.Connection))
+                    using (OleDbCommand keycheck = new OleDbCommand("SELECT count(*) FROM " + tableName + " WHERE " + primaryKeyName + "=@keyvalue", DataProvider.Connection))
                     {
                         keycheck.Parameters.Add(new OleDbParameter("@keyvalue", primaryKeyValue.Value));
                         int rowCount = (int)keycheck.ExecuteScalar();
                         if (rowCount != 1)
-                            throw new ArgumentException("Primary key "+primaryKeyValue.Value+" does not exist");
+                            throw new ArgumentException("Primary key " + primaryKeyValue.Value + " does not exist");
                         else
                             this.primaryKeyValue = primaryKeyValue.Value;
                     }
@@ -59,7 +59,7 @@ namespace Tuckshop
         /// <returns></returns>
         protected static List<int> All(string tableName, string primaryKeyName)
         {
-            List<int> output=new List<int>();
+            List<int> output = new List<int>();
             using (OleDbCommand lookup = new OleDbCommand("SELECT " + primaryKeyName + " FROM " + tableName, DataProvider.Connection))
             {
                 OleDbDataReader reader = lookup.ExecuteReader();
@@ -78,7 +78,7 @@ namespace Tuckshop
         /// <returns>The value of the field</returns>
         protected T GetAttr<T>(string fieldName)
         {
-            using (OleDbCommand lookup = new OleDbCommand("SELECT "+fieldName+" FROM "+tableName+" WHERE "+primaryKey+"=@keyvalue",DataProvider.Connection))
+            using (OleDbCommand lookup = new OleDbCommand("SELECT " + fieldName + " FROM " + tableName + " WHERE " + primaryKey + "=@keyvalue", DataProvider.Connection))
             {
                 lookup.Parameters.Add(new OleDbParameter("keyvalue", primaryKeyValue));
 
@@ -94,11 +94,11 @@ namespace Tuckshop
         {
             string fields = "";
             for (int i = 0; i < fieldNames.Length; i++) { fields += fieldNames[i] + ", "; }
-            fields=fields.Substring(0,fields.LastIndexOf(','));
+            fields = fields.Substring(0, fields.LastIndexOf(','));
 
-            using (OleDbCommand lookup = new OleDbCommand("SELECT " + fields + " FROM "+tableName+" WHERE "+primaryKey+"=@keyvalue",DataProvider.Connection))
+            using (OleDbCommand lookup = new OleDbCommand("SELECT " + fields + " FROM " + tableName + " WHERE " + primaryKey + "=@keyvalue", DataProvider.Connection))
             {
-                lookup.Parameters.Add(new OleDbParameter("keyvalue",primaryKeyValue));
+                lookup.Parameters.Add(new OleDbParameter("keyvalue", primaryKeyValue));
 
                 for (int i = 0; i < fieldNames.Length; i++)
                 {
@@ -117,7 +117,7 @@ namespace Tuckshop
         /// <param name="value">The value to set the field to</param>
         protected void SetAttr(string fieldName, object value)
         {
-            using (OleDbCommand update = new OleDbCommand("UPDATE "+tableName+" SET "+fieldName+"=@value WHERE "+primaryKey+"=@keyvalue",DataProvider.Connection))
+            using (OleDbCommand update = new OleDbCommand("UPDATE " + tableName + " SET " + fieldName + "=@value WHERE " + primaryKey + "=@keyvalue", DataProvider.Connection))
             {
                 update.Parameters.Add(new OleDbParameter("value", value));
                 update.Parameters.Add(new OleDbParameter("keyvalue", primaryKeyValue));
@@ -129,11 +129,40 @@ namespace Tuckshop
         /// This doesn't do anything to foreign key constraints
         /// </summary>
         /// <param name="?"></param>
-        protected void Delete()
+        public virtual void Delete()
         {
-            OleDbCommand delete = new OleDbCommand("DELETE FROM " + tableName + " WHERE "+primaryKey+"=@keyvalue", DataProvider.Connection);
+            OleDbCommand delete = new OleDbCommand("DELETE FROM " + tableName + " WHERE " + primaryKey + "=@keyvalue", DataProvider.Connection);
             delete.Parameters.Add(new OleDbParameter("keyvalue", primaryKeyValue));
             delete.ExecuteNonQuery();
+        }
+
+        /// <summary>
+        /// Inserts a record ito a table
+        /// </summary>
+        /// <param name="tableName">The table to insert into</param>
+        /// <param name="values">Key-value pairs which are the fields of the new row</param>
+        /// <returns>The primary key of the new record</returns>
+        /// <exception cref="WARNING: Return value is only valid for auto-incrementing primary keys."></exception>
+        /// <exception cref="IT WILL RETURN 0 IF YOU SET THE PRIMARY KEY YOURSELF"></exception>
+        public static int Insert(string tableName,Dictionary<string, object> values)
+        {
+            string fields = "";
+            string parameters = "";
+            foreach (string key in values.Keys)
+            {
+                fields += key + ", ";
+                parameters += "@" + key + ", ";
+            }
+            fields = fields.Substring(0, fields.LastIndexOf(','));
+            parameters = parameters.Substring(0, parameters.LastIndexOf(','));
+            OleDbCommand insert = new OleDbCommand("INSERT INTO " + tableName + "(" + fields + ") VALUES (" + parameters + ")", DataProvider.Connection);
+            foreach (KeyValuePair<string, object> value in values)
+                insert.Parameters.Add(new OleDbParameter(value.Key, value.Value));
+            
+            insert.ExecuteNonQuery();//error here
+
+            insert = new OleDbCommand("SELECT @@identity",DataProvider.Connection);
+            return (int)insert.ExecuteScalar();
         }
     }
 }

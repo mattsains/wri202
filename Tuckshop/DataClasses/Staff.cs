@@ -79,5 +79,31 @@ namespace Tuckshop
             }
             return staff;
         }
+
+        public override void Delete()
+        {
+            //TODO: handle foreign key constraints
+            base.Delete();
+        }
+        /// <summary>
+        /// Inserts a new Staff Member
+        /// </summary>
+        /// <param name="values">A dictionary of the values of the new staff member</param>
+        /// <returns>The primary key of the new record</returns>
+        /// <exception cref="WARNING: Return value is only valid for auto-incrementing primary keys."></exception>
+        /// <exception cref="IT WILL RETURN 0 IF YOU SET THE PRIMARY KEY YOURSELF"></exception>
+        public static int Insert(int staffNum,string firstName, string lastName, string email, decimal balance=0M)
+        {
+            Dictionary<string,object> values=new Dictionary<string,object>();
+
+            values["staffnum"]=staffNum;
+            values["firstname"]=firstName;
+            values["lastname"]=lastName;
+            values["email"]=email.ToCharArray();//for some reason email is stored as a WCHAR[] type in Access, which cannot be marshalled as string
+            values["balance"] = balance;
+
+            DataObject.Insert("Staff", values);
+            return staffNum;
+        }
     }
 }

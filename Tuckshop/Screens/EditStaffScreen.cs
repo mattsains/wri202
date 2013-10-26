@@ -30,7 +30,19 @@ namespace Tuckshop
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(string.Format("Are you sure you want to delete Staff member {0}?", "Matthew Sainsbury"), "Deleting Staff Member", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult response = MessageBox.Show(string.Format("Are you sure you want to delete Staff member {0} {1}?", staff.FirstName, staff.Surname), "Deleting Staff Member", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (response == DialogResult.Yes)
+                staff.Delete();
+            Program.SwitchTo(Screen.ViewStaff);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //TODO: input validation
+            staff.FirstName = txtfirstName.Text;
+            staff.Surname = txtSurname.Text;
+            staff.Email = txtEmail.Text;
+            Program.SwitchTo(Screen.ViewStaff);
         }
     }
 }

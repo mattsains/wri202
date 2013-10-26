@@ -18,7 +18,7 @@ namespace Tuckshop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DataProvider.Connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=TSM.accdb");
+            DataProvider.Connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=TSM.accdb;");
             mainForm = new MainForm();
             Application.Run(mainForm);
         }
@@ -34,6 +34,27 @@ namespace Tuckshop
         public static void SwitchTo(Screen s, params object[] data)
         {
             mainForm.SwitchTo(s, data);
+        }
+
+        /// <summary>
+        /// Shows an error message and handles OK and Cancel buttons
+        /// If Cancel is clicked, goes to the 'previous' screen.
+        /// If OK is clicked, optionally highlights the entryControl control.
+        /// </summary>
+        /// <param name="title">The title for the message box to show</param>
+        /// <param name="message">The message in the message box</param>
+        /// <param name="previous">the screen to go to if the user clicks cancel</param>
+        /// <param name="entryControl">the control with incorrect data. This control must be based on a textbox. Null is ok</param>
+        public static void ShowError(string title, string message, Screen previous, TextBoxBase entryControl = null)
+        {
+            DialogResult response = MessageBox.Show(message, title, MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
+            if (response == DialogResult.Cancel)
+                Program.SwitchTo(previous);
+            else if (entryControl != null)
+            {
+                entryControl.Focus();
+                entryControl.SelectAll();
+            }
         }
     }
 }

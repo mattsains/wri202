@@ -28,7 +28,7 @@ namespace Tuckshop
         public void SwitchTo(Screen s, params object[] data)
         {
             contentBox.Controls.Clear();
-
+            contentBox.Visible = false;
             switch (s)
             {
                 case Screen.Main:
@@ -61,13 +61,18 @@ namespace Tuckshop
                     contentBox.Controls.Add(newStockScreen);
                     break;
                 case Screen.ViewStaff:
+                    int staffid=-1;
+                    if (data.Length != 0)
+                    {
+                        try { staffid = (int)data[0]; }
+                        catch (InvalidCastException e) { throw new ArgumentException("You provided a staff id that isn't an int"); }
+                    }
                     lblHeader.Text = "View/Edit Staff";
-                    ViewStaffScreen viewStaffScreen = new ViewStaffScreen();
+                    ViewStaffScreen viewStaffScreen = new ViewStaffScreen(staffid);
                     viewStaffScreen.Dock = DockStyle.Fill;
                     contentBox.Controls.Add(viewStaffScreen);
                     break;
                 case Screen.EditStaff:
-                    int staffid;
 
                     try { staffid = (int)data[0]; }
                     catch (InvalidCastException e) { throw new ArgumentException("The Edit Staff screen requires a staffID", e); }
@@ -118,6 +123,7 @@ namespace Tuckshop
                 default:
                     break;
             }
+            contentBox.Visible = true;
         }
 
         private void MainForm_Load(object sender, EventArgs e)

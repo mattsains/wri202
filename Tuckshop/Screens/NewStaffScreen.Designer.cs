@@ -50,7 +50,7 @@
             this.btnCancel.Location = new System.Drawing.Point(125, 127);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 25;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -61,9 +61,10 @@
             this.btnAdd.Location = new System.Drawing.Point(44, 127);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 23;
+            this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtSurname
             // 
@@ -71,7 +72,7 @@
             this.txtSurname.Location = new System.Drawing.Point(91, 63);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(124, 20);
-            this.txtSurname.TabIndex = 20;
+            this.txtSurname.TabIndex = 2;
             // 
             // lblSurname
             // 
@@ -89,7 +90,7 @@
             this.txtfirstName.Location = new System.Drawing.Point(91, 37);
             this.txtfirstName.Name = "txtfirstName";
             this.txtfirstName.Size = new System.Drawing.Size(124, 20);
-            this.txtfirstName.TabIndex = 18;
+            this.txtfirstName.TabIndex = 1;
             // 
             // lblFirstName
             // 
@@ -107,7 +108,7 @@
             this.txtEmail.Location = new System.Drawing.Point(91, 89);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(124, 20);
-            this.txtEmail.TabIndex = 27;
+            this.txtEmail.TabIndex = 3;
             // 
             // lblEmail
             // 
@@ -153,7 +154,8 @@
             this.txtStaffNum.Location = new System.Drawing.Point(91, 11);
             this.txtStaffNum.Name = "txtStaffNum";
             this.txtStaffNum.Size = new System.Drawing.Size(124, 20);
-            this.txtStaffNum.TabIndex = 29;
+            this.txtStaffNum.TabIndex = 0;
+            this.txtStaffNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStaffNum_KeyPress);
             // 
             // NewStaffScreen
             // 
@@ -165,6 +167,7 @@
             this.Controls.Add(this.btnAdd);
             this.Name = "NewStaffScreen";
             this.Size = new System.Drawing.Size(245, 160);
+            this.Load += new System.EventHandler(this.NewStaffScreen_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
