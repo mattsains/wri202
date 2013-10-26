@@ -89,9 +89,7 @@ namespace Tuckshop
         /// Inserts a new Staff Member
         /// </summary>
         /// <param name="values">A dictionary of the values of the new staff member</param>
-        /// <returns>The primary key of the new record</returns>
-        /// <exception cref="WARNING: Return value is only valid for auto-incrementing primary keys."></exception>
-        /// <exception cref="IT WILL RETURN 0 IF YOU SET THE PRIMARY KEY YOURSELF"></exception>
+        /// <returns>The staff num of the new record</returns>
         public static int Insert(int staffNum, string firstName, string lastName, string email, decimal balance = 0M)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
