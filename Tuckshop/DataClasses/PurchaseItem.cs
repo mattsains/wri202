@@ -115,7 +115,7 @@ namespace Tuckshop.DataClasses
             base.Delete();
         }
 
-        public static int Insert(Purchase purchase, StockItem item, int qtyBought)
+        public static PurchaseItem New(Purchase purchase, StockItem item, int qtyBought)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
 
@@ -123,7 +123,7 @@ namespace Tuckshop.DataClasses
             values["QtyBought"] = qtyBought;
             values["ItemNum"] = item.ItemNum;
 
-            return DataObject.Insert("PurchItem", values);
+            return new PurchaseItem(DataObject.Insert("PurchItem", values));
         }
 
         public override string ToString()

@@ -117,14 +117,14 @@ namespace Tuckshop.DataClasses
             base.Delete();
         }
 
-        public static int Insert(DateTime date, Staff staff)
+        public static Purchase New(DateTime date, Staff staff)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
 
             values["PurchDate"] = date;
             values["StaffNr"] = staff.StaffNum;
 
-            return DataObject.Insert("Purchase", values);
+            return new Purchase(DataObject.Insert("Purchase", values));
         }
 
         public override string ToString()

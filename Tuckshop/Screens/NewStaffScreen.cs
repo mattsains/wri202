@@ -52,7 +52,7 @@ namespace Tuckshop
             }
             try
             {
-                Staff.Insert(staffnum, txtfirstName.Text, txtSurname.Text, txtEmail.Text);
+                Staff.New(staffnum, txtfirstName.Text, txtSurname.Text, txtEmail.Text);
 
             }
             catch (Exception ex)

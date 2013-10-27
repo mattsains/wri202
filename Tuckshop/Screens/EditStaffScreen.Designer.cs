@@ -51,7 +51,7 @@
             this.btnCancel.Location = new System.Drawing.Point(236, 437);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 25;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -62,7 +62,7 @@
             this.btnSave.Location = new System.Drawing.Point(155, 437);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 23;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -73,7 +73,8 @@
             this.txtSurname.Location = new System.Drawing.Point(92, 57);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(124, 20);
-            this.txtSurname.TabIndex = 20;
+            this.txtSurname.TabIndex = 2;
+            this.txtSurname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             // 
             // lblSurname
             // 
@@ -91,7 +92,8 @@
             this.txtfirstName.Location = new System.Drawing.Point(92, 31);
             this.txtfirstName.Name = "txtfirstName";
             this.txtfirstName.Size = new System.Drawing.Size(124, 20);
-            this.txtfirstName.TabIndex = 18;
+            this.txtfirstName.TabIndex = 1;
+            this.txtfirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             // 
             // lblFirstName
             // 
@@ -109,7 +111,8 @@
             this.txtEmail.Location = new System.Drawing.Point(92, 83);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(124, 20);
-            this.txtEmail.TabIndex = 27;
+            this.txtEmail.TabIndex = 3;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             // 
             // lblEmail
             // 
@@ -166,7 +169,7 @@
             this.btnDelete.Location = new System.Drawing.Point(317, 437);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 29;
+            this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -182,6 +185,7 @@
             this.Controls.Add(this.btnSave);
             this.Name = "EditStaffScreen";
             this.Size = new System.Drawing.Size(561, 474);
+            this.Load += new System.EventHandler(this.EditStaffScreen_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

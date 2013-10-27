@@ -47,6 +47,7 @@
             this.btnCapStock.TabIndex = 3;
             this.btnCapStock.Text = "Capture";
             this.btnCapStock.UseVisualStyleBackColor = true;
+            this.btnCapStock.Click += new System.EventHandler(this.btnCapStock_Click);
             // 
             // dgCapStock
             // 
@@ -65,6 +66,8 @@
             this.dgCapStock.Name = "dgCapStock";
             this.dgCapStock.Size = new System.Drawing.Size(630, 441);
             this.dgCapStock.TabIndex = 2;
+            this.dgCapStock.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCapStock_CellEnter);
+            this.dgCapStock.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCapStock_CellLeave);
             // 
             // itemnum
             // 
@@ -99,6 +102,7 @@
             this.Controls.Add(this.dgCapStock);
             this.Name = "NewStockScreen";
             this.Size = new System.Drawing.Size(636, 479);
+            this.Load += new System.EventHandler(this.NewStockScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgCapStock)).EndInit();
             this.ResumeLayout(false);
 

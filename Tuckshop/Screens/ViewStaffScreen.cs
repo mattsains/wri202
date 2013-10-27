@@ -74,6 +74,17 @@ namespace Tuckshop
                     if ((int)row.Cells[0].Value == highlightstaffnum)
                         row.Selected = true;
                 }
+            dgStaff.Focus();
         }
+
+        private void dgStaff_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                dgStaff_CellDoubleClick(this, new DataGridViewCellEventArgs(1, dgStaff.SelectedRows[0].Cells[0].RowIndex));
+                e.Handled = true;
+            }
+        }
+
     }
 }

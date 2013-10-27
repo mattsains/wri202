@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Tuckshop
 {
@@ -38,11 +39,45 @@ namespace Tuckshop
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //TODO: input validation
+            if (txtfirstName.Text.Trim() == "")
+            {
+                Program.ShowError("Invalid First Name", "Please enter a first name", Screen.ViewStaff, txtfirstName);
+                return;
+            }
+            if (txtSurname.Text.Trim() == "")
+            {
+                Program.ShowError("Invalid Surname", "Please enter a surname", Screen.ViewStaff, txtSurname);
+                return;
+            }
+            if (!Regex.IsMatch(txtEmail.Text, "^.+@.+$"))
+            {
+                Program.ShowError("Invalid Email", "Please enter a valid email address", Screen.ViewStaff, txtEmail);
+                return;
+            }
+            //by now we are validated
             staff.FirstName = txtfirstName.Text;
             staff.Surname = txtSurname.Text;
             staff.Email = txtEmail.Text;
             Program.SwitchTo(Screen.ViewStaff);
+        }
+
+        private void textbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (sender == txtfirstName)
+                    txtSurname.Focus();
+                else if (sender == txtSurname)
+                    txtEmail.Focus();
+                else if (sender == txtEmail)
+                    btnSave_Click(sender, new EventArgs());
+                e.Handled = true;
+            }
+        }
+
+        private void EditStaffScreen_Load(object sender, EventArgs e)
+        {
+            txtfirstName.Focus();
         }
     }
 }

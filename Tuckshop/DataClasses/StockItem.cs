@@ -105,7 +105,7 @@ namespace Tuckshop
             base.Delete();
         }
 
-        public static int Insert(int itemNum, string description, int qtyInStock, decimal costprice, decimal sellprice)
+        public static StockItem New(int itemNum, string description, int qtyInStock, decimal costprice, decimal sellprice)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
 
@@ -116,7 +116,7 @@ namespace Tuckshop
             values["sellprice"] = sellprice;
 
             DataObject.Insert("StockItem", values);
-            return itemNum;
+            return new StockItem(itemNum);
         }
 
         public string ToString()

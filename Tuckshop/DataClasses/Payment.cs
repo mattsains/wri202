@@ -97,7 +97,7 @@ namespace Tuckshop.DataClasses
             base.Delete();
         }
 
-        public static int Insert(string description, DateTime date, decimal amountPaid, Staff staff)
+        public static Payment New(string description, DateTime date, decimal amountPaid, Staff staff)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
 
@@ -106,7 +106,7 @@ namespace Tuckshop.DataClasses
             values["amountpaid"] = amountPaid;
             values["staffnr"] = staff.StaffNum;
 
-            return DataObject.Insert("Payment", values);
+            return new Payment(DataObject.Insert("Payment", values));
         }
 
         public override string ToString()

@@ -11,15 +11,23 @@ namespace Tuckshop
 {
     public partial class ViewStockScreen : UserControl
     {
+        int selectedid;
         public ViewStockScreen(params object[] data)
         {
             InitializeComponent();
+            if (data.Length != 0)
+            {
+                selectedid = (int)data[0];
+            }
         }
 
         private void ViewStockScreen_Load(object sender, EventArgs e)
         {
             //centre the print button
             FillDataGrid(StockItem.All());
+            foreach (DataGridViewRow row in dgItems.Rows)
+                if ((int)row.Cells[0].Value == selectedid)
+                    row.Selected = true;
         }
         private void FillDataGrid(List<StockItem> items)
         {
