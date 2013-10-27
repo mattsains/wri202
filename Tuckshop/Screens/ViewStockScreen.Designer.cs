@@ -47,6 +47,7 @@
             // rdAllStock
             // 
             this.rdAllStock.AutoSize = true;
+            this.rdAllStock.Checked = true;
             this.rdAllStock.Location = new System.Drawing.Point(4, 5);
             this.rdAllStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdAllStock.Name = "rdAllStock";
@@ -65,7 +66,6 @@
             this.rdInStockOnly.Name = "rdInStockOnly";
             this.rdInStockOnly.Size = new System.Drawing.Size(143, 17);
             this.rdInStockOnly.TabIndex = 1;
-            this.rdInStockOnly.TabStop = true;
             this.rdInStockOnly.Text = "Show only items in Stock";
             this.rdInStockOnly.UseVisualStyleBackColor = true;
             this.rdInStockOnly.CheckedChanged += new System.EventHandler(this.rdAllStock_CheckedChanged);
@@ -76,9 +76,9 @@
             this.dgItems.AllowUserToDeleteRows = false;
             this.dgItems.AllowUserToOrderColumns = true;
             this.dgItems.AllowUserToResizeRows = false;
-            this.dgItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;

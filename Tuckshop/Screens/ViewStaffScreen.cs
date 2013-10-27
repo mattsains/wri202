@@ -11,15 +11,22 @@ namespace Tuckshop
 {
     public partial class ViewStaffScreen : UserControl
     {
-        public ViewStaffScreen()
+        int highlightstaffnum;
+        public ViewStaffScreen(int highlightstaffnum=-1)
         {
             InitializeComponent();
+
             //centre the add button
             btnAdd.Left = (this.Width - btnAdd.Width) / 2;
-            //Some example data
-            dgStaff.Rows.Add(1, "Matthew", "Sainsbury", "matthew@sainsbury.za.net", "R 123.00");
-            dgStaff.Rows.Add(2, "Dean", "Gifford", "dean@gifford.com", "R 500.25");
-            dgStaff.Rows.Add(3, "Douglas", "Bentley", "doug@bent.ley", "R 5.00");
+
+            //fill the data grid with... data?
+            foreach (Staff s in Staff.All())
+            {
+                dgStaff.Rows.Add(s.Select("StaffNum", "FirstName", "Surname", "Email", "Balance"));
+            }
+            //set the variable that makes the right row be highlighted.
+            //can't actually highlight the row now because the datagrid isn't alive properly yet
+            this.highlightstaffnum = highlightstaffnum;
         }
         private void txtSearch_Enter(object sender, EventArgs e)
         {
@@ -56,6 +63,17 @@ namespace Tuckshop
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Program.SwitchTo(Screen.NewStaff);
+        }
+
+        private void ViewStaffScreen_Load(object sender, EventArgs e)
+        {
+            //highlight a new row if needed.
+            if (highlightstaffnum != -1)
+                foreach (DataGridViewRow row in dgStaff.Rows)
+                {
+                    if ((int)row.Cells[0].Value == highlightstaffnum)
+                        row.Selected = true;
+                }
         }
     }
 }

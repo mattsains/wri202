@@ -19,14 +19,13 @@ namespace Tuckshop
         private void ViewStockScreen_Load(object sender, EventArgs e)
         {
             //centre the print button
-            //btnPrint.Left = (this.Width - btnPrint.Width) / 2;
-            //Some example data
-            dgItems.Rows.Add(1, 10, "2 Minute Noodles", "R 3.50", "R 4.50");
-            dgItems.Rows.Add(2, 4, "Big Corn Bites", "R 1.50", "R 2.50");
-            dgItems.Rows.Add(3, 16, "Bravo (Chips in a Can!)", "R 7.00", "R 8.50");
-            dgItems.Rows.Add(4, 8, "Chips (Simba & Lays)", "R 3.50", "R 3.80");
+            FillDataGrid(StockItem.All());
         }
-
+        private void FillDataGrid(List<StockItem> items)
+        {
+            foreach (StockItem i in items)
+                dgItems.Rows.Add(i.Select("ItemNum", "QtyInStock", "Description", "CostPrice", "SellPrice"));
+        }
         private void txtSearch_Enter(object sender, EventArgs e)
         {
             if (txtSearch.Text == "Search...")
@@ -70,6 +69,10 @@ namespace Tuckshop
             if (radioSender.Checked)
             {
                 // radioSender is the Radio button which is now selected
+                if (radioSender == rdAllStock)
+                    FillDataGrid(StockItem.All());
+                else
+                    FillDataGrid(StockItem.All(item => item.QtyInStock != 0));
             }
         }
 

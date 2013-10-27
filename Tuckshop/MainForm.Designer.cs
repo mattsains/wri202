@@ -192,6 +192,7 @@
             this.Controls.Add(this.navMenu);
             this.MainMenuStrip = this.navMenu;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tuckshop Management System";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.navMenu.ResumeLayout(false);
