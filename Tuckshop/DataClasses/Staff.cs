@@ -38,13 +38,13 @@ namespace Tuckshop
             object[] output=new object[fieldNames.Length];
             for (int i = 0; i < fieldNames.Length; i++)
             {
-                switch (fieldNames[i])
+                switch (fieldNames[i].ToLower())
                 {
-                    case "StaffNum": output[i] = this.StaffNum; break;
-                    case "FirstName": output[i] = this.FirstName; break;
-                    case "Surname": output[i] = this.Surname; break;
-                    case "Email": output[i] = this.Email; break;
-                    case "Balance": output[i] = this.Balance; break;
+                    case "staffnum": output[i] = this.StaffNum; break;
+                    case "firstname": output[i] = this.FirstName; break;
+                    case "surname": output[i] = this.Surname; break;
+                    case "email": output[i] = this.Email; break;
+                    case "balance": output[i] = this.Balance; break;
                 }
             }
             return output;
@@ -102,6 +102,11 @@ namespace Tuckshop
 
             DataObject.Insert("Staff", values);
             return staffNum;
+        }
+
+        public string ToString()
+        {
+            return StaffNum + ": " + FirstName + " " + Surname;
         }
     }
 }

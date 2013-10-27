@@ -73,6 +73,7 @@
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(124, 20);
             this.txtSurname.TabIndex = 2;
+            this.txtSurname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             // 
             // lblSurname
             // 
@@ -91,6 +92,7 @@
             this.txtfirstName.Name = "txtfirstName";
             this.txtfirstName.Size = new System.Drawing.Size(124, 20);
             this.txtfirstName.TabIndex = 1;
+            this.txtfirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             // 
             // lblFirstName
             // 
@@ -109,6 +111,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(124, 20);
             this.txtEmail.TabIndex = 3;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             // 
             // lblEmail
             // 
@@ -155,7 +158,7 @@
             this.txtStaffNum.Name = "txtStaffNum";
             this.txtStaffNum.Size = new System.Drawing.Size(124, 20);
             this.txtStaffNum.TabIndex = 0;
-            this.txtStaffNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStaffNum_KeyPress);
+            this.txtStaffNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             // 
             // NewStaffScreen
             // 

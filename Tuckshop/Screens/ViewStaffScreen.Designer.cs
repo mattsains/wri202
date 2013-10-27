@@ -47,9 +47,9 @@
             this.dgStaff.AllowUserToDeleteRows = false;
             this.dgStaff.AllowUserToOrderColumns = true;
             this.dgStaff.AllowUserToResizeRows = false;
-            this.dgStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgStaff.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -143,6 +143,7 @@
             this.Controls.Add(this.btnAdd);
             this.Name = "ViewStaffScreen";
             this.Size = new System.Drawing.Size(601, 459);
+            this.Load += new System.EventHandler(this.ViewStaffScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgStaff)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

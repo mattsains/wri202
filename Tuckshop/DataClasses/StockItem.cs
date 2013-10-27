@@ -31,19 +31,36 @@ namespace Tuckshop
             get { return base.GetAttr<decimal>("SellPrice"); }
             set { base.SetAttr("SellPrice", value); }
         }
+        public static StockItem operator +(StockItem s,int num)
+        {
+            s.QtyInStock += num;
+            return s;
+        }
+        public static StockItem operator -(StockItem s, int num)
+        {
+            return s + (-num);
+        }
+        public static StockItem operator <<(StockItem s, int num)
+        {
+            return s + num;
+        }
+        public static StockItem operator >>(StockItem s, int num)
+        {
+            return s - num;
+        }
 
         public object[] Select(params string[] fieldNames)
         {
             object[] output=new object[fieldNames.Length];
             for (int i = 0; i < fieldNames.Length; i++)
             {
-                switch (fieldNames[i])
+                switch (fieldNames[i].ToLower())
                 {
-                    case "ItemNum": output[i] = this.ItemNum; break;
-                    case "Description": output[i] = this.Description; break;
-                    case "QtyInStock": output[i] = this.QtyInStock; break;
-                    case "CostPrice": output[i] = this.CostPrice; break;
-                    case "SellPrice": output[i] = this.SellPrice; break;
+                    case "itemnum": output[i] = this.ItemNum; break;
+                    case "description": output[i] = this.Description; break;
+                    case "qtyinstock": output[i] = this.QtyInStock; break;
+                    case "costprice": output[i] = this.CostPrice; break;
+                    case "sellprice": output[i] = this.SellPrice; break;
                 }
             }
             return output;
@@ -77,6 +94,34 @@ namespace Tuckshop
                     stock.RemoveAt(i--);
             }
             return stock;
+        }
+
+        /// <summary>
+        /// Deletes this instance of StockItem from the database
+        /// </summary>
+        public override void Delete()
+        {
+            //TODO: handle foreign key constraints
+            base.Delete();
+        }
+
+        public static int Insert(int itemNum, string description, int qtyInStock, decimal costprice, decimal sellprice)
+        {
+            Dictionary<string, object> values = new Dictionary<string, object>();
+
+            values["itemnum"] = itemNum;
+            values["description"] = description;
+            values["qtyinstock"] = qtyInStock;
+            values["costprice"] = costprice;
+            values["sellprice"] = sellprice;
+
+            DataObject.Insert("StockItem", values);
+            return itemNum;
+        }
+
+        public string ToString()
+        {
+            return ItemNum + ": " + Description + "(" + QtyInStock + ")";
         }
     }
 }

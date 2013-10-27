@@ -63,6 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataClasses\Payment.cs" />
+    <Compile Include="DataClasses\Purchase.cs" />
+    <Compile Include="DataClasses\PurchaseItem.cs" />
     <Compile Include="DataClasses\Staff.cs" />
     <Compile Include="DataClasses\StockItem.cs" />
     <Compile Include="Screens\CaptureSales.cs">

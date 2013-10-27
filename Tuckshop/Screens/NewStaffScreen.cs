@@ -49,28 +49,39 @@ namespace Tuckshop
             {
                 Program.ShowError("Invalid Email", "Please enter a valid email address", Screen.ViewStaff, txtEmail);
                 return;
-            }/*
-            try*/
+            }
+            try
             {
                 Staff.Insert(staffnum, txtfirstName.Text, txtSurname.Text, txtEmail.Text);
 
-            }/*
+            }
             catch (Exception ex)
             {
                 Program.ShowError("Database error", "Failed to add the new staff member!", Screen.ViewStaff);
                 return;
-            }*/
+            }
             Program.SwitchTo(Screen.ViewStaff, staffnum);
         }
-        private void txtStaffNum_KeyPress(object sender, KeyPressEventArgs e)
+        private void textbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
-                txtfirstName.Focus();
+            {
+                if (sender == txtStaffNum)
+                    txtfirstName.Focus();
+                else if (sender == txtfirstName)
+                    txtSurname.Focus();
+                else if (sender == txtSurname)
+                    txtEmail.Focus();
+                else if (sender == txtEmail)
+                    btnAdd_Click(sender, new EventArgs());
+                e.Handled = true;
+            }
         }
 
         private void NewStaffScreen_Load(object sender, EventArgs e)
         {
             txtStaffNum.Focus();
         }
+
     }
 }
