@@ -86,5 +86,22 @@ namespace Tuckshop
             }
         }
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            List<Staff> staff=new List<Staff>();
+            if (txtSearch.Text == "Search..." || txtSearch.Text == "")
+                staff = Staff.All();
+            else
+            {
+                List<int> staffnums = DataObject.Search("staffnr", "Staff", new string[] { "StaffNr", "FirstName", "Surname", "Email" }, txtSearch.Text);
+                staff = staffnums.ConvertAll(staffid => new Staff(staffid));//cool!
+            }
+            dgStaff.Rows.Clear();
+            foreach (Staff s in staff)
+                dgStaff.Rows.Add(s.Select("StaffNum", "FirstName", "Surname", "Email", "Balance"));
+        }
+
+
+
     }
 }

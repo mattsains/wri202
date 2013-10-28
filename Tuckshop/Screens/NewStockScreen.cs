@@ -117,11 +117,10 @@ namespace Tuckshop
                                 if (!filled)
                                 {
                                     s.Description = (string)row.Cells[2].Value;
-                                    s.QtyInStock = newqty;
+                                    s.QtyInStock += newqty;
                                     s.CostPrice = buyprice;
                                     s.SellPrice = sellprice;
                                 }
-                                
                             }
                             else
                             {

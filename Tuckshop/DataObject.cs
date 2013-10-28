@@ -159,10 +159,39 @@ namespace Tuckshop
             foreach (KeyValuePair<string, object> value in values)
                 insert.Parameters.Add(new OleDbParameter(value.Key, value.Value));
             
-            insert.ExecuteNonQuery();//error here
+            insert.ExecuteNonQuery();
 
             insert = new OleDbCommand("SELECT @@identity",DataProvider.Connection);
             return (int)insert.ExecuteScalar();
+        }
+        /// <summary>
+        /// Searches through a table and returns primary key values
+        /// </summary>
+        /// <param name="primaryKey">the name of the primary key field</param>
+        /// <param name="tableName">the name of the table to search</param>
+        /// <param name="fields">the fields to search through</param>
+        /// <param name="value">the value to search for</param>
+        /// <returns>a list of primary keys of rows that contain the value</returns>
+        public static List<int> Search(string primaryKey, string tableName, string[] fields, string value)
+        {
+            string fieldstring = "";
+            foreach (string field in fields)
+            {
+                fieldstring += field + " LIKE @val OR ";
+            }
+            fieldstring = fieldstring.Substring(0, fieldstring.LastIndexOf(" OR "));
+            OleDbCommand search = new OleDbCommand("SELECT " + primaryKey + " FROM " + tableName + " WHERE " + fieldstring, DataProvider.Connection);
+            search.Parameters.Add(new OleDbParameter("val", "%" + value + "%"));
+
+            OleDbDataReader reader = search.ExecuteReader();
+
+            List<int> output = new List<int>();
+
+            while (reader.Read())
+            {
+                output.Add((int)reader[primaryKey]);
+            }
+            return output;
         }
     }
 }
