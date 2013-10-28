@@ -72,6 +72,8 @@ namespace Tuckshop
         /// <param name="e"></param>
         private void rdAllStock_CheckedChanged(object sender, EventArgs e)
         {
+            dgItems.Rows.Clear();
+
             RadioButton radioSender = (RadioButton)sender;
             //Taking care of the double trigger problem:
             if (radioSender.Checked)
