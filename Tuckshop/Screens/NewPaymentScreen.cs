@@ -24,7 +24,7 @@ namespace Tuckshop
         private void NewPaymentScreen_Resize(object sender, EventArgs e)
         {
             btnProcess.Left = (this.Width - btnProcess.Width) / 2;
-            panel1.Width = calDate.Width + 18;
+            //panel1.Width = calDate.Width + 18; seems to break the page
             panel1.Left = (this.Width - panel1.Width) / 2;
         }
     }

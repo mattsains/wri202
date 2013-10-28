@@ -63,7 +63,8 @@ namespace Tuckshop
         /// <param name="e"></param>
         private void dgItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Program.SwitchTo(Screen.EditStock, dgItems[0, e.RowIndex].Value);
+            if (e.RowIndex >= 0)
+                Program.SwitchTo(Screen.EditStock, dgItems[0, e.RowIndex].Value);
         }
         /// <summary>
         /// Is triggered twice when the radio selection is changed.

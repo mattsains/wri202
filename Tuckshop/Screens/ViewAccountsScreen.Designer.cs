@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgAccounts = new System.Windows.Forms.DataGridView();
-            this.cName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAmountOwing = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEmail = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnEmail = new System.Windows.Forms.Button();
             this.lblEmailPromt = new System.Windows.Forms.Label();
             this.btnMarkAll = new System.Windows.Forms.Button();
             this.btnUnmarkAll = new System.Windows.Forms.Button();
+            this.cName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAmountOwing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEmail = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgAccounts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,23 +57,6 @@
             this.dgAccounts.Name = "dgAccounts";
             this.dgAccounts.Size = new System.Drawing.Size(433, 227);
             this.dgAccounts.TabIndex = 1;
-            // 
-            // cName
-            // 
-            this.cName.HeaderText = "Name";
-            this.cName.Name = "cName";
-            this.cName.ReadOnly = true;
-            // 
-            // cAmountOwing
-            // 
-            this.cAmountOwing.HeaderText = "Amount Owing";
-            this.cAmountOwing.Name = "cAmountOwing";
-            this.cAmountOwing.ReadOnly = true;
-            // 
-            // cEmail
-            // 
-            this.cEmail.HeaderText = "Email?";
-            this.cEmail.Name = "cEmail";
             // 
             // btnEmail
             // 
@@ -116,6 +100,26 @@
             this.btnUnmarkAll.Text = "Unmark All";
             this.btnUnmarkAll.UseVisualStyleBackColor = true;
             this.btnUnmarkAll.Click += new System.EventHandler(this.btnUnmarkAll_Click);
+            // 
+            // cName
+            // 
+            this.cName.HeaderText = "Name";
+            this.cName.Name = "cName";
+            this.cName.ReadOnly = true;
+            // 
+            // cAmountOwing
+            // 
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.cAmountOwing.DefaultCellStyle = dataGridViewCellStyle1;
+            this.cAmountOwing.HeaderText = "Amount Owing";
+            this.cAmountOwing.Name = "cAmountOwing";
+            this.cAmountOwing.ReadOnly = true;
+            // 
+            // cEmail
+            // 
+            this.cEmail.HeaderText = "Email?";
+            this.cEmail.Name = "cEmail";
             // 
             // ViewAccountsScreen
             // 

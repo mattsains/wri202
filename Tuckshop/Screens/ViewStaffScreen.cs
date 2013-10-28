@@ -57,7 +57,8 @@ namespace Tuckshop
         /// <param name="e"></param>
         private void dgStaff_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Program.SwitchTo(Screen.EditStaff, dgStaff[0, e.RowIndex].Value);
+            if (e.RowIndex >= 0)
+                Program.SwitchTo(Screen.EditStaff, dgStaff[0, e.RowIndex].Value);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
