@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Tuckshop
 {
@@ -254,5 +255,11 @@ namespace Tuckshop
                     dgCapSales[e.ColumnIndex, e.RowIndex].Style.BackColor = postmodern;
             }
         }
+            //testing all functions
+            //Purchase Steve = Purchase.New(new DateTime(2012, 12, 12), new Staff(16921)); //seems to work
+            Purchase Steve = new Purchase(3);
+            Steve.date = new DateTime(2001, 01, 23);
+            DateTime a = Steve.date;
+            PurchaseItem stevebuys = PurchaseItem.New(Steve, new StockItem(1), 2);
     }
 }

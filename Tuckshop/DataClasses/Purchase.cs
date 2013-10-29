@@ -13,8 +13,8 @@ namespace Tuckshop
         }
         public DateTime date
         {
-            get { return base.GetAttr<DateTime>("PurchDate"); }
-            set { base.SetAttr("PurchDate", value); }
+            get { return DateTime.ParseExact(base.GetAttr<string>("PurchDate"), "dd/MM/yyyy", null); }
+            set { base.SetAttr("PurchDate", value.ToString("dd/MM/yyyy")); }
         }
         /// <summary>
         /// This total will be automatically maintained by the dataobjects themselves.
@@ -114,9 +114,10 @@ namespace Tuckshop
         public static Purchase New(DateTime date, Staff staff)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
-            values["PurchDate"] = date;
-            values["StaffNr"] = staff.StaffNum;
-
+            values["PurchDate"] = date.ToString("dd/MM/yyyy");
+            if (staff != null)
+                values["StaffNr"] = staff.StaffNum;
+            values["PurchTotal"] = 0; //its new so total is zippo
             return new Purchase(DataObject.Insert("Purchase", values));
         }
 

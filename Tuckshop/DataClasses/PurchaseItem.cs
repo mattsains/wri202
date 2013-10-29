@@ -9,7 +9,7 @@ namespace Tuckshop
     {
         public int purchaseItemID
         {
-            get { return base.GetAttr<int>("PurchItemID"); }
+            get { return base.GetAttr<int>("PurchItemID"); }            
         }
         public Purchase purchase
         {
@@ -126,8 +126,7 @@ namespace Tuckshop
             values["PurchNum"] = purchase.purchaseNum;
             values["QtyBought"] = qtyBought;
             values["ItemNum"] = item.ItemNum;
-
-            
+        
 
             PurchaseItem p=new PurchaseItem(DataObject.Insert("PurchItem", values));
 
