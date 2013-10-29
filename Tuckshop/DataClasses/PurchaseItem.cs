@@ -61,8 +61,8 @@ namespace Tuckshop
                 switch (fieldNames[i])
                 {
                     case "qtybought": output[i] = this.QtyBought; break;
-                    case "purchnum": output[i] = this.purchase; break;
-                    case "purchitemid": output[i] = this.item; break;
+                    case "purchase": output[i] = this.purchase; break;
+                    case "purchitem": output[i] = this.item; break;
                     default: //wants some information about the something, delegate to Something.Select()
                         if (fieldNames[i].StartsWith("purchase."))
                             output[i] = purchase.Select(fieldNames[i].Substring(fieldNames[i].IndexOf('.') + 1));
