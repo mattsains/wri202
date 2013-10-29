@@ -18,7 +18,42 @@ namespace Tuckshop
             btnCapSales.Left = (this.Width - btnCapSales.Width) / 2;
         }
 
-        private void dgCapSales_CellLeave(object sender, DataGridViewCellEventArgs e)
+
+        private void dgCapSales_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgCapSales.SelectedCells.Count == 1)
+                if (e.ColumnIndex < 3)
+                    dgCapSales.BeginEdit(true);
+                else
+                {
+                    dgCapSales[e.ColumnIndex, e.RowIndex].Selected = false;
+                    if (Control.ModifierKeys == Keys.Shift && e.ColumnIndex > 0)
+                        cellToChangeTo = dgCapSales[e.ColumnIndex - 1, e.RowIndex];
+                    else if (e.RowIndex + 1 < dgCapSales.Rows.Count)
+                        cellToChangeTo = dgCapSales[0, e.RowIndex + 1];
+                    else cellToChangeTo = null;
+
+                    if (cellToChangeTo != null)
+                    {
+                        BeginInvoke(new MethodInvoker(ChangeCellTo));
+                        dgCapSales.BeginEdit(true);
+                    }
+                }
+        }
+        //I don't even
+        private DataGridViewCell cellToChangeTo;
+        private void ChangeCellTo()
+        {
+            if (cellToChangeTo != null)
+                dgCapSales.CurrentCell = cellToChangeTo;
+        }
+
+        private void btnCapSales_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgCapSales_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             Color postmodern = Color.FromArgb(221, 57, 57);
             if (e.ColumnIndex == 0)
@@ -27,7 +62,7 @@ namespace Tuckshop
                 //validate
                 int staffnum;
 
-                if (int.TryParse((string)dgCapSales[0, e.RowIndex].EditedFormattedValue, out staffnum))
+                if (int.TryParse((string)e.FormattedValue, out staffnum))
                 {
                     try
                     {
@@ -45,7 +80,7 @@ namespace Tuckshop
                 else
                 {
                     //not even an integer valued code
-                    if (((string)dgCapSales[0, e.RowIndex].EditedFormattedValue).Length != 0)
+                    if (((string)e.FormattedValue).Length != 0)
                         dgCapSales[0, e.RowIndex].Style.BackColor = postmodern;
                     else
                         dgCapSales[0, e.RowIndex].Style.BackColor = Color.White;
@@ -57,16 +92,18 @@ namespace Tuckshop
                 //validate
                 int stockid;
 
-                if (int.TryParse((string)dgCapSales[1, e.RowIndex].EditedFormattedValue, out stockid))
+                if (int.TryParse((string)e.FormattedValue, out stockid))
                 {
                     try
                     {
                         //possibly a valid stock num
                         StockItem s = new StockItem(stockid);
                         dgCapSales[1, e.RowIndex].Style.BackColor = Color.White; //reset colour
+                        dgCapSales[3, e.RowIndex].Value = s.Description;
                     }
                     catch (ArgumentException)
                     {
+                        dgCapSales[3, e.RowIndex].Value = "";
                         dgCapSales[1, e.RowIndex].Style.BackColor = postmodern;
                         return;
                     }
@@ -75,18 +112,51 @@ namespace Tuckshop
                 else
                 {
                     //not even an integer valued code
-                    if (((string)dgCapSales[1, e.RowIndex].EditedFormattedValue).Length != 0)
+                    if (((string)e.FormattedValue).Length != 0)
+                    {
                         dgCapSales[1, e.RowIndex].Style.BackColor = postmodern;
+                        dgCapSales[3, e.RowIndex].Value = "";
+                    }
                     else
+                    {
+                        dgCapSales[3, e.RowIndex].Value = "";
                         dgCapSales[1, e.RowIndex].Style.BackColor = Color.White;
+                    }
                 }
+
+                //make sure we have enough 
+                int temp = 0; //needs to have a value because of C#'s route detection
+                if (int.TryParse((string)dgCapSales[2, e.RowIndex].EditedFormattedValue, out temp))
+                {
+                    try
+                    {
+                        int stocknum = int.Parse((string)e.FormattedValue);
+                        StockItem s = new StockItem(stocknum);
+                        if (s.QtyInStock < temp)
+                        {
+                            //not enough stock
+                            dgCapSales[2, e.RowIndex].Style.BackColor = postmodern;
+                        }
+                        else
+                            dgCapSales[2, e.RowIndex].Style.BackColor = Color.White;
+                    }
+                    catch
+                    {
+                        //all errors are the user's fault. Great programming mentality
+                        dgCapSales[2, e.RowIndex].Style.BackColor = postmodern;
+                    }
+                }
+                else if (((string)dgCapSales[2, e.RowIndex].EditedFormattedValue).Length == 0)
+                    dgCapSales[2, e.RowIndex].Style.BackColor = Color.White;
+                else
+                    dgCapSales[2, e.RowIndex].Style.BackColor = postmodern;
             }
             else if (e.ColumnIndex == 2 && (string)dgCapSales[0, e.RowIndex].Value != null)
             {
                 //make sure we have enough 
-                int temp=0;//needs to have a value because of C#'s route detection
-                if (((string)dgCapSales[2, e.RowIndex].EditedFormattedValue).Length == 0 ||
-                    int.TryParse((string)dgCapSales[2, e.RowIndex].EditedFormattedValue, out temp))
+                int temp = 0;//needs to have a value because of C#'s route detection
+                if (((string)e.FormattedValue).Length == 0 ||
+                    int.TryParse((string)e.FormattedValue, out temp))
                 {
                     try
                     {
@@ -109,27 +179,6 @@ namespace Tuckshop
                 else
                     dgCapSales[e.ColumnIndex, e.RowIndex].Style.BackColor = postmodern;
             }
-        }
-
-        private void dgCapSales_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgCapSales.SelectedCells.Count == 1)
-                if (e.ColumnIndex < 3)
-                    dgCapSales.BeginEdit(true);
-                else
-                {
-                    dgCapSales[e.ColumnIndex,e.RowIndex].Selected=false;
-                    if (dgCapSales[0, e.RowIndex + 1] != null)
-                    {
-                        dgCapSales.CurrentCell = dgCapSales[0, e.RowIndex + 1];
-                        dgCapSales.BeginEdit(true);
-                    }
-                }
-        }
-
-        private void btnCapSales_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
