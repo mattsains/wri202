@@ -22,18 +22,34 @@ namespace Tuckshop
             set
             {
                 if (this.staff != null)
-                    staff.Balance -= (value - amountPaid);
+                {
+                    try
+                    {
+                        staff.Balance -= (value - amountPaid);
+                    }
+                    catch (InvalidOperationException) { /*silence warning exception*/ }
+                }
                 base.SetAttr("amountpaid", value);
             }
         }
         public Staff staff
         {
             get { return new Staff(base.GetAttr<int>("staffnr")); }
-            set { 
-                if (this.staff!=null)
-                    staff.Balance+=amountPaid;
+            set {
+                if (this.staff != null)
+                {
+                    try
+                    {
+                        staff.Balance += amountPaid;
+                    }
+                    catch (InvalidOperationException) { /*silence warning exception*/ }
+                }
                 base.SetAttr("staffnr", value.StaffNum);
-                value.Balance -= amountPaid;
+                try
+                {
+                    value.Balance -= amountPaid;
+                }
+                catch (InvalidOperationException) { /*silence warning exception*/ }
             }
         }
 
@@ -93,20 +109,31 @@ namespace Tuckshop
         /// </summary>
         public override void Delete()
         {
-            staff.Balance += amountPaid;
+            try
+            {
+                staff.Balance += amountPaid;
+            }
+            catch (InvalidOperationException) { /*silencing warning exception*/ }
+
             base.Delete();
         }
 
-        public static Payment New(string description, DateTime date, decimal amountPaid, Staff staff)
+        public static Payment New(DateTime date, decimal amountPaid, Staff staff)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
 
-            values["description"] = description;
-            values["date"] = date;
+            values["paymentdate"] = date;
             values["amountpaid"] = amountPaid;
             values["staffnr"] = staff.StaffNum;
 
-            return new Payment(DataObject.Insert("Payment", values));
+            Payment output = new Payment(DataObject.Insert("Payment", values));
+            try
+            {
+                staff.Balance -= amountPaid;
+            }
+            catch (InvalidOperationException) { /*silence warning exception*/ }
+
+            return output;
         }
 
         public override string ToString()

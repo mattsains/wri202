@@ -25,7 +25,69 @@ namespace Tuckshop
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
+            DateTime Date = calDate.SelectionStart;
+
+            String Name = txtName.Text;
+
+            if (Name == "")
+            {
+                Program.ShowError("Incomplete Details", "No Name was Entered", Screen.Main, txtName);
+                return;
+            }
+
+            Decimal Amount = getAmount();
+
+            if (Amount == 0)
+                return;
+
+            List<Staff> staffmember = Staff.All(s => s.FirstName + " " + s.Surname == Name);
+
+            if (staffmember.Count == 0)
+            {
+                Program.ShowError("Incorrect Information", "Specified Staff Member Does not Exist", Screen.Main, txtName);
+                return;
+            }
+
+
+            Payment.New(Date, Amount, staffmember[0]);
+            txtAmount.Text = "R ";
+            txtName.Clear();
+            calDate.SelectionStart = DateTime.Now;
         }
+
+        private Decimal getAmount()
+        {
+
+            String Amount = txtAmount.Text;
+            Decimal Amnt;
+
+            bool Changed = Decimal.TryParse(Amount, out Amnt);
+
+            if (!Changed)
+                Amount = Amount.Remove(0, 2);
+
+            Changed = Decimal.TryParse(Amount, out Amnt);
+
+            if (Amount == "")
+            {
+                Program.ShowError("Incomplete Details", "No Amount Was Entered", Screen.Main, txtAmount);
+                return 0;
+            }
+
+            Changed = Decimal.TryParse(Amount, out Amnt);
+
+            if (!Changed)
+            {
+                Program.ShowError("Invalid Entry", "Amount field can only contain Numbers", Screen.NewPayment, txtAmount);
+                txtAmount.Text = "R ";
+                return 0;
+            }
+
+            return Amnt;
+
+
+        }
+
 
     }
 }

@@ -34,6 +34,7 @@
             this.lblEmailPromt = new System.Windows.Forms.Label();
             this.btnMarkAll = new System.Windows.Forms.Button();
             this.btnUnmarkAll = new System.Windows.Forms.Button();
+            this.cStaffNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAmountOwing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEmail = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -44,17 +45,19 @@
             // 
             this.dgAccounts.AllowUserToAddRows = false;
             this.dgAccounts.AllowUserToDeleteRows = false;
-            this.dgAccounts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgAccounts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgAccounts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             this.dgAccounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAccounts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cStaffNum,
             this.cName,
             this.cAmountOwing,
             this.cEmail});
             this.dgAccounts.Location = new System.Drawing.Point(3, 39);
             this.dgAccounts.Name = "dgAccounts";
+            this.dgAccounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgAccounts.Size = new System.Drawing.Size(433, 227);
             this.dgAccounts.TabIndex = 1;
             // 
@@ -67,17 +70,18 @@
             this.btnEmail.TabIndex = 2;
             this.btnEmail.Text = "Email";
             this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
             // 
             // lblEmailPromt
             // 
-            this.lblEmailPromt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblEmailPromt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEmailPromt.Location = new System.Drawing.Point(4, 4);
             this.lblEmailPromt.Name = "lblEmailPromt";
             this.lblEmailPromt.Size = new System.Drawing.Size(432, 32);
             this.lblEmailPromt.TabIndex = 3;
             this.lblEmailPromt.Text = "If you would like to email accounts to staff, check the email fields of the accou" +
-    "nts you would like to send and then click Email";
+                "nts you would like to send and then click Email";
             // 
             // btnMarkAll
             // 
@@ -100,6 +104,12 @@
             this.btnUnmarkAll.Text = "Unmark All";
             this.btnUnmarkAll.UseVisualStyleBackColor = true;
             this.btnUnmarkAll.Click += new System.EventHandler(this.btnUnmarkAll_Click);
+            // 
+            // cStaffNum
+            // 
+            this.cStaffNum.HeaderText = "StaffNum";
+            this.cStaffNum.Name = "cStaffNum";
+            this.cStaffNum.ReadOnly = true;
             // 
             // cName
             // 
@@ -144,6 +154,7 @@
         private System.Windows.Forms.Label lblEmailPromt;
         private System.Windows.Forms.Button btnMarkAll;
         private System.Windows.Forms.Button btnUnmarkAll;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cStaffNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn cName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAmountOwing;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cEmail;

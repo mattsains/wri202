@@ -30,7 +30,11 @@ namespace Tuckshop
         {
             //I hate this because it should be calulated, but whatevs
             get { return base.GetAttr<decimal>("Balance"); }
-            set { base.SetAttr("Balance", value); }
+            set
+            {
+                base.SetAttr("Balance", value);
+                throw new InvalidOperationException("Only data objects should *EVER* call this!");
+            }
         }
 
         public object[] Select(params string[] fieldNames)
@@ -83,11 +87,11 @@ namespace Tuckshop
         public override void Delete()
         {
             //delete everything referencing this staff member. Probably not the best idea but whatever.
-            List<Payment> payments = Payment.All(payment => payment.staff == this);
+            List<Payment> payments = Payment.All(payment => payment.staff.StaffNum == this.StaffNum);
             foreach (Payment p in payments)
                 p.Delete();
 
-            List<Purchase> purchases = Purchase.All(purchase => purchase.staff == this);
+            List<Purchase> purchases = Purchase.All(purchase => purchase.staff.StaffNum == this.StaffNum);
             foreach (Purchase p in purchases)
                 p.Delete();
 
