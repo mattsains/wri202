@@ -20,7 +20,7 @@ namespace Tuckshop
         }
 
 
-        private void dgCapSales_CellEnter(object sender, DataGridViewCellEventArgs e)
+       private void dgCapSales_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (dgCapSales.SelectedCells.Count == 1)
                 if (e.ColumnIndex < 3)

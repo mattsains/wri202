@@ -130,6 +130,8 @@ namespace Tuckshop
 
             PurchaseItem p=new PurchaseItem(DataObject.Insert("PurchItem", values));
 
+            item.QtyInStock -= qtyBought;
+
             try
             {
                 p.purchase.total += qtyBought * item.SellPrice;//adding the value of this purchase
