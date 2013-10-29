@@ -173,10 +173,10 @@ namespace Tuckshop
                 }
                 else
                 {
+                    errors = true;
                     if (row.Cells[1].Value == null)
                         Program.ShowError("Invalid Item code", "Item code not found.", Screen.Main);
-                    else
-                    errors = true;
+                    else                   
                     Program.ShowError("Invalid Item code", "'" + row.Cells[0].Value.ToString() + "' is not a valid integer item code.", Screen.Main);
                     return;
                 }
