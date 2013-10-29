@@ -205,7 +205,7 @@
     <Content Include="SalesPrint.htm" />
     <Content Include="StockItemList.html" />
     <Content Include="TSM.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -126,8 +126,7 @@ namespace Tuckshop
             values["PurchNum"] = purchase.purchaseNum;
             values["QtyBought"] = qtyBought;
             values["ItemNum"] = item.ItemNum;
-
-            
+        
 
             PurchaseItem p=new PurchaseItem(DataObject.Insert("PurchItem", values));
 
