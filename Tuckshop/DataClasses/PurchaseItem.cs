@@ -127,7 +127,16 @@ namespace Tuckshop
             values["QtyBought"] = qtyBought;
             values["ItemNum"] = item.ItemNum;
 
-            return new PurchaseItem(DataObject.Insert("PurchItem", values));
+            
+
+            PurchaseItem p=new PurchaseItem(DataObject.Insert("PurchItem", values));
+
+            try
+            {
+                p.purchase.total += qtyBought * item.SellPrice;//adding the value of this purchase
+            }
+            catch (InvalidOperationException) { /*silence warning exception*/ }
+            return p;
         }
 
         public override string ToString()
