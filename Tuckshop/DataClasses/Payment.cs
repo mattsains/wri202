@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Tuckshop.DataClasses
+namespace Tuckshop
 {
     class Payment : DataObject
     {
