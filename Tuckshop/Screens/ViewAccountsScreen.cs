@@ -46,11 +46,13 @@ namespace Tuckshop
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\reminderEmails\\";
             Directory.CreateDirectory(path);
+            int emails = 0;
             foreach (DataGridViewRow row in dgAccounts.Rows)
             {
-                if ((bool)row.Cells[3].Value)
+                if (row.Cells[3].Value!=null)
                 {
                     //means email please
+                    emails++;
                     Staff s = new Staff((int)row.Cells[0].Value);
                     StreamWriter xml = new StreamWriter(path + s.StaffNum + ".html");
                     xml.WriteLine(@"<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">
@@ -105,7 +107,10 @@ namespace Tuckshop
                     xml.Close();
                 }
             }
-            Program.SwitchTo(Screen.Main);
+            if (emails == 0)
+                Program.ShowError("Nobody selected", "You didn't select anyone to send an account to", Screen.Main);
+            else
+                Program.SwitchTo(Screen.Main);
         }
     }
 }
