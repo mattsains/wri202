@@ -121,7 +121,7 @@ namespace Tuckshop
                     dgCapSales[e.ColumnIndex,e.RowIndex].Selected=false;
                     if (dgCapSales[0, e.RowIndex + 1] != null)
                     {
-                        dgCapSales[0, e.RowIndex + 1].Selected = true;
+                        dgCapSales.CurrentCell = dgCapSales[0, e.RowIndex + 1];
                         dgCapSales.BeginEdit(true);
                     }
                 }
