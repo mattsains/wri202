@@ -126,7 +126,7 @@ namespace Tuckshop
                 catch (InvalidOperationException) { /*silence warning exception*/ }
             }
             //delete all items in this purchase
-            List<PurchaseItem> pitems = PurchaseItem.All(pitem => pitem.purchase == this);
+            List<PurchaseItem> pitems = PurchaseItem.All(pitem => pitem.purchase.purchaseNum == this.purchaseNum);
             foreach (PurchaseItem pitem in pitems)
                 pitem.Delete();
 

@@ -79,8 +79,8 @@ namespace Tuckshop
                     xml.WriteLine(@"<p>Here is a itemized statement:</p>
         <table>
             <tr><th>Date</th><th>Description</th><th>Quantity</th><th>Amount</th></tr>");
-                    List<Payment> payments = Payment.All(payment => payment.staff == s);
-                    List<PurchaseItem> purchases = PurchaseItem.All(pi => pi.purchase.staff == s);
+                    List<Payment> payments = Payment.All(payment => payment.staff.StaffNum == s.StaffNum);
+                    List<PurchaseItem> purchases = PurchaseItem.All(pi => pi.purchase.staff.StaffNum == s.StaffNum);
                     List<Tuple<DateTime, string>> statlines = new List<Tuple<DateTime, string>>();
 
                     foreach (Payment p in payments)
