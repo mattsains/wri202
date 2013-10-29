@@ -41,9 +41,9 @@
             // 
             // dgCapSales
             // 
-            this.dgCapSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgCapSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgCapSales.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             this.dgCapSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCapSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -67,6 +67,7 @@
             this.btnCapSales.TabIndex = 1;
             this.btnCapSales.Text = "Capture";
             this.btnCapSales.UseVisualStyleBackColor = true;
+            this.btnCapSales.Click += new System.EventHandler(this.btnCapSales_Click);
             // 
             // txtDate
             // 

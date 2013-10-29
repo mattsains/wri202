@@ -94,7 +94,7 @@ namespace Tuckshop
                 staff = Staff.All();
             else
             {
-                List<int> staffnums = DataObject.Search("staffnr", "Staff", new string[] { "StaffNr", "FirstName", "Surname", "Email" }, txtSearch.Text);
+                List<int> staffnums = DataObject.Search("staffnr", "Staff", new string[] { "StaffNr", "FirstName", "Surname", "Email" },txtSearch.Text);
                 staff = staffnums.ConvertAll(staffid => new Staff(staffid));//cool!
             }
             dgStaff.Rows.Clear();

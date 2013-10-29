@@ -53,6 +53,9 @@ namespace Tuckshop
                     catch (ArgumentException)
                     {
                         //no stock item like that exists, but it might be a valid new one
+                        dgCapStock[2, e.RowIndex].Value = null;
+                        dgCapStock[3, e.RowIndex].Value = null;
+                        dgCapStock[4, e.RowIndex].Value = null;
                         return;
                     }
 
@@ -97,28 +100,33 @@ namespace Tuckshop
 
                 int stockid;
 
-                if (int.TryParse((string)row.Cells[0].Value, out stockid))
+                if (row.Cells[0].Value != null && int.TryParse(row.Cells[0].Value.ToString(), out stockid))
                 {
                     decimal buyprice, sellprice;
                     int newqty;
-                    if (int.TryParse((string)row.Cells[1].Value, out newqty))
+                    if (row.Cells[1].Value != null && int.TryParse(row.Cells[1].Value.ToString(), out newqty))
                     {
-                        if (decimal.TryParse((string)row.Cells[3].Value, out buyprice))
+                        if (row.Cells[3].Value != null && decimal.TryParse(row.Cells[3].Value.ToString(), out buyprice))
                         {
-                            if (decimal.TryParse((string)row.Cells[4].Value, out sellprice))
+                            if (row.Cells[4].Value != null && decimal.TryParse(row.Cells[4].Value.ToString(), out sellprice))
                             {
                                 StockItem s;
                                 bool filled = false;
                                 try { s = new StockItem(stockid); }
                                 catch (ArgumentException)
                                 {
-                                    s = StockItem.New(stockid, (string)row.Cells[2].Value, newqty, buyprice, sellprice);
+                                    if (row.Cells[2].Value == null)
+                                    {
+                                        Program.ShowError("Invalid Description", "Description not found.", Screen.Main);
+                                        return;
+                                    }
+                                    s = StockItem.New(stockid, row.Cells[2].Value.ToString(), newqty, buyprice, sellprice);
                                     filled = true;
                                 }
                                 //now guaranteed to have a proper stock item in s.
                                 if (!filled)
                                 {
-                                    s.Description = (string)row.Cells[2].Value;
+                                    s.Description = row.Cells[2].Value.ToString();
                                     s.QtyInStock += newqty;
                                     s.CostPrice = buyprice;
                                     s.SellPrice = sellprice;
@@ -127,28 +135,40 @@ namespace Tuckshop
                             else
                             {
                                 errors = true;
-                                Program.ShowError("Invalid Selling price", "'" + (string)row.Cells[4].Value + "' is not a valid currency value", Screen.Main);
+                                if (row.Cells[4].Value == null)
+                                    Program.ShowError("Invalid Selling price", "Selling price not found.", Screen.Main);
+                                else
+                                    Program.ShowError("Invalid Selling price", "'" + row.Cells[4].Value.ToString() + "' is not a valid currency value", Screen.Main);
                                 return;
                             }
                         }
                         else
                         {
                             errors = true;
-                            Program.ShowError("Invalid Cost price", "'" + (string)row.Cells[3].Value + "' is not a valid currency value", Screen.Main);
+                            if (row.Cells[3].Value == null)
+                                Program.ShowError("Invalid Cost price", "Cost price not found.", Screen.Main);
+                            else
+                                Program.ShowError("Invalid Cost price", "'" + row.Cells[3].Value.ToString() + "' is not a valid currency value", Screen.Main);
                             return;
                         }
                     }
                     else
                     {
                         errors = true;
-                        Program.ShowError("Invalid Quantity", "'" + (string)row.Cells[1].Value + "' is not a valid integer", Screen.Main);
+                        if (row.Cells[1].Value == null)
+                            Program.ShowError("Invalid Quantity", "Quantity not found.", Screen.Main);
+                        else
+                            Program.ShowError("Invalid Quantity", "'" + row.Cells[1].Value.ToString() + "' is not a valid integer", Screen.Main);
                         return;
                     }
                 }
                 else
                 {
+                    if (row.Cells[1].Value == null)
+                        Program.ShowError("Invalid Item code", "Item code not found.", Screen.Main);
+                    else
                     errors = true;
-                    Program.ShowError("Invalid Item code", "'" + (string)row.Cells[0].Value + "' is not a valid integer item code.", Screen.Main);
+                    Program.ShowError("Invalid Item code", "'" + row.Cells[0].Value.ToString() + "' is not a valid integer item code.", Screen.Main);
                     return;
                 }
             }
@@ -157,6 +177,5 @@ namespace Tuckshop
                 Program.SwitchTo(Screen.ViewStock);
             }
         }
-
     }
 }

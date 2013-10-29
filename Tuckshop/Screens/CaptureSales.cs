@@ -126,5 +126,10 @@ namespace Tuckshop
                     }
                 }
         }
+
+        private void btnCapSales_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
