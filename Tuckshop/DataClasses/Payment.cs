@@ -122,7 +122,7 @@ namespace Tuckshop
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
 
-            values["date"] = date;
+            values["paymentdate"] = date;
             values["amountpaid"] = amountPaid;
             values["staffnr"] = staff.StaffNum;
 
