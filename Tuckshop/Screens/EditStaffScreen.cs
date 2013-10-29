@@ -33,8 +33,16 @@ namespace Tuckshop
         {
             DialogResult response = MessageBox.Show(string.Format("Are you sure you want to delete Staff member {0} {1}?", staff.FirstName, staff.Surname), "Deleting Staff Member", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (response == DialogResult.Yes)
+            {
                 staff.Delete();
-            Program.SwitchTo(Screen.ViewStaff);
+                MessageBox.Show("The staff member was removed", "Success", MessageBoxButtons.OK);
+                Program.SwitchTo(Screen.ViewStaff);
+            }
+            else
+            {
+                MessageBox.Show("The staff member was not removed", "Success", MessageBoxButtons.OK);
+            }
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -58,6 +66,7 @@ namespace Tuckshop
             staff.FirstName = txtfirstName.Text;
             staff.Surname = txtSurname.Text;
             staff.Email = txtEmail.Text;
+            MessageBox.Show("The staff member was updated", "Success", MessageBoxButtons.OK);
             Program.SwitchTo(Screen.ViewStaff);
         }
 

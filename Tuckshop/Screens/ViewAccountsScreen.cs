@@ -42,8 +42,6 @@ namespace Tuckshop
 
         private void btnEmail_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Because this feature might be run very often while testing this application, and because people won't appreciate getting a thousand nonsense emails, Instead this program will save copies of the emails to your desktop. Please find them there.", "Email feature disabled", MessageBoxButtons.OK);
-
             string path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\reminderEmails\\";
             Directory.CreateDirectory(path);
             int emails = 0;
@@ -110,7 +108,10 @@ namespace Tuckshop
             if (emails == 0)
                 Program.ShowError("Nobody selected", "You didn't select anyone to send an account to", Screen.Main);
             else
+            {
+                MessageBox.Show("Because this feature might be run very often while testing this application, and because people won't appreciate getting a thousand nonsense emails, Instead this program will save copies of the emails to your desktop. Please find them there.", "Email feature disabled", MessageBoxButtons.OK);
                 Program.SwitchTo(Screen.Main);
+            }
         }
     }
 }

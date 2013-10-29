@@ -40,7 +40,7 @@ namespace Tuckshop
             if (Amount == 0)
                 return;
 
-            List<Staff> staffmember = Staff.All(s => s.FirstName + " " + s.Surname == Name);
+            List<Staff> staffmember = Staff.All(s => (s.FirstName + " " + s.Surname).ToLower() == Name.ToLower());
 
             if (staffmember.Count == 0)
             {
@@ -50,7 +50,8 @@ namespace Tuckshop
 
 
             Payment.New(Date, Amount, staffmember[0]);
-            txtAmount.Text = "R ";
+            MessageBox.Show("The new payment was recorded", "Success", MessageBoxButtons.OK);
+            txtAmount.Text = "";
             txtName.Clear();
             calDate.SelectionStart = DateTime.Now;
         }

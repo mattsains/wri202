@@ -126,6 +126,7 @@ namespace Tuckshop
                     PurchaseItem.New(p, item.Item1, item.Item2);
             }
             //and we are done.
+            MessageBox.Show("The new sales were recorded", "Success", MessageBoxButtons.OK);
             Program.SwitchTo(Screen.Main);
         }
 
