@@ -58,8 +58,8 @@
             // 
             // txtAmount
             // 
-            this.txtAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmount.AutoCompleteCustomSource.AddRange(new string[] {
             "Matthew Sainsbury",
             "Dean Gifford",
@@ -85,8 +85,8 @@
             // 
             // txtName
             // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.AutoCompleteCustomSource.AddRange(new string[] {
             "Matthew Sainsbury",
             "Dean Gifford",
@@ -131,6 +131,7 @@
             this.btnProcess.TabIndex = 1;
             this.btnProcess.Text = "Process";
             this.btnProcess.UseVisualStyleBackColor = true;
+            this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
             // 
             // NewPaymentScreen
             // 

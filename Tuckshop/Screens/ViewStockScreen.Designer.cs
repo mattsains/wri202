@@ -37,14 +37,14 @@
             this.rdAllStock = new System.Windows.Forms.RadioButton();
             this.rdInStockOnly = new System.Windows.Forms.RadioButton();
             this.dgItems = new System.Windows.Forms.DataGridView();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cItemNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cCostPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,9 +82,9 @@
             this.dgItems.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             this.dgItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -121,6 +121,39 @@
             this.dgItems.TabIndex = 3;
             this.dgItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgItems_CellDoubleClick);
             // 
+            // cItemNum
+            // 
+            this.cItemNum.Frozen = true;
+            this.cItemNum.HeaderText = "Num";
+            this.cItemNum.Name = "cItemNum";
+            this.cItemNum.ReadOnly = true;
+            // 
+            // cQuantity
+            // 
+            this.cQuantity.HeaderText = "Qty";
+            this.cQuantity.Name = "cQuantity";
+            // 
+            // cDescription
+            // 
+            this.cDescription.HeaderText = "Description";
+            this.cDescription.Name = "cDescription";
+            // 
+            // cCostPrice
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.cCostPrice.DefaultCellStyle = dataGridViewCellStyle3;
+            this.cCostPrice.HeaderText = "Cost Price";
+            this.cCostPrice.Name = "cCostPrice";
+            // 
+            // cSellPrice
+            // 
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.cSellPrice.DefaultCellStyle = dataGridViewCellStyle4;
+            this.cSellPrice.HeaderText = "Selling Price";
+            this.cSellPrice.Name = "cSellPrice";
+            // 
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -154,39 +187,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 5;
-            // 
-            // cItemNum
-            // 
-            this.cItemNum.Frozen = true;
-            this.cItemNum.HeaderText = "Num";
-            this.cItemNum.Name = "cItemNum";
-            this.cItemNum.ReadOnly = true;
-            // 
-            // cQuantity
-            // 
-            this.cQuantity.HeaderText = "Qty";
-            this.cQuantity.Name = "cQuantity";
-            // 
-            // cDescription
-            // 
-            this.cDescription.HeaderText = "Description";
-            this.cDescription.Name = "cDescription";
-            // 
-            // cCostPrice
-            // 
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.cCostPrice.DefaultCellStyle = dataGridViewCellStyle3;
-            this.cCostPrice.HeaderText = "Cost Price";
-            this.cCostPrice.Name = "cCostPrice";
-            // 
-            // cSellPrice
-            // 
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.cSellPrice.DefaultCellStyle = dataGridViewCellStyle4;
-            this.cSellPrice.HeaderText = "Selling Price";
-            this.cSellPrice.Name = "cSellPrice";
             // 
             // ViewStockScreen
             // 

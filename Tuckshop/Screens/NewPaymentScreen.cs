@@ -27,5 +27,10 @@ namespace Tuckshop
             //panel1.Width = calDate.Width + 18; seems to break the page
             panel1.Left = (this.Width - panel1.Width) / 2;
         }
+
+        private void btnProcess_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
