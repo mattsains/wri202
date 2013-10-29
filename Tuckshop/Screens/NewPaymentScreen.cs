@@ -32,9 +32,5 @@ namespace Tuckshop
         {
         }
 
-        private void btnProcess_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
