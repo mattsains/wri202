@@ -89,7 +89,16 @@ namespace Tuckshop
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            Program.SwitchTo(Screen.PrintPreview, "Print Stock List", "file:///C:/Documents%20and%20Settings/Matt/Desktop/varsity%20working%20folder/wri202/UI-Skeleton/StockItemList.html");
+            string title = "Stock List";
+            if (rdAllStock.Checked)
+                title = "List of all stock";
+            else if (rdInStockOnly.Checked)
+                title = "Items in stock";
+
+            if (txtSearch.Text != "Search..." && txtSearch.Text != "")
+                title += " matching '" + txtSearch.Text + "'";
+
+            Program.PrintStockList(dateTimePicker1.Value, title, dgItems.Rows);
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -100,7 +109,7 @@ namespace Tuckshop
                 stock = StockItem.All();
             else
             {
-                List<int> stocknums = DataObject.Search("ItemNum", "StockItem", new string[] { "ItemNum", "Description"}, txtSearch.Text);
+                List<int> stocknums = DataObject.Search("ItemNum", "StockItem", new string[] { "ItemNum", "Description" }, txtSearch.Text);
                 stock = stocknums.ConvertAll(stocknum => new StockItem(stocknum));//cool! <<sure is!
             }
             dgItems.Rows.Clear();

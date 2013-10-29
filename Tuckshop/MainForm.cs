@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Tuckshop
 {
@@ -174,7 +175,7 @@ namespace Tuckshop
 
         private void printSalesMenuItem_Click_1(object sender, EventArgs e)
         {
-            SwitchTo(Screen.PrintPreview,"Print Sales Sheet","file:///C:/Documents%20and%20Settings/Matt/Desktop/varsity%20working%20folder/wri202/UI-Skeleton/SalesPrint.htm");
+            Program.PrintSalesSheet();    
         }
     }
 }

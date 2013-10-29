@@ -6,7 +6,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Tuckshop.DataClasses; //?
 
 namespace Tuckshop
 {
@@ -15,11 +14,6 @@ namespace Tuckshop
         public NewPaymentScreen()
         {
             InitializeComponent();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void NewPaymentScreen_Resize(object sender, EventArgs e)
@@ -32,5 +26,6 @@ namespace Tuckshop
         private void btnProcess_Click(object sender, EventArgs e)
         {
         }
+
     }
 }

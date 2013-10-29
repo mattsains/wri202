@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.dgCapSales = new System.Windows.Forms.DataGridView();
+            this.btnCapSales = new System.Windows.Forms.Button();
+            this.txtDate = new System.Windows.Forms.DateTimePicker();
+            this.lblDate = new System.Windows.Forms.Label();
             this.staffnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemdesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCapSales = new System.Windows.Forms.Button();
-            this.txtDate = new System.Windows.Forms.DateTimePicker();
-            this.lblDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgCapSales)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,27 +55,8 @@
             this.dgCapSales.Name = "dgCapSales";
             this.dgCapSales.Size = new System.Drawing.Size(630, 441);
             this.dgCapSales.TabIndex = 0;
-            this.dgCapSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // staffnum
-            // 
-            this.staffnum.HeaderText = "Staff Number";
-            this.staffnum.Name = "staffnum";
-            // 
-            // itemnum
-            // 
-            this.itemnum.HeaderText = "Item Number";
-            this.itemnum.Name = "itemnum";
-            // 
-            // qty
-            // 
-            this.qty.HeaderText = "Quantity";
-            this.qty.Name = "qty";
-            // 
-            // itemdesc
-            // 
-            this.itemdesc.HeaderText = "Item Description";
-            this.itemdesc.Name = "itemdesc";
+            this.dgCapSales.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCapSales_CellEnter);
+            this.dgCapSales.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCapSales_CellLeave);
             // 
             // btnCapSales
             // 
@@ -104,6 +85,27 @@
             this.lblDate.TabIndex = 3;
             this.lblDate.Text = "Date:";
             // 
+            // staffnum
+            // 
+            this.staffnum.HeaderText = "Staff Number";
+            this.staffnum.Name = "staffnum";
+            // 
+            // itemnum
+            // 
+            this.itemnum.HeaderText = "Item Number";
+            this.itemnum.Name = "itemnum";
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "Quantity";
+            this.qty.Name = "qty";
+            // 
+            // itemdesc
+            // 
+            this.itemdesc.HeaderText = "Item Description";
+            this.itemdesc.Name = "itemdesc";
+            this.itemdesc.ReadOnly = true;
+            // 
             // CaptureSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,12 +125,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgCapSales;
+        private System.Windows.Forms.Button btnCapSales;
+        private System.Windows.Forms.DateTimePicker txtDate;
+        private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn staffnum;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemnum;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemdesc;
-        private System.Windows.Forms.Button btnCapSales;
-        private System.Windows.Forms.DateTimePicker txtDate;
-        private System.Windows.Forms.Label lblDate;
     }
 }

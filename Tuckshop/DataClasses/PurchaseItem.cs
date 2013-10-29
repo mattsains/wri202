@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Tuckshop.DataClasses
+namespace Tuckshop
 {
     class PurchaseItem : DataObject
     {
@@ -16,7 +16,6 @@ namespace Tuckshop.DataClasses
             get { return new Purchase(base.GetAttr<int>("PurchNum")); }
             set
             {
-                //
                 if (purchase != null)
                     purchase.total -= QtyBought * item.SellPrice;
 
@@ -128,7 +127,16 @@ namespace Tuckshop.DataClasses
             values["QtyBought"] = qtyBought;
             values["ItemNum"] = item.ItemNum;
 
-            return new PurchaseItem(DataObject.Insert("PurchItem", values));
+            
+
+            PurchaseItem p=new PurchaseItem(DataObject.Insert("PurchItem", values));
+
+            try
+            {
+                p.purchase.total += qtyBought * item.SellPrice;//adding the value of this purchase
+            }
+            catch (InvalidOperationException) { /*silence warning exception*/ }
+            return p;
         }
 
         public override string ToString()

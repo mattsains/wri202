@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Tuckshop.DataClasses
+namespace Tuckshop
 {
     class Payment : DataObject
     {
@@ -22,7 +22,7 @@ namespace Tuckshop.DataClasses
             set
             {
                 if (this.staff != null)
-                    staff.Balance += (value - amountPaid); //TODO: verify - might need to invert this
+                    staff.Balance -= (value - amountPaid);
                 base.SetAttr("amountpaid", value);
             }
         }
@@ -31,9 +31,9 @@ namespace Tuckshop.DataClasses
             get { return new Staff(base.GetAttr<int>("staffnr")); }
             set { 
                 if (this.staff!=null)
-                    staff.Balance-=amountPaid; //TODO: also verify this
+                    staff.Balance+=amountPaid;
                 base.SetAttr("staffnr", value.StaffNum);
-                value.Balance += amountPaid; //TODO: also verify this
+                value.Balance -= amountPaid;
             }
         }
 
@@ -93,7 +93,7 @@ namespace Tuckshop.DataClasses
         /// </summary>
         public override void Delete()
         {
-            staff.Balance -= amountPaid; //TODO: verify
+            staff.Balance += amountPaid;
             base.Delete();
         }
 

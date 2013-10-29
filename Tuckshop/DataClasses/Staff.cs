@@ -82,7 +82,15 @@ namespace Tuckshop
 
         public override void Delete()
         {
-            //TODO: handle foreign key constraints
+            //delete everything referencing this staff member. Probably not the best idea but whatever.
+            List<Payment> payments = Payment.All(payment => payment.staff == this);
+            foreach (Payment p in payments)
+                p.Delete();
+
+            List<Purchase> purchases = Purchase.All(purchase => purchase.staff == this);
+            foreach (Purchase p in purchases)
+                p.Delete();
+
             base.Delete();
         }
         /// <summary>

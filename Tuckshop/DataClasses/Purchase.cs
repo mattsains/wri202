@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Tuckshop.DataClasses
+namespace Tuckshop
 {
     class Purchase : DataObject
     {        
@@ -28,7 +28,7 @@ namespace Tuckshop.DataClasses
             {
                 base.SetAttr("PurchTotal", value);
                 if (staff != null)
-                    staff.Balance -= (value - total);//TODO: verify
+                    staff.Balance += (value - total);
                 throw new InvalidOperationException("Only data objects should *EVER* call this!");
             }
         }
@@ -38,13 +38,11 @@ namespace Tuckshop.DataClasses
             set
             {
                 if (staff != null)
-                    staff.Balance += total; //TODO: verify
+                    staff.Balance -= total;
                 base.SetAttr("StaffNr", value.StaffNum);
-                value.Balance -= total; //TODO: verify
+                value.Balance += total;
             }
         }
-        //an internal cache of items in this purchase
-        protected List<PurchaseItem> _items = new List<PurchaseItem>();
 
         public object[] Select(params string[] fieldNames)
         {
@@ -71,12 +69,7 @@ namespace Tuckshop.DataClasses
         /// </summary>
         public Purchase(int? purchaseNum = null)
             : base("Purchase", "PurchNum", purchaseNum)
-        {
-            if (purchaseNum != null)
-            {
-                _items = PurchaseItem.All(purchItem => purchItem.purchase.purchaseNum == purchaseNum);
-            }
-        }
+        { }
 
         public static List<Purchase> All()
         {
@@ -111,8 +104,9 @@ namespace Tuckshop.DataClasses
             if (staff != null)
                 staff.Balance += total;
             //delete all items in this purchase
-            foreach (PurchaseItem p in _items)
-                p.Delete();
+            List<PurchaseItem> pitems = PurchaseItem.All(pitem => pitem.purchase == this);
+            foreach (PurchaseItem pitem in pitems)
+                pitem.Delete();
 
             base.Delete();
         }
