@@ -23,7 +23,18 @@ namespace Tuckshop
         /// </summary>
         public decimal total
         {
-            get { return base.GetAttr<decimal>("PurchTotal"); }
+            get
+            { return base.GetAttr<decimal>("PurchTotal"); //}
+                //hopefully this is ok
+               /* List<PurchaseItem> listy =  PurchaseItem.All(p => p.purchase.purchaseNum == purchaseNum);
+                decimal total = 0;
+                foreach (PurchaseItem a in listy)
+                {
+                    total += a.QtyBought * a.item.SellPrice;
+                }
+
+                return total;*/
+            }
             set
             {
                 base.SetAttr("PurchTotal", value);

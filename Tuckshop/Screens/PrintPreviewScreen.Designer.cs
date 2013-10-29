@@ -55,14 +55,15 @@
             this.btnPrint.TabIndex = 1;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // PrintSalesScreen
+            // PrintPreviewScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.webPrintSales);
-            this.Name = "PrintSalesScreen";
+            this.Name = "PrintPreviewScreen";
             this.Size = new System.Drawing.Size(460, 407);
             this.ResumeLayout(false);
 
