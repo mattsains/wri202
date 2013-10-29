@@ -22,18 +22,34 @@ namespace Tuckshop
             set
             {
                 if (this.staff != null)
-                    staff.Balance -= (value - amountPaid);
+                {
+                    try
+                    {
+                        staff.Balance -= (value - amountPaid);
+                    }
+                    catch (InvalidOperationException) { /*silence warning exception*/ }
+                }
                 base.SetAttr("amountpaid", value);
             }
         }
         public Staff staff
         {
             get { return new Staff(base.GetAttr<int>("staffnr")); }
-            set { 
-                if (this.staff!=null)
-                    staff.Balance+=amountPaid;
+            set {
+                if (this.staff != null)
+                {
+                    try
+                    {
+                        staff.Balance += amountPaid;
+                    }
+                    catch (InvalidOperationException) { /*silence warning exception*/ }
+                }
                 base.SetAttr("staffnr", value.StaffNum);
-                value.Balance -= amountPaid;
+                try
+                {
+                    value.Balance -= amountPaid;
+                }
+                catch (InvalidOperationException) { /*silence warning exception*/ }
             }
         }
 
@@ -93,7 +109,12 @@ namespace Tuckshop
         /// </summary>
         public override void Delete()
         {
-            staff.Balance += amountPaid;
+            try
+            {
+                staff.Balance += amountPaid;
+            }
+            catch (InvalidOperationException) { /*silencing warning exception*/ }
+
             base.Delete();
         }
 

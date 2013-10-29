@@ -28,7 +28,13 @@ namespace Tuckshop
             {
                 base.SetAttr("PurchTotal", value);
                 if (staff != null)
-                    staff.Balance += (value - total);
+                {
+                    try
+                    {
+                        staff.Balance += (value - total);
+                    }
+                    catch (InvalidOperationException) { /*silence warning exception, because we make our own*/ }
+                }
                 throw new InvalidOperationException("Only data objects should *EVER* call this!");
             }
         }
@@ -38,9 +44,19 @@ namespace Tuckshop
             set
             {
                 if (staff != null)
-                    staff.Balance -= total;
+                {
+                    try
+                    {
+                        staff.Balance -= total;
+                    }
+                    catch (InvalidOperationException) { /*silence warning exception*/ }
+                }
                 base.SetAttr("StaffNr", value.StaffNum);
-                value.Balance += total;
+                try
+                {
+                    value.Balance += total;
+                }
+                catch (InvalidOperationException) { /*silence warning exception*/ }
             }
         }
 
@@ -102,7 +118,13 @@ namespace Tuckshop
         public override void Delete()
         {
             if (staff != null)
-                staff.Balance += total;
+            {
+                try
+                {
+                    staff.Balance += total;
+                }
+                catch (InvalidOperationException) { /*silence warning exception*/ }
+            }
             //delete all items in this purchase
             List<PurchaseItem> pitems = PurchaseItem.All(pitem => pitem.purchase == this);
             foreach (PurchaseItem pitem in pitems)

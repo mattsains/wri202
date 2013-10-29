@@ -30,7 +30,11 @@ namespace Tuckshop
         {
             //I hate this because it should be calulated, but whatevs
             get { return base.GetAttr<decimal>("Balance"); }
-            set { base.SetAttr("Balance", value); }
+            set
+            {
+                base.SetAttr("Balance", value);
+                throw new InvalidOperationException("Only data objects should *EVER* call this!");
+            }
         }
 
         public object[] Select(params string[] fieldNames)
