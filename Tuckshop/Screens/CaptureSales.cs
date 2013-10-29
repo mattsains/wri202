@@ -85,9 +85,9 @@ namespace Tuckshop
                                     }
                                     else
                                     {
-                                        Program.ShowError("Invalid Quantity", "The tuckshop does not have that many items in stock", Screen.Main);
+                                        Program.ShowError("Invalid Quantity", "The tuckshop does not have enough "+si.Description+" in stock", Screen.Main);
+                                        return;
                                     }
-                                   
                                 }
                             }
                             catch
