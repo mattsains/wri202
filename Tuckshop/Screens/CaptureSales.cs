@@ -50,7 +50,81 @@ namespace Tuckshop
 
         private void btnCapSales_Click(object sender, EventArgs e)
         {
+            Dictionary<Staff, List<Tuple<StockItem, int>>> staffpurchases = new Dictionary<Staff, List<Tuple<StockItem, int>>>();
+            int lastStaffId = -1;
+            foreach (DataGridViewRow row in dgCapSales.Rows)
+            {
+                int staffid;
+                if (row.Cells[0].Value == null)
+                    break; //we are at the end of the datagrid, this is the empty row used for insertions
+                if (int.TryParse((string)row.Cells[0].Value, out staffid))
+                {
+                    try
+                    {
+                        Staff s = new Staff(staffid);
+                        int stockid;
+                        if (int.TryParse((string)row.Cells[1].Value, out stockid))
+                        {
+                            try
+                            {
+                                StockItem si = new StockItem(stockid);
+                                int qty;
+                                if (int.TryParse((string)row.Cells[2].Value, out qty))
+                                {
+                                    if (qty <= si.QtyInStock)
+                                    {
+                                        //right, after all that, time to add to the dictionary
+                                        if (lastStaffId == staffid)
+                                            staffpurchases[s].Add(new Tuple<StockItem, int>(si, qty));
+                                        else
+                                        {
+                                            lastStaffId = staffid;
+                                            staffpurchases.Add(s, new List<Tuple<StockItem, int>>() { new Tuple<StockItem, int>(si, qty) });
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Program.ShowError("Invalid Quantity", "The tuckshop does not have that many items in stock", Screen.Main);
+                                    }
+                                   
+                                }
+                            }
+                            catch
+                            {
+                                Program.ShowError("Invalid Staff number", "The staff number '" + row.Cells[1].Value + "' is invalid.", Screen.Main);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            Program.ShowError("Invalid Staff number", "The staff number '" + row.Cells[1].Value + "' is invalid.", Screen.Main);
+                            return;
+                        }
+                    }
+                    catch
+                    {
+                        Program.ShowError("Invalid Staff number", "The staff number '" + row.Cells[0].Value + "' is invalid.", Screen.Main);
+                        return;
+                    }
+                }
+                else
+                {
+                    Program.ShowError("Invalid Staff number", "The staff number '" + staffid + "' is invalid.", Screen.Main);
+                    return;
+                }
+            }
 
+            //right database time
+            DateTime date = txtDate.Value;
+
+            foreach (KeyValuePair<Staff, List<Tuple<StockItem, int>>> kp in staffpurchases)
+            {
+                Purchase p = Purchase.New(date, kp.Key);
+                foreach (Tuple<StockItem, int> item in kp.Value)
+                    PurchaseItem.New(p, item.Item1, item.Item2);
+            }
+            //and we are done.
+            Program.SwitchTo(Screen.Main);
         }
 
         private void dgCapSales_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
