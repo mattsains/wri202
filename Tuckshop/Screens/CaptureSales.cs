@@ -20,7 +20,7 @@ namespace Tuckshop
         }
 
 
-        private void dgCapSales_CellEnter(object sender, DataGridViewCellEventArgs e)
+       private void dgCapSales_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (dgCapSales.SelectedCells.Count == 1)
                 if (e.ColumnIndex < 3)
@@ -254,27 +254,6 @@ namespace Tuckshop
                 else
                     dgCapSales[e.ColumnIndex, e.RowIndex].Style.BackColor = postmodern;
             }
-        }
-
-        private void dgCapSales_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgCapSales.SelectedCells.Count == 1)
-                if (e.ColumnIndex < 3)
-                    dgCapSales.BeginEdit(true);
-                else
-                {
-                    dgCapSales[e.ColumnIndex,e.RowIndex].Selected=false;
-                    if (dgCapSales[0, e.RowIndex + 1] != null)
-                    {
-                        dgCapSales.CurrentCell = dgCapSales[0, e.RowIndex + 1];
-                        dgCapSales.BeginEdit(true);
-                    }
-                }
-        }
-
-        private void btnCapSales_Click(object sender, EventArgs e)
-        {
-        
         }
     }
 }
