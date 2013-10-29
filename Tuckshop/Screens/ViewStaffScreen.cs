@@ -102,6 +102,19 @@ namespace Tuckshop
                 dgStaff.Rows.Add(s.Select("StaffNum", "FirstName", "Surname", "Email", "Balance"));
         }
 
+        private void dgStaff_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+                try
+                {
+                    System.Diagnostics.Process.Start("mailto:" + dgStaff[3, e.RowIndex].Value);
+                }
+                catch (System.ComponentModel.Win32Exception)
+                {
+                    MessageBox.Show("Couldn't open your email client. Perhaps you have not set a default mail client?", "Couldn't open your email client", MessageBoxButtons.OK);
+                }
+        }
+
 
 
     }
