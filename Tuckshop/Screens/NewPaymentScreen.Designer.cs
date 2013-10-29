@@ -131,6 +131,7 @@
             this.btnProcess.TabIndex = 1;
             this.btnProcess.Text = "Process";
             this.btnProcess.UseVisualStyleBackColor = true;
+            this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
             // 
             // NewPaymentScreen
             // 

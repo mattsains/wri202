@@ -6,7 +6,7 @@ using System.Text;
 namespace Tuckshop.DataClasses
 {
     class Purchase : DataObject
-    {
+    {        
         public int purchaseNum
         {
             get { return base.GetAttr<int>("PurchNum"); }
@@ -120,7 +120,6 @@ namespace Tuckshop.DataClasses
         public static Purchase New(DateTime date, Staff staff)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
-
             values["PurchDate"] = date;
             values["StaffNr"] = staff.StaffNum;
 

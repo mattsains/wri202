@@ -16,9 +16,14 @@ namespace Tuckshop.DataClasses
             get { return new Purchase(base.GetAttr<int>("PurchNum")); }
             set
             {
+                //
                 if (purchase != null)
                     purchase.total -= QtyBought * item.SellPrice;
+
+                //setting the purchase number to be whatever in incoming one is
                 base.SetAttr("PurchNum", value.purchaseNum);
+
+                //adding the value to the purchase
                 value.total += QtyBought * item.SellPrice;
             }
         }
