@@ -126,7 +126,14 @@ namespace Tuckshop
             values["amountpaid"] = amountPaid;
             values["staffnr"] = staff.StaffNum;
 
-            return new Payment(DataObject.Insert("Payment", values));
+            Payment output = new Payment(DataObject.Insert("Payment", values));
+            try
+            {
+                staff.Balance -= amountPaid;
+            }
+            catch (InvalidOperationException) { /*silence warning exception*/ }
+
+            return output;
         }
 
         public override string ToString()
