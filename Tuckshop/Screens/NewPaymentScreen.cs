@@ -16,11 +16,6 @@ namespace Tuckshop
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void NewPaymentScreen_Resize(object sender, EventArgs e)
         {
             btnProcess.Left = (this.Width - btnProcess.Width) / 2;
