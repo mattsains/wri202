@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgCapSales = new System.Windows.Forms.DataGridView();
             this.btnCapSales = new System.Windows.Forms.Button();
             this.txtDate = new System.Windows.Forms.DateTimePicker();
@@ -41,10 +43,19 @@
             // 
             // dgCapSales
             // 
-            this.dgCapSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgCapSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgCapSales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgCapSales.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCapSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgCapSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCapSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.staffnum,
@@ -56,7 +67,7 @@
             this.dgCapSales.Size = new System.Drawing.Size(630, 441);
             this.dgCapSales.TabIndex = 0;
             this.dgCapSales.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCapSales_CellEnter);
-            this.dgCapSales.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCapSales_CellLeave);
+            this.dgCapSales.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgCapSales_CellValidating);
             // 
             // btnCapSales
             // 
@@ -89,22 +100,32 @@
             // 
             this.staffnum.HeaderText = "Staff Number";
             this.staffnum.Name = "staffnum";
+            this.staffnum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.staffnum.Width = 75;
             // 
             // itemnum
             // 
             this.itemnum.HeaderText = "Item Number";
             this.itemnum.Name = "itemnum";
+            this.itemnum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.itemnum.Width = 73;
             // 
             // qty
             // 
             this.qty.HeaderText = "Quantity";
             this.qty.Name = "qty";
+            this.qty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.qty.Width = 52;
             // 
             // itemdesc
             // 
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemdesc.DefaultCellStyle = dataGridViewCellStyle2;
             this.itemdesc.HeaderText = "Item Description";
             this.itemdesc.Name = "itemdesc";
             this.itemdesc.ReadOnly = true;
+            this.itemdesc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.itemdesc.Width = 89;
             // 
             // CaptureSales
             // 
