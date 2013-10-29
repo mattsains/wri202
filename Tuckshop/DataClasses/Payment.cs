@@ -97,11 +97,10 @@ namespace Tuckshop
             base.Delete();
         }
 
-        public static Payment New(string description, DateTime date, decimal amountPaid, Staff staff)
+        public static Payment New(DateTime date, decimal amountPaid, Staff staff)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
 
-            values["description"] = description;
             values["date"] = date;
             values["amountpaid"] = amountPaid;
             values["staffnr"] = staff.StaffNum;
