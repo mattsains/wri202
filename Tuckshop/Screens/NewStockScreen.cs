@@ -32,11 +32,13 @@ namespace Tuckshop
 
         private void dgCapStock_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
+            Color postmodern = Color.FromArgb(221, 57, 57);
             if (e.ColumnIndex == 0)
             {
                 //user has just entered a stock code
                 //populate if possible
-                int itemid;
+                int itemid;     
+
                 if (int.TryParse((string)dgCapStock[0, e.RowIndex].EditedFormattedValue, out itemid))
                 {
                     dgCapStock[0, e.RowIndex].Style.BackColor = Color.White; //reset colour
@@ -59,7 +61,7 @@ namespace Tuckshop
                 {
                     //not even an integer valued code
                     if (((string)dgCapStock[0, e.RowIndex].EditedFormattedValue).Length != 0)
-                        dgCapStock[0, e.RowIndex].Style.BackColor = Color.Red; //TODO: change this to a more appealing colour
+                        dgCapStock[0, e.RowIndex].Style.BackColor = postmodern ;
                     else
                         dgCapStock[0, e.RowIndex].Style.BackColor = Color.White;
                 }
@@ -71,7 +73,7 @@ namespace Tuckshop
                     int.TryParse((string)dgCapStock[1, e.RowIndex].EditedFormattedValue, out temp))
                     dgCapStock[1, e.RowIndex].Style.BackColor = Color.White;
                 else
-                    dgCapStock[1, e.RowIndex].Style.BackColor = Color.Red; //TODO: change this to a more appealing colour
+                    dgCapStock[1, e.RowIndex].Style.BackColor = postmodern; 
             }
             else if (e.ColumnIndex == 3 || e.ColumnIndex == 4)
             {
@@ -80,7 +82,7 @@ namespace Tuckshop
                     decimal.TryParse((string)dgCapStock[e.ColumnIndex, e.RowIndex].EditedFormattedValue, out temp))
                     dgCapStock[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.White;
                 else
-                    dgCapStock[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Red; //TODO: change this to a more appealing colour
+                    dgCapStock[e.ColumnIndex, e.RowIndex].Style.BackColor = postmodern;
             }
         }
 
@@ -155,5 +157,6 @@ namespace Tuckshop
                 Program.SwitchTo(Screen.ViewStock);
             }
         }
+
     }
 }

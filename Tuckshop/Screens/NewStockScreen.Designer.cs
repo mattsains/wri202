@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCapStock = new System.Windows.Forms.Button();
             this.dgCapStock = new System.Windows.Forms.DataGridView();
             this.itemnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,9 +53,9 @@
             // 
             // dgCapStock
             // 
-            this.dgCapStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgCapStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgCapStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             this.dgCapStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCapStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -86,11 +88,15 @@
             // 
             // cCostPrice
             // 
+            dataGridViewCellStyle1.NullValue = null;
+            this.cCostPrice.DefaultCellStyle = dataGridViewCellStyle1;
             this.cCostPrice.HeaderText = "Cost Price";
             this.cCostPrice.Name = "cCostPrice";
             // 
             // cSellPrice
             // 
+            dataGridViewCellStyle2.NullValue = null;
+            this.cSellPrice.DefaultCellStyle = dataGridViewCellStyle2;
             this.cSellPrice.HeaderText = "Sell Price";
             this.cSellPrice.Name = "cSellPrice";
             // 

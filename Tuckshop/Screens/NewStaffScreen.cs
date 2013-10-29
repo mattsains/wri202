@@ -53,7 +53,6 @@ namespace Tuckshop
             try
             {
                 Staff.New(staffnum, txtfirstName.Text, txtSurname.Text, txtEmail.Text);
-
             }
             catch (Exception ex)
             {

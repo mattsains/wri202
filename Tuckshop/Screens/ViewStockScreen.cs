@@ -63,7 +63,8 @@ namespace Tuckshop
         /// <param name="e"></param>
         private void dgItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Program.SwitchTo(Screen.EditStock, dgItems[0, e.RowIndex].Value);
+            if (e.RowIndex >= 0)
+                Program.SwitchTo(Screen.EditStock, dgItems[0, e.RowIndex].Value);
         }
         /// <summary>
         /// Is triggered twice when the radio selection is changed.
@@ -72,6 +73,8 @@ namespace Tuckshop
         /// <param name="e"></param>
         private void rdAllStock_CheckedChanged(object sender, EventArgs e)
         {
+            dgItems.Rows.Clear();
+
             RadioButton radioSender = (RadioButton)sender;
             //Taking care of the double trigger problem:
             if (radioSender.Checked)
@@ -87,6 +90,22 @@ namespace Tuckshop
         private void btnPrint_Click(object sender, EventArgs e)
         {
             Program.SwitchTo(Screen.PrintPreview, "Print Stock List", "file:///C:/Documents%20and%20Settings/Matt/Desktop/varsity%20working%20folder/wri202/UI-Skeleton/StockItemList.html");
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            List<StockItem> stock = new List<StockItem>();
+
+            if (txtSearch.Text == "Search..." || txtSearch.Text == "")
+                stock = StockItem.All();
+            else
+            {
+                List<int> stocknums = DataObject.Search("ItemNum", "StockItem", new string[] { "ItemNum", "Description"}, txtSearch.Text);
+                stock = stocknums.ConvertAll(stocknum => new StockItem(stocknum));//cool! <<sure is!
+            }
+            dgItems.Rows.Clear();
+            foreach (StockItem s in stock)
+                dgItems.Rows.Add(s.Select("ItemNum", "Description", "QtyInStock", "CostPrice", "SellPrice"));
         }
 
     }
