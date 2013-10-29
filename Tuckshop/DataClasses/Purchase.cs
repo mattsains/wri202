@@ -51,10 +51,10 @@ namespace Tuckshop
             {
                 switch (fieldNames[i])
                 {
-                    case "purchasenum": output[i] = this.purchaseNum; break;
-                    case "date": output[i] = this.date; break;
-                    case "total": output[i] = this.total; break;
-                    case "staff": output[i] = this.staff; break;
+                    case "purchnum": output[i] = this.purchaseNum; break;
+                    case "purchdate": output[i] = this.date; break;
+                    case "purchtotal": output[i] = this.total; break;
+                    case "staffnr": output[i] = this.staff; break;
                     default: //wants some information about the staff member, delegate to Staff.Select()
                         if (fieldNames[i].StartsWith("staff."))
                             output[i] = staff.Select(fieldNames[i].Substring(fieldNames[i].IndexOf('.') + 1));
