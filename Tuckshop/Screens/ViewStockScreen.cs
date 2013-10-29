@@ -105,7 +105,7 @@ namespace Tuckshop
             }
             dgItems.Rows.Clear();
             foreach (StockItem s in stock)
-                dgItems.Rows.Add(s.Select("ItemNum", "Description", "QtyInStock", "CostPrice", "SellPrice"));
+                dgItems.Rows.Add(s.Select("ItemNum", "QtyInStock", "Description", "CostPrice", "SellPrice"));
         }
 
     }
