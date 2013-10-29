@@ -58,7 +58,7 @@ namespace Tuckshop
         private Decimal getAmount()
         {
 
-            String Amount = txtAmount.Text;
+            String Amount = txtAmount.Text.Replace("R","");
             Decimal Amnt;
 
             bool Changed = Decimal.TryParse(Amount, out Amnt);
@@ -86,6 +86,12 @@ namespace Tuckshop
             return Amnt;
 
 
+        }
+
+        private void NewPaymentScreen_Load(object sender, EventArgs e)
+        {
+            foreach (Staff s in Staff.All())
+                txtName.AutoCompleteCustomSource.Add(s.FirstName + " " + s.Surname);
         }
 
 

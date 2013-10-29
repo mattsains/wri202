@@ -71,7 +71,6 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(180, 20);
             this.txtAmount.TabIndex = 5;
-            this.txtAmount.Text = "R ";
             // 
             // lblAmount
             // 
@@ -86,10 +85,6 @@
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.AutoCompleteCustomSource.AddRange(new string[] {
-            "Matthew Sainsbury",
-            "Dean Gifford",
-            "Douglas Bentley"});
             this.txtName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtName.Location = new System.Drawing.Point(54, 204);
@@ -141,6 +136,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "NewPaymentScreen";
             this.Size = new System.Drawing.Size(252, 299);
+            this.Load += new System.EventHandler(this.NewPaymentScreen_Load);
             this.Resize += new System.EventHandler(this.NewPaymentScreen_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
