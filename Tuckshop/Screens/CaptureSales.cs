@@ -51,7 +51,7 @@ namespace Tuckshop
 
         private void btnCapSales_Click(object sender, EventArgs e)
         {
-            Dictionary<Staff, List<Tuple<StockItem, int>>> staffpurchases = new Dictionary<Staff, List<Tuple<StockItem, int>>>();
+            Dictionary<int, List<Tuple<StockItem, int>>> staffpurchases = new Dictionary<int, List<Tuple<StockItem, int>>>();
             int lastStaffId = -1;
             foreach (DataGridViewRow row in dgCapSales.Rows)
             {
@@ -76,11 +76,11 @@ namespace Tuckshop
                                     {
                                         //right, after all that, time to add to the dictionary
                                         if (lastStaffId == staffid)
-                                            staffpurchases[s].Add(new Tuple<StockItem, int>(si, qty));
+                                            staffpurchases[staffid].Add(new Tuple<StockItem, int>(si, qty));
                                         else
                                         {
                                             lastStaffId = staffid;
-                                            staffpurchases.Add(s, new List<Tuple<StockItem, int>>() { new Tuple<StockItem, int>(si, qty) });
+                                            staffpurchases.Add(staffid, new List<Tuple<StockItem, int>>() { new Tuple<StockItem, int>(si, qty) });
                                         }
                                     }
                                     else
@@ -118,9 +118,10 @@ namespace Tuckshop
             //right database time
             DateTime date = txtDate.Value;
 
-            foreach (KeyValuePair<Staff, List<Tuple<StockItem, int>>> kp in staffpurchases)
+            foreach (KeyValuePair<int, List<Tuple<StockItem, int>>> kp in staffpurchases)
             {
-                Purchase p = Purchase.New(date, kp.Key);
+                Staff s = new Staff(kp.Key);
+                Purchase p = Purchase.New(date, s);
                 foreach (Tuple<StockItem, int> item in kp.Value)
                     PurchaseItem.New(p, item.Item1, item.Item2);
             }
