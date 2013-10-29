@@ -20,8 +20,8 @@ namespace Tuckshop
             txtItemNumber.Text = itemID.ToString();
             StockItem selected = new StockItem(itemID);
             numQuantity.Value = selected.QtyInStock;
-            txtCostPrice.Text = selected.CostPrice.ToString();
-            txtSellPrice.Text = selected.SellPrice.ToString();
+            txtCostPrice.Text = selected.CostPrice.ToString("C2");
+            txtSellPrice.Text = selected.SellPrice.ToString("C2");
             txtDescription.Text = selected.Description;
 
             pnlNotBlue.Left = (this.Width - pnlNotBlue.Width) / 2;
@@ -49,16 +49,16 @@ namespace Tuckshop
         {
             bool errors = false;// If there are no errors by the end then the program switches to the view stock screen.
                 int stockid;
-
+                
                 if (!string.IsNullOrWhiteSpace(txtItemNumber.Text) && int.TryParse(txtItemNumber.Text, out stockid))
                 {
                     decimal buyprice, sellprice;
                     int newqty;
                     if (int.TryParse(numQuantity.Value.ToString(), out newqty))
                     {
-                        if (!string.IsNullOrWhiteSpace(txtCostPrice.Text) && decimal.TryParse(txtCostPrice.Text, out buyprice))
+                        if (!string.IsNullOrWhiteSpace(txtCostPrice.Text) && decimal.TryParse(txtCostPrice.Text.Replace("R","") , out buyprice))
                         {
-                            if (!string.IsNullOrWhiteSpace(txtSellPrice.Text) && decimal.TryParse(txtSellPrice.Text, out sellprice))
+                            if (!string.IsNullOrWhiteSpace(txtSellPrice.Text) && decimal.TryParse(txtSellPrice.Text.Replace("R",""), out sellprice) && sellprice>=0)
                             {
                                 StockItem s;
                                 bool filled = false;
