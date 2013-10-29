@@ -13,7 +13,7 @@ namespace Tuckshop
         }
         public DateTime date
         {
-            get { return DateTime.Parse(base.GetAttr<string>("PurchDate")); }
+            get { return DateTime.ParseExact(base.GetAttr<string>("PurchDate"), "dd/MM/yyyy", null); }
             set { base.SetAttr("PurchDate", value.ToString("dd/MM/yyyy")); }
         }
         /// <summary>
