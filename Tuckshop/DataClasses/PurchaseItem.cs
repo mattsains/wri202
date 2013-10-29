@@ -16,7 +16,6 @@ namespace Tuckshop
             get { return new Purchase(base.GetAttr<int>("PurchNum")); }
             set
             {
-                //
                 if (purchase != null)
                     purchase.total -= QtyBought * item.SellPrice;
 

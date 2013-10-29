@@ -28,7 +28,7 @@ namespace Tuckshop
             {
                 base.SetAttr("PurchTotal", value);
                 if (staff != null)
-                    staff.Balance -= (value - total);//TODO: verify
+                    staff.Balance += (value - total);
                 throw new InvalidOperationException("Only data objects should *EVER* call this!");
             }
         }
@@ -38,9 +38,9 @@ namespace Tuckshop
             set
             {
                 if (staff != null)
-                    staff.Balance += total; //TODO: verify
+                    staff.Balance -= total;
                 base.SetAttr("StaffNr", value.StaffNum);
-                value.Balance -= total; //TODO: verify
+                value.Balance += total;
             }
         }
         //an internal cache of items in this purchase
