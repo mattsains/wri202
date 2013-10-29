@@ -9,7 +9,7 @@ namespace Tuckshop.DataClasses
     {
         public int purchaseItemID
         {
-            get { return base.GetAttr<int>("PurchItemID"); }
+            get { return base.GetAttr<int>("PurchItemID"); }            
         }
         public Purchase purchase
         {
