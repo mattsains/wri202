@@ -131,11 +131,20 @@ namespace Tuckshop
 
             item.QtyInStock -= qtyBought;
 
+            Staff staff = purchase.staff;
+
             try
             {
                 p.purchase.total += qtyBought * item.SellPrice;//adding the value of this purchase
             }
             catch (InvalidOperationException) { /*silence warning exception*/ }
+
+            try
+            {
+                staff.Balance += purchase.total;
+            }
+            catch (InvalidOperationException) { /*silence warning exception*/ }
+
             return p;
         }
 
