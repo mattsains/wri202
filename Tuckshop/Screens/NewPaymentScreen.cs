@@ -80,10 +80,15 @@ namespace Tuckshop
             if (!Changed)
             {
                 Program.ShowError("Invalid Entry", "Amount field can only contain Numbers", Screen.NewPayment, txtAmount);
-                txtAmount.Text = "R ";
+                txtAmount.Text = "";
                 return 0;
             }
-
+            if (Amnt < 0)
+            {
+                Program.ShowError("Invalid Entry", "Amount field can not be negative", Screen.NewPayment, txtAmount);
+                txtAmount.Text = "";
+                return 0;
+            }
             return Amnt;
 
 
