@@ -17,14 +17,9 @@ namespace Tuckshop
             webPrintSales.Navigate(url);
         }
 
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-
-        }
-
         private void btnPrint_Click(object sender, EventArgs e)
         {
-
+            webPrintSales.ShowPrintDialog();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Tuckshop
             {
                 //user has just entered a stock code
                 //populate if possible
-                int itemid;     
+                int itemid;
 
                 if (int.TryParse((string)dgCapStock[0, e.RowIndex].EditedFormattedValue, out itemid))
                 {
@@ -64,7 +64,7 @@ namespace Tuckshop
                 {
                     //not even an integer valued code
                     if (((string)dgCapStock[0, e.RowIndex].EditedFormattedValue).Length != 0)
-                        dgCapStock[0, e.RowIndex].Style.BackColor = postmodern ;
+                        dgCapStock[0, e.RowIndex].Style.BackColor = postmodern;
                     else
                         dgCapStock[0, e.RowIndex].Style.BackColor = Color.White;
                 }
@@ -76,13 +76,13 @@ namespace Tuckshop
                     int.TryParse((string)dgCapStock[1, e.RowIndex].EditedFormattedValue, out temp))
                     dgCapStock[1, e.RowIndex].Style.BackColor = Color.White;
                 else
-                    dgCapStock[1, e.RowIndex].Style.BackColor = postmodern; 
+                    dgCapStock[1, e.RowIndex].Style.BackColor = postmodern;
             }
             else if (e.ColumnIndex == 3 || e.ColumnIndex == 4)
             {
                 decimal temp;
                 if (((string)dgCapStock[e.ColumnIndex, e.RowIndex].EditedFormattedValue).Length == 0 ||
-                    decimal.TryParse((string)dgCapStock[e.ColumnIndex, e.RowIndex].EditedFormattedValue, out temp))
+                    decimal.TryParse((string)dgCapStock[e.ColumnIndex, e.RowIndex].EditedFormattedValue, out temp) && temp >= 0)
                     dgCapStock[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.White;
                 else
                     dgCapStock[e.ColumnIndex, e.RowIndex].Style.BackColor = postmodern;
@@ -112,24 +112,33 @@ namespace Tuckshop
                             {
                                 StockItem s;
                                 bool filled = false;
-                                try { s = new StockItem(stockid); }
-                                catch (ArgumentException)
+                                try
                                 {
-                                    if (row.Cells[2].Value == null)
+                                    try { s = new StockItem(stockid); }
+                                    catch (ArgumentException)
                                     {
-                                        Program.ShowError("Invalid Description", "Description not found.", Screen.Main);
-                                        return;
+                                        if (row.Cells[2].Value == null)
+                                        {
+                                            Program.ShowError("Invalid Description", "Description not found.", Screen.Main);
+                                            return;
+                                        }
+                                        s = StockItem.New(stockid, row.Cells[2].Value.ToString(), newqty, buyprice, sellprice);
+                                        filled = true;
                                     }
-                                    s = StockItem.New(stockid, row.Cells[2].Value.ToString(), newqty, buyprice, sellprice);
-                                    filled = true;
+                                    //now guaranteed to have a proper stock item in s.
+                                    if (!filled)
+                                    {
+                                        s.Description = row.Cells[2].Value.ToString();
+                                        s.QtyInStock += newqty;
+                                        s.CostPrice = buyprice;
+                                        s.SellPrice = sellprice;
+                                    }
                                 }
-                                //now guaranteed to have a proper stock item in s.
-                                if (!filled)
+                                catch (ArgumentOutOfRangeException)
                                 {
-                                    s.Description = row.Cells[2].Value.ToString();
-                                    s.QtyInStock += newqty;
-                                    s.CostPrice = buyprice;
-                                    s.SellPrice = sellprice;
+                                    errors = true;
+                                    Program.ShowError("Invalid Selling Price", "You can't have a negative selling price", Screen.Main);
+                                    return;
                                 }
                             }
                             else
@@ -174,6 +183,7 @@ namespace Tuckshop
             }
             if (!errors)
             {
+                MessageBox.Show("All stock items were added to inventory!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Program.SwitchTo(Screen.ViewStock);
             }
         }

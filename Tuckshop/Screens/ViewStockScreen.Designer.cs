@@ -85,6 +85,7 @@
             this.dgItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             this.dgItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -93,7 +94,7 @@
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -127,16 +128,19 @@
             this.cItemNum.HeaderText = "Num";
             this.cItemNum.Name = "cItemNum";
             this.cItemNum.ReadOnly = true;
+            this.cItemNum.Width = 54;
             // 
             // cQuantity
             // 
             this.cQuantity.HeaderText = "Qty";
             this.cQuantity.Name = "cQuantity";
+            this.cQuantity.Width = 48;
             // 
             // cDescription
             // 
             this.cDescription.HeaderText = "Description";
             this.cDescription.Name = "cDescription";
+            this.cDescription.Width = 85;
             // 
             // cCostPrice
             // 
@@ -145,6 +149,7 @@
             this.cCostPrice.DefaultCellStyle = dataGridViewCellStyle3;
             this.cCostPrice.HeaderText = "Cost Price";
             this.cCostPrice.Name = "cCostPrice";
+            this.cCostPrice.Width = 80;
             // 
             // cSellPrice
             // 
@@ -153,6 +158,7 @@
             this.cSellPrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.cSellPrice.HeaderText = "Selling Price";
             this.cSellPrice.Name = "cSellPrice";
+            this.cSellPrice.Width = 90;
             // 
             // txtSearch
             // 

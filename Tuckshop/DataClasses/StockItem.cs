@@ -29,7 +29,11 @@ namespace Tuckshop
         public decimal SellPrice
         {
             get { return base.GetAttr<decimal>("SellPrice"); }
-            set { base.SetAttr("SellPrice", value); }
+            set
+            {
+                if (value < 0) throw new ArgumentOutOfRangeException();
+                else base.SetAttr("SellPrice", value);
+            }
         }
         public static StockItem operator +(StockItem s,int num)
         {
@@ -108,6 +112,8 @@ namespace Tuckshop
         public static StockItem New(int itemNum, string description, int qtyInStock, decimal costprice, decimal sellprice)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
+
+            if (sellprice < 0) throw new ArgumentOutOfRangeException();
 
             values["itemnum"] = itemNum;
             values["description"] = description;

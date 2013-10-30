@@ -59,6 +59,7 @@ namespace Tuckshop
                 Program.ShowError("Database error", "Failed to add the new staff member!", Screen.ViewStaff);
                 return;
             }
+            MessageBox.Show("The staff member was added to the system", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Program.SwitchTo(Screen.ViewStaff, staffnum);
         }
         private void textbox_KeyPress(object sender, KeyPressEventArgs e)

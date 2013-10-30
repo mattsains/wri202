@@ -70,7 +70,7 @@ namespace Tuckshop
                             {
                                 StockItem si = new StockItem(stockid);
                                 int qty;
-                                if (int.TryParse((string)row.Cells[2].Value, out qty))
+                                if (int.TryParse((string)row.Cells[2].Value, out qty) && qty > 0)
                                 {
                                     if (qty <= si.QtyInStock)
                                     {
@@ -85,9 +85,14 @@ namespace Tuckshop
                                     }
                                     else
                                     {
-                                        Program.ShowError("Invalid Quantity", "The tuckshop does not have enough "+si.Description+" in stock", Screen.Main);
+                                        Program.ShowError("Invalid Quantity", "The tuckshop does not have enough " + si.Description + " in stock", Screen.Main);
                                         return;
                                     }
+                                }
+                                else
+                                {
+                                    Program.ShowError("Invalid Quantity", "Please enter a positive quantity", Screen.Main);
+                                    return;
                                 }
                             }
                             catch
@@ -126,6 +131,7 @@ namespace Tuckshop
                     PurchaseItem.New(p, item.Item1, item.Item2);
             }
             //and we are done.
+            MessageBox.Show("The new sales were recorded", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Program.SwitchTo(Screen.Main);
         }
 
@@ -232,7 +238,7 @@ namespace Tuckshop
                 //make sure we have enough 
                 int temp = 0;//needs to have a value because of C#'s route detection
                 if (((string)e.FormattedValue).Length == 0 ||
-                    int.TryParse((string)e.FormattedValue, out temp))
+                    (int.TryParse((string)e.FormattedValue, out temp) && temp > 0))
                 {
                     try
                     {

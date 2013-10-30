@@ -35,16 +35,14 @@
             // 
             // webPrintSales
             // 
-            this.webPrintSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webPrintSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.webPrintSales.Location = new System.Drawing.Point(3, 3);
             this.webPrintSales.MinimumSize = new System.Drawing.Size(20, 20);
             this.webPrintSales.Name = "webPrintSales";
             this.webPrintSales.Size = new System.Drawing.Size(454, 362);
             this.webPrintSales.TabIndex = 0;
-            this.webPrintSales.Url = new System.Uri("file://C:\\Users\\Douglas\\Desktop\\wri202\\UI-Skeleton\\SalesPrint.htm", System.UriKind.Absolute);
-            this.webPrintSales.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // btnPrint
             // 

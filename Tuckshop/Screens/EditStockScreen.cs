@@ -20,8 +20,8 @@ namespace Tuckshop
             txtItemNumber.Text = itemID.ToString();
             StockItem selected = new StockItem(itemID);
             numQuantity.Value = selected.QtyInStock;
-            txtCostPrice.Text = selected.CostPrice.ToString();
-            txtSellPrice.Text = selected.SellPrice.ToString();
+            txtCostPrice.Text = selected.CostPrice.ToString("C2");
+            txtSellPrice.Text = selected.SellPrice.ToString("C2");
             txtDescription.Text = selected.Description;
 
             pnlNotBlue.Left = (this.Width - pnlNotBlue.Width) / 2;
@@ -32,7 +32,16 @@ namespace Tuckshop
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(string.Format("Are you sure you want to delete Item #{0}?", "123"), "Deleting Item From Stock", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult r= MessageBox.Show(string.Format("Are you sure you want to delete Item #{0}?", "123"), "Deleting Item From Stock", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (r == DialogResult.Yes)
+            {
+                new StockItem(itemID).Delete();
+                MessageBox.Show("The stock item was removed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("The stock item was not removed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void EditStockScreen_Load(object sender, EventArgs e)
@@ -49,16 +58,16 @@ namespace Tuckshop
         {
             bool errors = false;// If there are no errors by the end then the program switches to the view stock screen.
                 int stockid;
-
+                
                 if (!string.IsNullOrWhiteSpace(txtItemNumber.Text) && int.TryParse(txtItemNumber.Text, out stockid))
                 {
                     decimal buyprice, sellprice;
                     int newqty;
                     if (int.TryParse(numQuantity.Value.ToString(), out newqty))
                     {
-                        if (!string.IsNullOrWhiteSpace(txtCostPrice.Text) && decimal.TryParse(txtCostPrice.Text, out buyprice))
+                        if (!string.IsNullOrWhiteSpace(txtCostPrice.Text) && decimal.TryParse(txtCostPrice.Text.ToUpper().Replace("R","").Replace(',','.') , out buyprice))
                         {
-                            if (!string.IsNullOrWhiteSpace(txtSellPrice.Text) && decimal.TryParse(txtSellPrice.Text, out sellprice))
+                            if (!string.IsNullOrWhiteSpace(txtSellPrice.Text) && decimal.TryParse(txtSellPrice.Text.ToUpper().Replace("R", "").Replace(',', '.'), out sellprice) && sellprice >= 0)
                             {
                                 StockItem s;
                                 bool filled = false;
@@ -119,6 +128,7 @@ namespace Tuckshop
             
             if (!errors)
             {
+                MessageBox.Show("The stock item was updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Program.SwitchTo(Screen.ViewStock);
             }
         }

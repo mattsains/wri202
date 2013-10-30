@@ -42,8 +42,6 @@ namespace Tuckshop
 
         private void btnEmail_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Because this feature might be run very often while testing this application, and because people won't appreciate getting a thousand nonsense emails, Instead this program will save copies of the emails to your desktop. Please find them there.", "Email feature disabled", MessageBoxButtons.OK);
-
             string path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\reminderEmails\\";
             Directory.CreateDirectory(path);
             int emails = 0;
@@ -66,6 +64,7 @@ namespace Tuckshop
             td
             {
                 border:1px solid #000;
+                padding:2px;
             }
             table
             {
@@ -85,11 +84,11 @@ namespace Tuckshop
 
                     foreach (Payment p in payments)
                     {
-                        statlines.Add(new Tuple<DateTime, string>(p.date, "<tr><td>" + p.date.ToLongDateString() + "</td><td>Payment</td><td></td><td>" + p.amountPaid + "</td></tr>"));
+                        statlines.Add(new Tuple<DateTime, string>(p.date, "<tr><td>" + p.date.ToLongDateString() + "</td><td>Payment</td><td></td><td>" + p.amountPaid.ToString("C2") + "</td></tr>"));
                     }
                     foreach (PurchaseItem pi in purchases)
                     {
-                        statlines.Add(new Tuple<DateTime, string>(pi.purchase.date, "<tr><td>" + pi.purchase.date.ToLongDateString() + "</td><td>" + pi.item.Description + "</td><td>" + pi.QtyBought + "</td><td>" + pi.item.SellPrice + "</td></tr>"));
+                        statlines.Add(new Tuple<DateTime, string>(pi.purchase.date, "<tr><td>" + pi.purchase.date.ToLongDateString() + "</td><td>" + pi.item.Description + "</td><td>" + pi.QtyBought + "</td><td>" + (pi.QtyBought * pi.item.SellPrice).ToString("C2") + "</td></tr>"));
                     }
 
                     statlines.Sort(delegate(Tuple<DateTime, string> tuple1, Tuple<DateTime, string> tuple2)
@@ -110,7 +109,10 @@ namespace Tuckshop
             if (emails == 0)
                 Program.ShowError("Nobody selected", "You didn't select anyone to send an account to", Screen.Main);
             else
+            {
+                MessageBox.Show("Because this feature might be run very often while testing this application, and because people won't appreciate getting a thousand nonsense emails, Instead this program will save copies of the emails to your desktop. Please find them there.", "Email feature disabled", MessageBoxButtons.OK);
                 Program.SwitchTo(Screen.Main);
+            }
         }
     }
 }

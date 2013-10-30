@@ -40,7 +40,7 @@ namespace Tuckshop
             if (Amount == 0)
                 return;
 
-            List<Staff> staffmember = Staff.All(s => s.FirstName + " " + s.Surname == Name);
+            List<Staff> staffmember = Staff.All(s => (s.FirstName + " " + s.Surname).ToLower() == Name.ToLower());
 
             if (staffmember.Count == 0)
             {
@@ -50,7 +50,8 @@ namespace Tuckshop
 
 
             Payment.New(Date, Amount, staffmember[0]);
-            txtAmount.Text = "R ";
+            MessageBox.Show("The new payment was recorded", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtAmount.Text = "";
             txtName.Clear();
             calDate.SelectionStart = DateTime.Now;
         }
@@ -58,7 +59,7 @@ namespace Tuckshop
         private Decimal getAmount()
         {
 
-            String Amount = txtAmount.Text;
+            String Amount = txtAmount.Text.ToUpper().Replace("R", "").Replace(',', '.');
             Decimal Amnt;
 
             bool Changed = Decimal.TryParse(Amount, out Amnt);
@@ -79,13 +80,24 @@ namespace Tuckshop
             if (!Changed)
             {
                 Program.ShowError("Invalid Entry", "Amount field can only contain Numbers", Screen.NewPayment, txtAmount);
-                txtAmount.Text = "R ";
+                txtAmount.Text = "";
                 return 0;
             }
-
+            if (Amnt < 0)
+            {
+                Program.ShowError("Invalid Entry", "Amount field can not be negative", Screen.NewPayment, txtAmount);
+                txtAmount.Text = "";
+                return 0;
+            }
             return Amnt;
 
 
+        }
+
+        private void NewPaymentScreen_Load(object sender, EventArgs e)
+        {
+            foreach (Staff s in Staff.All())
+                txtName.AutoCompleteCustomSource.Add(s.FirstName + " " + s.Surname);
         }
 
 
