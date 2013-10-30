@@ -141,7 +141,7 @@ namespace Tuckshop
 
             try
             {
-                staff.Balance += purchase.total;
+                staff.Balance += qtyBought * item.SellPrice;
             }
             catch (InvalidOperationException) { /*silence warning exception*/ }
 
