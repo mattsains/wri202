@@ -21,10 +21,5 @@ namespace Tuckshop
         {
             webPrintSales.ShowPrintDialog();
         }
-
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
