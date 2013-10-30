@@ -35,12 +35,12 @@ namespace Tuckshop
             if (response == DialogResult.Yes)
             {
                 staff.Delete();
-                MessageBox.Show("The staff member was removed", "Success", MessageBoxButtons.OK);
+                MessageBox.Show("The staff member was removed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Program.SwitchTo(Screen.ViewStaff);
             }
             else
             {
-                MessageBox.Show("The staff member was not removed", "Success", MessageBoxButtons.OK);
+                MessageBox.Show("The staff member was not removed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
         }
@@ -66,7 +66,7 @@ namespace Tuckshop
             staff.FirstName = txtfirstName.Text;
             staff.Surname = txtSurname.Text;
             staff.Email = txtEmail.Text;
-            MessageBox.Show("The staff member was updated", "Success", MessageBoxButtons.OK);
+            MessageBox.Show("The staff member was updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Program.SwitchTo(Screen.ViewStaff);
         }
 

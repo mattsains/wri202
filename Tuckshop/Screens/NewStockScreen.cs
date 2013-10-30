@@ -183,7 +183,7 @@ namespace Tuckshop
             }
             if (!errors)
             {
-                MessageBox.Show("All stock items were added to inventory!", "Success", MessageBoxButtons.OK);
+                MessageBox.Show("All stock items were added to inventory!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Program.SwitchTo(Screen.ViewStock);
             }
         }

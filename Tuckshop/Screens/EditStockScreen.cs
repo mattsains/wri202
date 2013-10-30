@@ -36,11 +36,11 @@ namespace Tuckshop
             if (r == DialogResult.Yes)
             {
                 new StockItem(itemID).Delete();
-                MessageBox.Show("The stock item was removed", "Success", MessageBoxButtons.OK);
+                MessageBox.Show("The stock item was removed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("The stock item was not removed", "Success", MessageBoxButtons.OK);
+                MessageBox.Show("The stock item was not removed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -65,9 +65,9 @@ namespace Tuckshop
                     int newqty;
                     if (int.TryParse(numQuantity.Value.ToString(), out newqty))
                     {
-                        if (!string.IsNullOrWhiteSpace(txtCostPrice.Text) && decimal.TryParse(txtCostPrice.Text.Replace("R","") , out buyprice))
+                        if (!string.IsNullOrWhiteSpace(txtCostPrice.Text) && decimal.TryParse(txtCostPrice.Text.ToUpper().Replace("R","").Replace(',','.') , out buyprice))
                         {
-                            if (!string.IsNullOrWhiteSpace(txtSellPrice.Text) && decimal.TryParse(txtSellPrice.Text.Replace("R",""), out sellprice) && sellprice>=0)
+                            if (!string.IsNullOrWhiteSpace(txtSellPrice.Text) && decimal.TryParse(txtSellPrice.Text.ToUpper().Replace("R", "").Replace(',', '.'), out sellprice) && sellprice >= 0)
                             {
                                 StockItem s;
                                 bool filled = false;
@@ -128,7 +128,7 @@ namespace Tuckshop
             
             if (!errors)
             {
-                MessageBox.Show("The staff member was updated", "Success", MessageBoxButtons.OK);
+                MessageBox.Show("The stock item was updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Program.SwitchTo(Screen.ViewStock);
             }
         }

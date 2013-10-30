@@ -50,7 +50,7 @@ namespace Tuckshop
 
 
             Payment.New(Date, Amount, staffmember[0]);
-            MessageBox.Show("The new payment was recorded", "Success", MessageBoxButtons.OK);
+            MessageBox.Show("The new payment was recorded", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             txtAmount.Text = "";
             txtName.Clear();
             calDate.SelectionStart = DateTime.Now;
@@ -59,7 +59,7 @@ namespace Tuckshop
         private Decimal getAmount()
         {
 
-            String Amount = txtAmount.Text.Replace("R","");
+            String Amount = txtAmount.Text.ToUpper().Replace("R", "").Replace(',', '.');
             Decimal Amnt;
 
             bool Changed = Decimal.TryParse(Amount, out Amnt);
