@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCapStock = new System.Windows.Forms.Button();
             this.dgCapStock = new System.Windows.Forms.DataGridView();
             this.itemnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,10 +54,19 @@
             // 
             // dgCapStock
             // 
-            this.dgCapStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgCapStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgCapStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgCapStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCapStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgCapStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCapStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.itemnum,
@@ -75,30 +85,35 @@
             // 
             this.itemnum.HeaderText = "Item Number";
             this.itemnum.Name = "itemnum";
+            this.itemnum.Width = 92;
             // 
             // cQuantity
             // 
             this.cQuantity.HeaderText = "Bought Quantity";
             this.cQuantity.Name = "cQuantity";
+            this.cQuantity.Width = 108;
             // 
             // itemdesc
             // 
             this.itemdesc.HeaderText = "Item Description";
             this.itemdesc.Name = "itemdesc";
+            this.itemdesc.Width = 108;
             // 
             // cCostPrice
             // 
-            dataGridViewCellStyle1.NullValue = null;
-            this.cCostPrice.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.NullValue = null;
+            this.cCostPrice.DefaultCellStyle = dataGridViewCellStyle2;
             this.cCostPrice.HeaderText = "Cost Price";
             this.cCostPrice.Name = "cCostPrice";
+            this.cCostPrice.Width = 80;
             // 
             // cSellPrice
             // 
-            dataGridViewCellStyle2.NullValue = null;
-            this.cSellPrice.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.NullValue = null;
+            this.cSellPrice.DefaultCellStyle = dataGridViewCellStyle3;
             this.cSellPrice.HeaderText = "Sell Price";
             this.cSellPrice.Name = "cSellPrice";
+            this.cSellPrice.Width = 76;
             // 
             // NewStockScreen
             // 

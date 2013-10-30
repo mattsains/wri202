@@ -64,6 +64,7 @@ namespace Tuckshop
             td
             {
                 border:1px solid #000;
+                padding:2px;
             }
             table
             {
@@ -83,11 +84,11 @@ namespace Tuckshop
 
                     foreach (Payment p in payments)
                     {
-                        statlines.Add(new Tuple<DateTime, string>(p.date, "<tr><td>" + p.date.ToLongDateString() + "</td><td>Payment</td><td></td><td>" + p.amountPaid + "</td></tr>"));
+                        statlines.Add(new Tuple<DateTime, string>(p.date, "<tr><td>" + p.date.ToLongDateString() + "</td><td>Payment</td><td></td><td>" + p.amountPaid.ToString("C2") + "</td></tr>"));
                     }
                     foreach (PurchaseItem pi in purchases)
                     {
-                        statlines.Add(new Tuple<DateTime, string>(pi.purchase.date, "<tr><td>" + pi.purchase.date.ToLongDateString() + "</td><td>" + pi.item.Description + "</td><td>" + pi.QtyBought + "</td><td>" + pi.item.SellPrice + "</td></tr>"));
+                        statlines.Add(new Tuple<DateTime, string>(pi.purchase.date, "<tr><td>" + pi.purchase.date.ToLongDateString() + "</td><td>" + pi.item.Description + "</td><td>" + pi.QtyBought + "</td><td>" + (pi.QtyBought * pi.item.SellPrice).ToString("C2") + "</td></tr>"));
                     }
 
                     statlines.Sort(delegate(Tuple<DateTime, string> tuple1, Tuple<DateTime, string> tuple2)

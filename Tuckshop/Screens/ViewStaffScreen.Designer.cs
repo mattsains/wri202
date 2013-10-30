@@ -56,6 +56,7 @@
             this.dgStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgStaff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgStaff.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
             this.dgStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -64,7 +65,7 @@
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgStaff.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgStaff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -107,16 +108,19 @@
             this.cStaffNum.HeaderText = "Staff Number";
             this.cStaffNum.Name = "cStaffNum";
             this.cStaffNum.ReadOnly = true;
+            this.cStaffNum.Width = 94;
             // 
             // cFirstName
             // 
             this.cFirstName.HeaderText = "First Name";
             this.cFirstName.Name = "cFirstName";
+            this.cFirstName.Width = 82;
             // 
             // cSurname
             // 
             this.cSurname.HeaderText = "Surname";
             this.cSurname.Name = "cSurname";
+            this.cSurname.Width = 74;
             // 
             // cEmail
             // 
@@ -124,6 +128,7 @@
             this.cEmail.Name = "cEmail";
             this.cEmail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cEmail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cEmail.Width = 57;
             // 
             // cBalance
             // 
@@ -132,6 +137,7 @@
             this.cBalance.DefaultCellStyle = dataGridViewCellStyle3;
             this.cBalance.HeaderText = "Balance";
             this.cBalance.Name = "cBalance";
+            this.cBalance.Width = 71;
             // 
             // txtSearch
             // 
