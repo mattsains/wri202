@@ -31,7 +31,12 @@ namespace Tuckshop
                     if (Control.ModifierKeys == Keys.Shift && e.ColumnIndex > 0)
                         cellToChangeTo = dgCapSales[e.ColumnIndex - 1, e.RowIndex];
                     else if (e.RowIndex + 1 < dgCapSales.Rows.Count)
+                    {
+                        if (dgCapSales[0, e.RowIndex].Style.BackColor != Color.FromArgb(221, 57, 57))
+                            if (dgCapSales[0, e.RowIndex + 1].Value == null)
+                                dgCapSales[0, e.RowIndex + 1].Value = dgCapSales[0, e.RowIndex].Value;
                         cellToChangeTo = dgCapSales[0, e.RowIndex + 1];
+                    }
                     else cellToChangeTo = null;
 
                     if (cellToChangeTo != null)
