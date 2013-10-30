@@ -97,13 +97,13 @@ namespace Tuckshop
                             }
                             catch
                             {
-                                Program.ShowError("Invalid Staff number", "The staff number '" + row.Cells[1].Value + "' is invalid.", Screen.Main);
+                                Program.ShowError("Invalid stock code", "The stock code '" + row.Cells[1].Value + "' doesn't exist.", Screen.Main);
                                 return;
                             }
                         }
                         else
                         {
-                            Program.ShowError("Invalid Staff number", "The staff number '" + row.Cells[1].Value + "' is invalid.", Screen.Main);
+                            Program.ShowError("Invalid stock code", "The stock code '" + row.Cells[1].Value + "' is invalid.", Screen.Main);
                             return;
                         }
                     }
@@ -115,7 +115,7 @@ namespace Tuckshop
                 }
                 else
                 {
-                    Program.ShowError("Invalid Staff number", "The staff number '" + staffid + "' is invalid.", Screen.Main);
+                    Program.ShowError("Invalid Staff number", "The staff number '" + row.Cells[0].Value + "' is invalid.", Screen.Main);
                     return;
                 }
             }

@@ -32,11 +32,12 @@ namespace Tuckshop
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult r= MessageBox.Show(string.Format("Are you sure you want to delete Item #{0}?", "123"), "Deleting Item From Stock", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult r= MessageBox.Show(string.Format("Are you sure you want to delete Item #{0}?", itemID), "Deleting Item From Stock", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (r == DialogResult.Yes)
             {
                 new StockItem(itemID).Delete();
                 MessageBox.Show("The stock item was removed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Program.SwitchTo(Screen.Main);
             }
             else
             {

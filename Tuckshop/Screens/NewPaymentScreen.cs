@@ -61,13 +61,7 @@ namespace Tuckshop
 
             String Amount = txtAmount.Text.ToUpper().Replace("R", "").Replace(',', '.');
             Decimal Amnt;
-
-            bool Changed = Decimal.TryParse(Amount, out Amnt);
-
-            if (!Changed)
-                Amount = Amount.Remove(0, 2);
-
-            Changed = Decimal.TryParse(Amount, out Amnt);
+            
 
             if (Amount == "")
             {
@@ -75,7 +69,7 @@ namespace Tuckshop
                 return 0;
             }
 
-            Changed = Decimal.TryParse(Amount, out Amnt);
+            bool Changed = Decimal.TryParse(Amount, out Amnt);
 
             if (!Changed)
             {
